@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright © 2022 By Geeks Empire.
+  ~
+  ~ Created by Elias Fazel
+  ~ Last modified 11/23/22, 1:35 AM
+  ~
+  ~ Licensed Under MIT License.
+  ~ https://opensource.org/licenses/MIT
+  -->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:drawable="@color/black" />
+
+    <item
+        android:drawable="@drawable/binary_background"/>
+
+    <item
+        android:drawable="@color/black_transparent"/>
+
+    <item
+        android:width="237dp"
+        android:height="237dp"
+        android:gravity="center"
+        android:drawable="@drawable/experiment_icon"/>
+
+</layer-list>

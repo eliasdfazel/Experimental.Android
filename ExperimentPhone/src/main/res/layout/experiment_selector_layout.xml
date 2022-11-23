@@ -3,7 +3,7 @@
   ~ Copyright © 2022 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 11/22/22, 11:17 PM
+  ~ Last modified 11/23/22, 2:02 AM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
@@ -11,10 +11,23 @@
 
 <co.geeksempire.experiment.Views.ViewGroup.NextedConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ExperimentSelector">
+    tools:context=".ExperimentSelector"
+    android:background="@color/dark">
 
+    <net.geekstools.imageview.customshapes.ShapesImage
+        android:id="@+id/loadingView"
+        android:layout_width="137dp"
+        android:layout_height="137dp"
+        android:layout_marginBottom="37dp"
+        android:src="@drawable/initial_gradient_background"
 
+        apps:shapeDrawable="@drawable/ring_shape"
+
+        apps:layout_constraintBottom_toBottomOf="parent"
+        apps:layout_constraintStart_toStartOf="parent"
+        apps:layout_constraintEnd_toEndOf="parent"/>
 
 </co.geeksempire.experiment.Views.ViewGroup.NextedConstraintLayout>

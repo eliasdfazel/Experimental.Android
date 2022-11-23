@@ -3,18 +3,92 @@
   ~ Copyright © 2022 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 11/22/22, 11:09 PM
+  ~ Last modified 8/4/22, 2:06 AM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
   -->
 
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
+    <color name="default_color">#237DAE</color>
+    <color name="default_color_bright">#00A5FF</color>
+    <color name="default_color_bright_transparent">#8000A5FF</color>
+    <color name="default_color_bright_transparent_high">#1200A5FF</color>
+    <color name="default_color_light">#008dda</color>
+    <color name="default_color_light_transparent">#80008dda</color>
+    <color name="default_color_dark">#0a415e</color>
+    <color name="default_color_dark_transparent">#800a415e</color>
+    <color name="default_color_transparent">#33237dae</color>
+    <color name="default_color_transparent_high">#22237dae</color>
+    <color name="default_color_transparent_twice">#80237dae</color>
+
+    <color name="default_color_game">#ae2357</color>
+    <color name="default_color_game_transparent">#80ae2357</color>
+    <color name="default_color_game_light">#FF005D</color>
+    <color name="default_color_game_light_transparent">#80FF005D</color>
+    <color name="default_color_game_light_transparent_high">#12FF005D</color>
+    <color name="default_color_game_bright">#FF166D</color>
+    <color name="default_color_game_dark">#760F35</color>
+    <color name="default_color_game_dark_transparent">#80760F35</color>
+
+    <color name="white">#ffffff</color>
+    <color name="white_transparent">#80FFFFFF</color>
+    <color name="white_transparent_high">#10FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="black_transparent">#80000000</color>
+    <color name="red">#9b000e</color>
+    <color name="red_transparent">#4d9b000e</color>
+    <color name="green">#25D366</color>
+    <color name="cyberGreen">#00FF5B</color>
+    <color name="cyberGreen_transparent">#8000FF5B</color>
+    <color name="yellow">#FDC558</color>
+    <color name="yellow_transparent">#80ffb506</color>
+    <color name="light_blue">#9CB9F7</color>
+    <color name="brown">#800909</color>
+    <color name="pink">#FE5475</color>
+    <color name="light_pink">#f79caf</color>
+    <color name="pink_transparent">#80f79caf</color>
+    <color name="cyan">#1FD4AF</color>
+    <color name="cyan_transparent">#501FD4AF</color>
+    <color name="purple">#be0193</color>
+    <color name="blue">#00acee</color>
+    <color name="blue_transparent">#C500ACEE</color>
+    <color name="light_gray">#c5cad2</color>
+    <color name="dark_gray">#383d45</color>
+
+    <color name="light">#f2f7ff</color>
+    <color name="lighter">#fafbff</color>
+    <color name="light_transparent">#b7f2f7ff</color>
+    <color name="light_transparent_half">#83F2F7FF</color>
+    <color name="light_transparent_high">#22F2F7FF</color>
+    <color name="light_transparent_higher">#13F2F7FF</color>
+
+    <color name="dark">#0a0f18</color>
+    <color name="darker">#070b12</color>
+    <color name="dark_transparent">#b30a0f18</color>
+    <color name="dark_transparent_half">#830a0f18</color>
+    <color name="dark_transparent_high">#220A0F18</color>
+    <color name="dark_transparent_higher">#130A0F18</color>
+
+    <color name="light_blurry_color">#23F2F7FF</color>
+    <color name="dark_blurry_color">#230a0f18</color>
+
+    <color name="premiumDark">#3C434D</color>
+    <color name="premiumDarkTransparent">#803C434D</color>T
+    <color name="premiumLight">#D5E0F3</color>
+    <color name="premiumLightTransparent">#80D5E0F3</color>
+
+    <color name="applicationsSectionColor">#237DAE</color>
+    <color name="gamesSectionColor">#ae2357</color>
+    <color name="booksSectionColor">#18B051</color>
+    <color name="moviesSectionColor">#E3A327</color>
+
+    <color name="applicationsSectionTransparentColor">#4D237DAE</color>
+    <color name="gamesSectionTransparentColor">#4Dae2357</color>
+    <color name="booksSectionTransparentColor">#4D18B051</color>
+    <color name="moviesSectionTransparentColor">#4DE3A327</color>
+
+    <color name="transparent">#00FFFFFF</color>
+
 </resources>

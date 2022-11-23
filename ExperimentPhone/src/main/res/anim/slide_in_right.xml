@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright © 2022 By Geeks Empire.
+  ~
+  ~ Created by Elias Fazel
+  ~ Last modified 5/19/22, 8:27 AM
+  ~
+  ~ Licensed Under MIT License.
+  ~ https://opensource.org/licenses/MIT
+  -->
+
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<translate
+		android:fromXDelta="50%p"
+		android:toXDelta="0"
+		android:duration="@android:integer/config_mediumAnimTime"/>
+
+	<alpha
+		android:fromAlpha="0.0"
+		android:toAlpha="1.0"
+		android:duration="@android:integer/config_mediumAnimTime" />
+
+</set>
