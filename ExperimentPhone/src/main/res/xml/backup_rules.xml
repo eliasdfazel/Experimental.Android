@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright © 2022 By Geeks Empire.
+  ~
+  ~ Created by Elias Fazel
+  ~ Last modified 11/22/22, 11:09 PM
+  ~
+  ~ Licensed Under MIT License.
+  ~ https://opensource.org/licenses/MIT
+  -->
+
+<!--
    Sample backup rules file; uncomment and customize as necessary.
    See https://developer.android.com/guide/topics/data/autobackup
    for details.

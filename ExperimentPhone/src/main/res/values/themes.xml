@@ -1,3 +1,13 @@
+<!--
+  ~ Copyright © 2022 By Geeks Empire.
+  ~
+  ~ Created by Elias Fazel
+  ~ Last modified 11/22/22, 11:09 PM
+  ~
+  ~ Licensed Under MIT License.
+  ~ https://opensource.org/licenses/MIT
+  -->
+
 <resources>
     <!-- Base application theme. -->
     <style name="Theme.Experimental" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
