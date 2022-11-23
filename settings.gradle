@@ -14,3 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Experimental"
 include ':ExperimentPhone'
+include ':BlurryEffect'
+include ':CustomShapes'
