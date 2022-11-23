@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright © 2022 By Geeks Empire.
+  ~
+  ~ Created by Elias Fazel
+  ~ Last modified 10/27/22, 9:15 AM
+  ~
+  ~ Licensed Under MIT License.
+  ~ https://opensource.org/licenses/MIT
+  -->
+
+<resources>
+
+    <declare-styleable name="NextedScrollView">
+        <attr name="flingVelocityFraction" format="integer"/>
+    </declare-styleable>
+
+</resources>
