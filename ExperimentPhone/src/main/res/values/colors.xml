@@ -3,13 +3,17 @@
   ~ Copyright © 2022 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 8/4/22, 2:06 AM
+  ~ Last modified 11/24/22, 2:42 AM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
   -->
 
 <resources>
+
+    <color name="colorGradientStart">#00A5FF</color>
+    <color name="colorGradientCenter">#FF166D</color>
+    <color name="colorGradientEnd">#00FF98</color>
 
     <color name="default_color">#237DAE</color>
     <color name="default_color_bright">#00A5FF</color>
@@ -43,6 +47,7 @@
     <color name="cyberGreen">#00FF5B</color>
     <color name="cyberGreen_transparent">#8000FF5B</color>
     <color name="yellow">#FDC558</color>
+    <color name="yellowLight">#D9FF43</color>
     <color name="yellow_transparent">#80ffb506</color>
     <color name="light_blue">#9CB9F7</color>
     <color name="brown">#800909</color>
