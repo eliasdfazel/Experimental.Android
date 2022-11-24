@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/24/22, 1:59 AM
+ * Last modified 11/24/22, 4:24 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -13,6 +13,7 @@ package co.geeksempire.experiment.Animations
 import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.util.Log
+import android.view.View
 import android.view.animation.Animation
 import android.view.animation.OvershootInterpolator
 import android.view.animation.RotateAnimation
@@ -40,9 +41,11 @@ class RotateAnimations (private val context: Context) {
         intArrayOf(allColors[5], allColors[6]),
     )
 
-    fun multipleColorsRotation(instanceOfImageView: ImageView) {
+    fun multipleColorsRotation(instanceOfView: View) {
 
-        instanceOfImageView.setImageDrawable(GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(context.getColor(
+        instanceOfView as ImageView
+
+        instanceOfView.setImageDrawable(GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(context.getColor(
             R.color.default_color
         ), context.getColor(R.color.default_color_game))))
 
@@ -54,7 +57,7 @@ class RotateAnimations (private val context: Context) {
             repeatMode = Animation.REVERSE
         }
 
-        instanceOfImageView.startAnimation(rotateAnimation)
+        instanceOfView.startAnimation(rotateAnimation)
 
         var animationCounter = 0
 
@@ -67,7 +70,7 @@ class RotateAnimations (private val context: Context) {
             override fun onAnimationRepeat(animation: Animation?) {
                 Log.d(this@RotateAnimations.javaClass.toString(), "Repeat")
 
-                instanceOfImageView.setImageDrawable(GradientDrawable(GradientDrawable.Orientation.TR_BL, colorsSet[animationCounter]))
+                instanceOfView.setImageDrawable(GradientDrawable(GradientDrawable.Orientation.TR_BL, colorsSet[animationCounter]))
 
                 animationCounter++
 
