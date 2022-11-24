@@ -2,13 +2,13 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/24/22, 1:56 AM
+ * Last modified 11/24/22, 1:59 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
  */
 
-package co.geeksempire.experiment
+package co.geeksempire.experiment.Animations
 
 import android.content.Context
 import android.graphics.drawable.GradientDrawable
@@ -17,8 +17,9 @@ import android.view.animation.Animation
 import android.view.animation.OvershootInterpolator
 import android.view.animation.RotateAnimation
 import android.widget.ImageView
+import co.geeksempire.experiment.R
 
-class Animations (private val context: Context) {
+class RotateAnimations (private val context: Context) {
 
     val allColors = intArrayOf(
         context.getColor(R.color.default_color_bright),
@@ -41,7 +42,9 @@ class Animations (private val context: Context) {
 
     fun multipleColorsRotation(instanceOfImageView: ImageView) {
 
-        instanceOfImageView.setImageDrawable(GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(context.getColor(R.color.default_color), context.getColor(R.color.default_color_game))))
+        instanceOfImageView.setImageDrawable(GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(context.getColor(
+            R.color.default_color
+        ), context.getColor(R.color.default_color_game))))
 
         val rotateAnimation = RotateAnimation(0f, 360f,
             Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f).apply {
@@ -58,11 +61,11 @@ class Animations (private val context: Context) {
         rotateAnimation.setAnimationListener(object : Animation.AnimationListener {
 
             override fun onAnimationStart(animation: Animation?) {
-                Log.d(this@Animations.javaClass.toString(), "Start")
+                Log.d(this@RotateAnimations.javaClass.toString(), "Start")
             }
 
             override fun onAnimationRepeat(animation: Animation?) {
-                Log.d(this@Animations.javaClass.toString(), "Repeat")
+                Log.d(this@RotateAnimations.javaClass.toString(), "Repeat")
 
                 instanceOfImageView.setImageDrawable(GradientDrawable(GradientDrawable.Orientation.TR_BL, colorsSet[animationCounter]))
 
@@ -79,7 +82,7 @@ class Animations (private val context: Context) {
             }
 
             override fun onAnimationEnd(animation: Animation?) {
-                Log.d(this@Animations.javaClass.toString(), "End")
+                Log.d(this@RotateAnimations.javaClass.toString(), "End")
             }
 
         })
