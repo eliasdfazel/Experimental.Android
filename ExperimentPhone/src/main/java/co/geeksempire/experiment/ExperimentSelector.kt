@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/24/22, 4:25 AM
+ * Last modified 11/27/22, 12:22 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -23,7 +23,17 @@ class ExperimentSelector : AppCompatActivity() {
         experimentSelectorLayoutBinding = ExperimentSelectorLayoutBinding.inflate(layoutInflater)
         setContentView(experimentSelectorLayoutBinding.root)
 
+        experimentSelectorLayoutBinding.root.setOnClickListener {
 
+
+
+        }
+
+        experimentSelectorLayoutBinding.loadingView.setOnClickListener {
+
+
+
+        }
 
     }
 }

@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/24/22, 4:24 AM
+ * Last modified 11/27/22, 12:22 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -14,7 +14,7 @@ import android.content.Context
 import android.graphics.drawable.AnimationDrawable
 import android.graphics.drawable.GradientDrawable
 import android.view.View
-import android.widget.ImageView
+import android.view.ViewGroup
 import co.geeksempire.experiment.R
 
 class GradientAnimations (private val context: Context) {
@@ -29,26 +29,33 @@ class GradientAnimations (private val context: Context) {
         context.getColor(R.color.default_color_bright),
     )
 
-    fun multipleGradientAnimation(instanceOfView: View) {
+    fun multipleGradientAnimation(instanceOfView: View) : AnimationDrawable {
 
-        instanceOfView as ImageView
+        instanceOfView as ViewGroup
+
+        val gradientDuration: Int = 2222
+        val gradientExitDuration: Int = 1111
 
         val animationDrawable = AnimationDrawable().apply {
-            setEnterFadeDuration(7)
-            setExitFadeDuration(3333)
+            repeat(7) { loopCount ->
 
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(allColors[0], allColors[1])), 3333)
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(allColors[1], allColors[2])), 3333)
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(allColors[2], allColors[3])), 3333)
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(allColors[3], allColors[4])), 3333)
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(allColors[4], allColors[5])), 3333)
+
+            }
+            setEnterFadeDuration(1)
+            setExitFadeDuration(gradientExitDuration)
+
+            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(allColors[0], allColors[1])), gradientDuration)
+            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(allColors[2], allColors[0])), gradientDuration)
+            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(allColors[3], allColors[2])), gradientDuration)
+            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(allColors[4], allColors[3])), gradientDuration)
+            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(allColors[5], allColors[4])), gradientDuration)
+            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(allColors[1], allColors[5])), gradientDuration)
 
         }
 
         instanceOfView.background = animationDrawable
 
-        animationDrawable.start()
-
+        return animationDrawable
     }
 
 }
