@@ -3,7 +3,7 @@
   ~ Copyright © 2022 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 11/23/22, 1:44 AM
+  ~ Last modified 11/27/22, 2:28 AM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
@@ -21,6 +21,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/GeeksEmpire.Material"
+        android:largeHeap="true"
         tools:targetApi="31">
         <activity
             android:name=".ExperimentSelector"
