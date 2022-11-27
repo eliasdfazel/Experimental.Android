@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/27/22, 7:15 AM
+ * Last modified 11/27/22, 7:30 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -28,7 +28,8 @@ class VectorPathParser {
             when (pathDataNode.mType.toString()) {
                 "M", "m" -> { // Move
 
-
+                    val moveToData = pathDataNode.mParams.toList()
+                    path.moveTo(moveToData[0], moveToData[1])
 
                 }
                 "L", "l" -> { // Line
@@ -38,12 +39,14 @@ class VectorPathParser {
                 }
                 "H", "h" -> { // Horizontal
 
-
+                    val horizontalToData = pathDataNode.mParams.toList()
+                    path.lineTo(horizontalToData[0], horizontalToData[1])
 
                 }
                 "V", "v" -> { // Vertical
 
-
+                    val verticalToData = pathDataNode.mParams.toList()
+                    path.lineTo(verticalToData[0], verticalToData[1])
 
                 }
                 "A", "a" -> { // Vertical
@@ -53,13 +56,13 @@ class VectorPathParser {
                 }
                 "C", "c" -> { // Vertical
 
-
-
+                    val cubicToData = pathDataNode.mParams.toList()
+                    path.cubicTo(cubicToData[0], cubicToData[1], cubicToData[2], cubicToData[3], cubicToData[4], cubicToData[5])
 
                 }
                 "Z", "z" -> { // Close
 
-
+                    path.close()
 
                 }
             }
