@@ -3,7 +3,7 @@
   ~ Copyright © 2022 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 11/27/22, 12:30 AM
+  ~ Last modified 11/27/22, 6:56 AM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
@@ -26,6 +26,10 @@
         apps:realtimeBlurGradientType="linearTopBottom"
         apps:realtimeFirstColor="@color/default_color_transparent"
         apps:realtimeSecondColor="@color/default_color_game_transparent"
+        apps:realtimeBlurTopLeft="31dp"
+        apps:realtimeBlurTopRight="31dp"
+        apps:realtimeBlurBottomLeft="31dp"
+        apps:realtimeBlurBottomRight="31dp"
 
         apps:layout_constraintTop_toTopOf="parent"
         apps:layout_constraintBottom_toBottomOf="parent"
