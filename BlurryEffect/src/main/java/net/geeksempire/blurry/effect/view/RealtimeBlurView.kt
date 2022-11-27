@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/27/22, 7:30 AM
+ * Last modified 11/27/22, 7:42 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -352,7 +352,14 @@ class RealtimeBlurView(context: Context, attrs: AttributeSet?) : AppCompatImageV
         radii[6] = bottomLeftCorner
         radii[7] = bottomLeftCorner
 
-        clipPath.addRoundRect(rectF, radii, Path.Direction.CW)
+//        clipPath.addRoundRect(rectF, radii, Path.Direction.CW)
+//
+//        clipPath.moveTo(0f, 0f)
+//        clipPath.lineTo(150f, 550f)
+//        clipPath.rCubicTo(19.6f, 5.99f, 19.48f, 5.61f, 19.18f, 5.45f)
+//        clipPath.cubicTo(19.6f, 5.99f, 19.48f, 5.61f, 19.18f, 5.45f)
+//        clipPath.arcTo(0f, 09f, 20f, 20f, 0f, 90f, true)
+        clipPath.arcTo(rectF, 0f, 90f, true)
 
         canvas.clipPath(clipPath)
 
