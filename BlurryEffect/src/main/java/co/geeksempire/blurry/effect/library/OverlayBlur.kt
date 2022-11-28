@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/28/22, 5:17 AM
+ * Last modified 11/28/22, 6:39 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -19,6 +19,7 @@ import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewTreeObserver
+import androidx.core.graphics.applyCanvas
 import co.geeksempire.blurry.effect.blurImplementation.AndroidXBlurImpl
 import co.geeksempire.blurry.effect.blurImplementation.SupportLibraryBlurImpl
 import net.geeksempire.blurry.effect.view.R
@@ -403,11 +404,15 @@ open class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(cont
         radii[6] = bottomLeftCorner
         radii[7] = bottomLeftCorner
 
-        clipPath.moveTo(0f, 0f)
-        clipPath.lineTo(width.toFloat() / 2, height.toFloat() / 2)
-        clipPath.lineTo(width.toFloat(), 0f)
-        clipPath.arcTo(rectF,0f, 180f)
+        /* Triangle */
+//        clipPath.moveTo(0f, 0f)
+//        clipPath.rLineTo(width.toFloat() / 2, height.toFloat() / 2)
+//        clipPath.rLineTo(width.toFloat(), 0f)
 
+        /* Half Circle */
+//        clipPath.arcTo(rectF,0f, 180f)
+
+        /* Round Rectangle */
         clipPath.addRoundRect(rectF, radii, Path.Direction.CCW)
 
         canvas.clipPath(clipPath)
@@ -425,13 +430,18 @@ open class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(cont
      */
     private fun drawBlurredBitmap(canvas: Canvas, blurredBitmap: Bitmap, firstColor: Int, secondColor: Int) {
 
+        /* Start - Draw Blurred Effect */
         rectSrc.right = blurredBitmap.width
         rectSrc.bottom = blurredBitmap.height
         rectDst.right = width
         rectDst.bottom = height
 
-        canvas.drawBitmap(blurredBitmap, rectSrc, rectDst, null)
+        canvas.drawBitmap(blurredBitmap, rectSrc, rectDst, paintInstance.apply {
 
+        })
+        /* End - Draw Blurred Effect */
+
+        /* Start - Gradient Effect */
         when (gradientType) {
             GradientTypeNone -> {
                 paintInstance.color = firstColor
@@ -475,7 +485,18 @@ open class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(cont
             }
         }
 
-        canvas.drawRect(rectDst, paintInstance)
+        canvas.drawRect(rectDst, paintInstance.apply {
+
+        })
+        /* End - Gradient Effect */
+
+        blurredBitmap.applyCanvas {
+            drawText("XYZ", 0f, height.toFloat() + 3f, Paint().apply {
+                color = Color.BLACK
+                textSize = 107f
+                xfermode = PorterDuffXfermode(PorterDuff.Mode.XOR)
+            })
+        }
 
     }
 
