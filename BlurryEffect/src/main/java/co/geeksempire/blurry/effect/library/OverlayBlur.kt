@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/28/22, 4:09 AM
+ * Last modified 11/28/22, 5:17 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -22,9 +22,10 @@ import android.view.ViewTreeObserver
 import co.geeksempire.blurry.effect.blurImplementation.AndroidXBlurImpl
 import co.geeksempire.blurry.effect.blurImplementation.SupportLibraryBlurImpl
 import net.geeksempire.blurry.effect.view.R
+import kotlin.math.min
 
 
-class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(context, attributeSet) {
+open class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(context, attributeSet) {
 
     private var downSampleFactor = 0f // default 4
 
@@ -34,12 +35,12 @@ class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(context, 
     /**
      * Default 10dp (0 < radius <= 25)
      */
-    private var blurRadius = 0f// default 10dp (0 < r <= 25)
+    private var blurRadius = 0f // default 10dp (0 < r <= 25)
 
-    private var topLeftCorner = 19f
-    private var topRightCorner = 19f
-    private var bottomLeftCorner = 19f
-    private var bottomRightCorner = 19f
+    private var topLeftCorner = 0f
+    private var topRightCorner = 0f
+    private var bottomLeftCorner = 0f
+    private var bottomRightCorner = 0f
 
     var gradientType = 0
 
@@ -96,13 +97,10 @@ class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(context, 
         firstColor = typedArray.getColor(R.styleable.RealtimeBlurView_realtimeFirstColor, -0x55000001)
         secondColor = typedArray.getColor(R.styleable.RealtimeBlurView_realtimeSecondColor, -666)
 
-        topLeftCorner = typedArray.getDimension(R.styleable.RealtimeBlurView_realtimeBlurTopLeft, 19f)
-        topRightCorner =
-            typedArray.getDimension(R.styleable.RealtimeBlurView_realtimeBlurTopRight, 19f)
-        bottomLeftCorner =
-            typedArray.getDimension(R.styleable.RealtimeBlurView_realtimeBlurBottomLeft, 19f)
-        bottomRightCorner =
-            typedArray.getDimension(R.styleable.RealtimeBlurView_realtimeBlurBottomRight, 19f)
+        topLeftCorner = typedArray.getDimension(R.styleable.RealtimeBlurView_realtimeBlurTopLeft, 0f)
+        topRightCorner = typedArray.getDimension(R.styleable.RealtimeBlurView_realtimeBlurTopRight, 0f)
+        bottomLeftCorner = typedArray.getDimension(R.styleable.RealtimeBlurView_realtimeBlurBottomLeft, 0f)
+        bottomRightCorner = typedArray.getDimension(R.styleable.RealtimeBlurView_realtimeBlurBottomRight, 0f)
 
         if (typedArray.getInteger(R.styleable.RealtimeBlurView_realtimeBlurGradientType, 0) == 0) {
             gradientType = GradientTypeNone
@@ -248,16 +246,16 @@ class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(context, 
             release()
             return false
         }
-        var downsampleFactor = downSampleFactor
-        var radius = blurRadius / downsampleFactor
+        var downSampleFactor = downSampleFactor
+        var radius = blurRadius / downSampleFactor
         if (radius > 25) {
-            downsampleFactor = downsampleFactor * radius / 25
+            downSampleFactor = downSampleFactor * radius / 25
             radius = 25f
         }
         val width = width
         val height = height
-        val scaledWidth = Math.max(1, (width / downsampleFactor).toInt())
-        val scaledHeight = Math.max(1, (height / downsampleFactor).toInt())
+        val scaledWidth = Math.max(1, (width / downSampleFactor).toInt())
+        val scaledHeight = Math.max(1, (height / downSampleFactor).toInt())
         var dirty: Boolean = dirty
         if (blurringCanvas == null || blurredBitmap == null || blurredBitmap!!.width != scaledWidth || blurredBitmap!!.height != scaledHeight) {
             dirty = true
@@ -346,7 +344,7 @@ class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(context, 
         true
     }
 
-    protected fun getActivityDecorView(): View? {
+    private fun getActivityDecorView(): View? {
         var ctx = context
         var i = 0
         while (i < 4 && ctx != null && ctx !is Activity && ctx is ContextWrapper) {
@@ -391,6 +389,7 @@ class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(context, 
     }
 
     override fun onDraw(canvas: Canvas) {
+        super.onDraw(canvas)
 
         rectF[0f, 0f, this.width.toFloat()] = this.height.toFloat()
 
@@ -404,16 +403,14 @@ class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(context, 
         radii[6] = bottomLeftCorner
         radii[7] = bottomLeftCorner
 
-//		clipPath.addRoundRect(rectF, radii, Path.Direction.CW);
-
         clipPath.moveTo(0f, 0f)
-        clipPath.lineTo(0f, (height / 2).toFloat())
-        clipPath.lineTo(width.toFloat(), (height / 4).toFloat())
+        clipPath.lineTo(width.toFloat() / 2, height.toFloat() / 2)
         clipPath.lineTo(width.toFloat(), 0f)
+        clipPath.arcTo(rectF,0f, 180f)
+
+        clipPath.addRoundRect(rectF, radii, Path.Direction.CCW)
 
         canvas.clipPath(clipPath)
-
-        super.onDraw(canvas)
 
         blurredBitmap?.let { drawBlurredBitmap(canvas, it, firstColor, secondColor) }
 
@@ -428,52 +425,54 @@ class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(context, 
      */
     private fun drawBlurredBitmap(canvas: Canvas, blurredBitmap: Bitmap, firstColor: Int, secondColor: Int) {
 
-        if (blurredBitmap != null) {
+        rectSrc.right = blurredBitmap.width
+        rectSrc.bottom = blurredBitmap.height
+        rectDst.right = width
+        rectDst.bottom = height
 
-            rectSrc.right = blurredBitmap.width
-            rectSrc.bottom = blurredBitmap.height
-            rectDst.right = width
-            rectDst.bottom = height
+        canvas.drawBitmap(blurredBitmap, rectSrc, rectDst, null)
 
-            canvas.drawBitmap(blurredBitmap, rectSrc, rectDst, null)
-
-        }
-
-        if (gradientType == GradientTypeNone) {
-            paintInstance!!.color = firstColor
-        } else if (gradientType == GradientTypeLinearLR) {
-            paintInstance!!.shader = LinearGradient(
-                0f, 0f,
-                width.toFloat(), 0f,  /* First Color */
-                firstColor,  /* Second Color */
-                secondColor,
-                Shader.TileMode.CLAMP
-            )
-        } else if (gradientType == GradientTypeLinearTB) {
-            paintInstance!!.shader = LinearGradient(
-                0f, 0f,
-                0f, height.toFloat(),  /* First Color */
-                firstColor,  /* Second Color */
-                secondColor,
-                Shader.TileMode.CLAMP
-            )
-        } else if (gradientType == GradientTypeLinearTilt) {
-            paintInstance!!.shader = LinearGradient(
-                width.toFloat(), 0f,
-                0f, height.toFloat(),  /* First Color */
-                firstColor,  /* Second Color */
-                secondColor,
-                Shader.TileMode.CLAMP
-            )
-        } else if (gradientType == GradientTypeRadial) {
-            paintInstance!!.shader = RadialGradient(
-                width / 2f,
-                height / 2f,
-                Math.min(width, height) / 2f,
-                firstColor,
-                secondColor,
-                Shader.TileMode.CLAMP
-            )
+        when (gradientType) {
+            GradientTypeNone -> {
+                paintInstance.color = firstColor
+            }
+            GradientTypeLinearLR -> {
+                paintInstance.shader = LinearGradient(
+                    0f, 0f,
+                    width.toFloat(), 0f,  /* First Color */
+                    firstColor,  /* Second Color */
+                    secondColor,
+                    Shader.TileMode.CLAMP
+                )
+            }
+            GradientTypeLinearTB -> {
+                paintInstance.shader = LinearGradient(
+                    0f, 0f,
+                    0f, height.toFloat(),  /* First Color */
+                    firstColor,  /* Second Color */
+                    secondColor,
+                    Shader.TileMode.CLAMP
+                )
+            }
+            GradientTypeLinearTilt -> {
+                paintInstance.shader = LinearGradient(
+                    width.toFloat(), 0f,
+                    0f, height.toFloat(),  /* First Color */
+                    firstColor,  /* Second Color */
+                    secondColor,
+                    Shader.TileMode.CLAMP
+                )
+            }
+            GradientTypeRadial -> {
+                paintInstance.shader = RadialGradient(
+                    width / 2f,
+                    height / 2f,
+                    min(width, height) / 2f,
+                    firstColor,
+                    secondColor,
+                    Shader.TileMode.CLAMP
+                )
+            }
         }
 
         canvas.drawRect(rectDst, paintInstance)
