@@ -3,7 +3,7 @@
   ~ Copyright © 2022 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 11/28/22, 3:52 AM
+  ~ Last modified 11/28/22, 7:15 AM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
@@ -11,42 +11,40 @@
 
 <co.geeksempire.experiment.Views.ViewGroup.NextedConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:apps="http://schemas.android.com/apk/res-auto"
     tools:context=".ExperimentSelector"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/default_color_transparent"
     android:background="@drawable/splash_screen_initial">
 
-    <co.geeksempire.blurry.effect.library.OverlayBlur
-        android:layout_width="173dp"
-        android:layout_height="173dp"
+<!--    <co.geeksempire.blurry.effect.library.OverlayBlur-->
+<!--        android:layout_width="173dp"-->
+<!--        android:layout_height="173dp"-->
 
-        apps:realtimeBlurRadius="13dp"
-        apps:realtimeBlurGradientType="linearTilt"
-        apps:realtimeFirstColor="@color/default_color_transparent"
-        apps:realtimeSecondColor="@color/default_color_game_transparent"
-        apps:realtimeBlurTopLeft="31dp"
-        apps:realtimeBlurTopRight="31dp"
-        apps:realtimeBlurBottomLeft="31dp"
-        apps:realtimeBlurBottomRight="31dp"
+<!--        apps:realtimeBlurRadius="13dp"-->
+<!--        apps:realtimeBlurGradientType="linearTilt"-->
+<!--        apps:realtimeFirstColor="@color/default_color_transparent"-->
+<!--        apps:realtimeSecondColor="@color/default_color_game_transparent"-->
+<!--        apps:realtimeBlurTopLeft="31dp"-->
+<!--        apps:realtimeBlurTopRight="31dp"-->
+<!--        apps:realtimeBlurBottomLeft="31dp"-->
+<!--        apps:realtimeBlurBottomRight="31dp"-->
 
-        apps:layout_constraintTop_toTopOf="parent"
-        apps:layout_constraintBottom_toBottomOf="parent"
-        apps:layout_constraintStart_toStartOf="parent"
-        apps:layout_constraintEnd_toEndOf="parent"/>
+<!--        apps:layout_constraintTop_toTopOf="parent"-->
+<!--        apps:layout_constraintBottom_toBottomOf="parent"-->
+<!--        apps:layout_constraintStart_toStartOf="parent"-->
+<!--        apps:layout_constraintEnd_toEndOf="parent"/>-->
 
-    <net.geekstools.imageview.customshapes.ShapesImage
-        android:id="@+id/loadingView"
-        android:layout_width="137dp"
-        android:layout_height="137dp"
-        android:layout_marginBottom="37dp"
-        android:src="@drawable/initial_gradient_background"
+<!--    <net.geekstools.imageview.customshapes.ShapesImage-->
+<!--        android:id="@+id/loadingView"-->
+<!--        android:layout_width="137dp"-->
+<!--        android:layout_height="137dp"-->
+<!--        android:layout_marginBottom="37dp"-->
+<!--        android:src="@drawable/initial_gradient_background"-->
 
-        apps:shapeDrawable="@drawable/ring_shape"
+<!--        apps:shapeDrawable="@drawable/ring_shape"-->
 
-        apps:layout_constraintBottom_toBottomOf="parent"
-        apps:layout_constraintStart_toStartOf="parent"
-        apps:layout_constraintEnd_toEndOf="parent"/>
+<!--        apps:layout_constraintBottom_toBottomOf="parent"-->
+<!--        apps:layout_constraintStart_toStartOf="parent"-->
+<!--        apps:layout_constraintEnd_toEndOf="parent"/>-->
 
 </co.geeksempire.experiment.Views.ViewGroup.NextedConstraintLayout>
