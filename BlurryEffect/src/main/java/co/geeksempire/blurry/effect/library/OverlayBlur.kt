@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/28/22, 3:52 AM
+ * Last modified 11/28/22, 4:09 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -105,31 +105,31 @@ class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(context, 
             typedArray.getDimension(R.styleable.RealtimeBlurView_realtimeBlurBottomRight, 19f)
 
         if (typedArray.getInteger(R.styleable.RealtimeBlurView_realtimeBlurGradientType, 0) == 0) {
-            gradientType = RealtimeBlurView.GradientTypeNone
+            gradientType = GradientTypeNone
         } else if (typedArray.getInteger(
                 R.styleable.RealtimeBlurView_realtimeBlurGradientType,
                 0
             ) == 1
         ) {
-            gradientType = RealtimeBlurView.GradientTypeRadial
+            gradientType = GradientTypeRadial
         } else if (typedArray.getInteger(
                 R.styleable.RealtimeBlurView_realtimeBlurGradientType,
                 0
             ) == 2
         ) {
-            gradientType = RealtimeBlurView.GradientTypeLinearTB
+            gradientType = GradientTypeLinearTB
         } else if (typedArray.getInteger(
                 R.styleable.RealtimeBlurView_realtimeBlurGradientType,
                 0
             ) == 3
         ) {
-            gradientType = RealtimeBlurView.GradientTypeLinearLR
+            gradientType = GradientTypeLinearLR
         } else if (typedArray.getInteger(
                 R.styleable.RealtimeBlurView_realtimeBlurGradientType,
                 0
             ) == 4
         ) {
-            gradientType = RealtimeBlurView.GradientTypeLinearTilt
+            gradientType = GradientTypeLinearTilt
         }
 
         typedArray.recycle()
@@ -416,6 +416,7 @@ class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(context, 
         super.onDraw(canvas)
 
         blurredBitmap?.let { drawBlurredBitmap(canvas, it, firstColor, secondColor) }
+
     }
 
     /**
@@ -438,9 +439,9 @@ class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(context, 
 
         }
 
-        if (gradientType == RealtimeBlurView.GradientTypeNone) {
+        if (gradientType == GradientTypeNone) {
             paintInstance!!.color = firstColor
-        } else if (gradientType == RealtimeBlurView.GradientTypeLinearLR) {
+        } else if (gradientType == GradientTypeLinearLR) {
             paintInstance!!.shader = LinearGradient(
                 0f, 0f,
                 width.toFloat(), 0f,  /* First Color */
@@ -448,7 +449,7 @@ class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(context, 
                 secondColor,
                 Shader.TileMode.CLAMP
             )
-        } else if (gradientType == RealtimeBlurView.GradientTypeLinearTB) {
+        } else if (gradientType == GradientTypeLinearTB) {
             paintInstance!!.shader = LinearGradient(
                 0f, 0f,
                 0f, height.toFloat(),  /* First Color */
@@ -456,7 +457,7 @@ class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(context, 
                 secondColor,
                 Shader.TileMode.CLAMP
             )
-        } else if (gradientType == RealtimeBlurView.GradientTypeLinearTilt) {
+        } else if (gradientType == GradientTypeLinearTilt) {
             paintInstance!!.shader = LinearGradient(
                 width.toFloat(), 0f,
                 0f, height.toFloat(),  /* First Color */
@@ -464,7 +465,7 @@ class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(context, 
                 secondColor,
                 Shader.TileMode.CLAMP
             )
-        } else if (gradientType == RealtimeBlurView.GradientTypeRadial) {
+        } else if (gradientType == GradientTypeRadial) {
             paintInstance!!.shader = RadialGradient(
                 width / 2f,
                 height / 2f,
