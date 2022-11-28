@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/28/22, 3:24 AM
+ * Last modified 11/28/22, 3:52 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -88,12 +88,12 @@ public class RealtimeBlurView extends View {
 	private static int RENDERING_COUNT;
 	private static int BLUR_IMPL;
 
-	public RealtimeBlurView(Context context, AttributeSet attrs) {
-		super(context, attrs);
+	public RealtimeBlurView(Context context, AttributeSet attributeSet) {
+		super(context, attributeSet);
 
 		mBlurImpl = getBlurImpl(); // provide your own by override getBlurImpl()
 
-		TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RealtimeBlurView);
+		TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.RealtimeBlurView);
 
 		blurRadius = typedArray.getDimension(R.styleable.RealtimeBlurView_realtimeBlurRadius, TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, context.getResources().getDisplayMetrics()));
 
@@ -492,7 +492,6 @@ public class RealtimeBlurView extends View {
 
 		}
 
-		canvas.drawRect(mRectDst, paintInstance);
 
 		canvas.drawRect(mRectDst, paintInstance);
 
