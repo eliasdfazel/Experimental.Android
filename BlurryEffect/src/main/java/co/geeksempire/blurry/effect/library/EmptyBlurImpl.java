@@ -2,13 +2,13 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 10/27/22, 8:55 AM
+ * Last modified 11/28/22, 2:43 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
  */
 
-package net.geeksempire.blurry.effect.view;
+package co.geeksempire.blurry.effect.library;
 
 import android.content.Context;
 import android.graphics.Bitmap;

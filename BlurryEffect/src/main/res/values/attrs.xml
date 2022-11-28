@@ -3,7 +3,7 @@
   ~ Copyright © 2022 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 11/5/22, 10:11 AM
+  ~ Last modified 11/28/22, 3:12 AM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
@@ -30,6 +30,7 @@
 			<enum name="radial" value="1"/>
 			<enum name="linearTopBottom" value="2"/>
 			<enum name="linearLeftRight" value="3"/>
+			<enum name="linearTilt" value="4"/>
 		</attr>
 	</declare-styleable>
 </resources>
