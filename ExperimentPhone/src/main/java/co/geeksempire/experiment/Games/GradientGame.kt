@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/29/22, 2:45 AM
+ * Last modified 11/29/22, 5:28 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -10,27 +10,35 @@
 
 package co.geeksempire.experiment.Games
 
+import android.graphics.drawable.AnimationDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import co.geeksempire.experiment.Animations.GradientAnimations
-import co.geeksempire.experiment.Animations.RotateAnimations
 import co.geeksempire.experiment.databinding.GradientGameLayoutBinding
 import net.geekstools.imageview.customshapes.R
 
 class GradientGame : AppCompatActivity() {
 
+    val gradientAnimations: GradientAnimations by lazy {
+        GradientAnimations(applicationContext)
+    }
+
     val allShapes: ArrayList<Drawable?> by lazy {
         arrayListOf(
-            applicationContext.getDrawable(R.drawable.beaker),
-            applicationContext.getDrawable(R.drawable.android),
-            applicationContext.getDrawable(R.drawable.bell),
-            applicationContext.getDrawable(R.drawable.tooltip),
-            applicationContext.getDrawable(R.drawable.ghost),
+            getDrawable(R.drawable.beaker),
+            getDrawable(R.drawable.bell),
+            getDrawable(R.drawable.tooltip),
+            getDrawable(R.drawable.ghost)
         )
     }
 
+    var multipleGradientAnimation: AnimationDrawable? = null
+    var multipleGradientFrame: Drawable? = null
 
     lateinit var gradientGameLayoutBinding: GradientGameLayoutBinding
 
@@ -39,40 +47,61 @@ class GradientGame : AppCompatActivity() {
         gradientGameLayoutBinding = GradientGameLayoutBinding.inflate(layoutInflater)
         setContentView(gradientGameLayoutBinding.root)
 
-        val gradientAnimations = GradientAnimations(applicationContext)
-        val multipleGradientAnimation = gradientAnimations.multipleGradientAnimation(gradientGameLayoutBinding.backgroundView).apply {
-            start()
-        }
+        multipleGradientFrame = gradientAnimations.allDrawableAnimations.random()
 
-
-        var multipleGradientFrame: Drawable = gradientAnimations.allDrawableAnimations.random()
-
-        gradientGameLayoutBinding.selectedColor.setShapeDrawable(allShapes.random())
         gradientGameLayoutBinding.selectedColor.setImageDrawable(multipleGradientFrame)
+        gradientGameLayoutBinding.selectedColor.setShapeDrawable(allShapes.random())
 
-        RotateAnimations(applicationContext)
-            .multipleColorsRotation(gradientGameLayoutBinding.loadingView)
+        multipleGradientAnimation = gradientAnimations.multipleGradientAnimation(gradientGameLayoutBinding.backgroundView)
 
-        gradientGameLayoutBinding.root.setOnClickListener {
+        gradientGameLayoutBinding.backgroundView.setOnClickListener { view ->
 
-            multipleGradientFrame = gradientAnimations.allDrawableAnimations.random()
+            multipleGradientAnimation?.let {
 
-            gradientGameLayoutBinding.selectedColor.setShapeDrawable(allShapes.random())
-            gradientGameLayoutBinding.selectedColor.setImageDrawable(multipleGradientFrame)
+                if (it.current == multipleGradientFrame) {
+                    Log.d(this@GradientGame.javaClass.simpleName, "Equal")
 
-            if (multipleGradientAnimation.current == multipleGradientFrame) {
-                Log.d(this@GradientGame.javaClass.simpleName, "Equal")
+                    it.stop()
+                    Toast.makeText(applicationContext, "You Win!", Toast.LENGTH_LONG).show()
+
+                    Handler(Looper.getMainLooper()).postDelayed({
+
+                        multipleGradientFrame = gradientAnimations.allDrawableAnimations.random()
+                        gradientGameLayoutBinding.selectedColor.setImageDrawable(multipleGradientFrame)
+                        gradientGameLayoutBinding.selectedColor.setShapeDrawable(allShapes.random())
+
+                        this@GradientGame.recreate()
+
+                    }, 3333)
+
+                } else {
+                    Log.d(this@GradientGame.javaClass.simpleName, "Not Equal")
 
 
 
-            } else {
-                Log.d(this@GradientGame.javaClass.simpleName, "Not Equal")
-
-
+                }
 
             }
 
         }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        multipleGradientFrame?.let {
+            gradientGameLayoutBinding.selectedColor.setImageDrawable(it)
+        }
+
+        multipleGradientAnimation?.start()
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        multipleGradientAnimation?.stop()
 
     }
 

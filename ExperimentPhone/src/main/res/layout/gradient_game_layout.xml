@@ -3,7 +3,7 @@
   ~ Copyright © 2022 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 11/29/22, 2:45 AM
+  ~ Last modified 11/29/22, 5:10 AM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
@@ -21,51 +21,18 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/backgroundView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:elevation="1dp"/>
+        android:layout_height="match_parent" />
 
     <net.geekstools.imageview.customshapes.ShapesImage
         android:id="@+id/selectedColor"
         android:layout_width="99dp"
         android:layout_height="99dp"
         android:layout_marginTop="37dp"
-        android:elevation="31dp"
-        android:src="@drawable/initial_gradient_background"
+        android:src="@color/yellowLight"
 
         apps:shapeDrawable="@drawable/hexagon"
 
         apps:layout_constraintTop_toTopOf="parent"
-        apps:layout_constraintStart_toStartOf="parent"
-        apps:layout_constraintEnd_toEndOf="parent"/>
-
-    <co.geeksempire.blurry.effect.library.OverlayBlur
-        android:layout_width="173dp"
-        android:layout_height="173dp"
-
-        apps:realtimeBlurRadius="13dp"
-        apps:realtimeBlurGradientType="linearTilt"
-        apps:realtimeFirstColor="@color/default_color_transparent"
-        apps:realtimeSecondColor="@color/default_color_game_transparent"
-        apps:realtimeBlurTopLeft="31dp"
-        apps:realtimeBlurTopRight="31dp"
-        apps:realtimeBlurBottomLeft="31dp"
-        apps:realtimeBlurBottomRight="31dp"
-
-        apps:layout_constraintTop_toTopOf="parent"
-        apps:layout_constraintBottom_toBottomOf="parent"
-        apps:layout_constraintStart_toStartOf="parent"
-        apps:layout_constraintEnd_toEndOf="parent"/>
-
-    <net.geekstools.imageview.customshapes.ShapesImage
-        android:id="@+id/loadingView"
-        android:layout_width="37dp"
-        android:layout_height="37dp"
-        android:layout_marginBottom="37dp"
-        android:src="@drawable/initial_gradient_background"
-
-        apps:shapeDrawable="@drawable/ring_shape"
-
-        apps:layout_constraintBottom_toBottomOf="parent"
         apps:layout_constraintStart_toStartOf="parent"
         apps:layout_constraintEnd_toEndOf="parent"/>
 
