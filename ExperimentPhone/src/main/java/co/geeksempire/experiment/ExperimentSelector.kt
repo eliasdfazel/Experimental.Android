@@ -27,5 +27,7 @@ class ExperimentSelector : AppCompatActivity() {
 
         startActivity(Intent(this@ExperimentSelector, GradientGame::class.java))
 
+        this@ExperimentSelector.finish()
+
     }
 }

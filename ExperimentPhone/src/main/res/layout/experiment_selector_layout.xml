@@ -3,7 +3,7 @@
   ~ Copyright © 2022 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 11/29/22, 2:35 AM
+  ~ Last modified 11/29/22, 5:30 AM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
@@ -22,20 +22,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:elevation="1dp"/>
-
-    <net.geekstools.imageview.customshapes.ShapesImage
-        android:id="@+id/selectedColor"
-        android:layout_width="99dp"
-        android:layout_height="99dp"
-        android:layout_marginTop="37dp"
-        android:elevation="31dp"
-        android:src="@drawable/initial_gradient_background"
-
-        apps:shapeDrawable="@drawable/hexagon"
-
-        apps:layout_constraintTop_toTopOf="parent"
-        apps:layout_constraintStart_toStartOf="parent"
-        apps:layout_constraintEnd_toEndOf="parent"/>
 
     <co.geeksempire.blurry.effect.library.OverlayBlur
         android:layout_width="173dp"

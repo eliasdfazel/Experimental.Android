@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/29/22, 5:28 AM
+ * Last modified 11/29/22, 5:30 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -55,6 +55,7 @@ class GradientGame : AppCompatActivity() {
         multipleGradientAnimation = gradientAnimations.multipleGradientAnimation(gradientGameLayoutBinding.backgroundView)
 
         gradientGameLayoutBinding.backgroundView.setOnClickListener { view ->
+            gradientGameLayoutBinding.backgroundView.isEnabled = false
 
             multipleGradientAnimation?.let {
 
@@ -72,12 +73,14 @@ class GradientGame : AppCompatActivity() {
 
                         this@GradientGame.recreate()
 
+                        gradientGameLayoutBinding.backgroundView.isEnabled = true
+
                     }, 3333)
 
                 } else {
                     Log.d(this@GradientGame.javaClass.simpleName, "Not Equal")
 
-
+                    gradientGameLayoutBinding.backgroundView.isEnabled = true
 
                 }
 
