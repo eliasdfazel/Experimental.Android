@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/29/22, 5:30 AM
+ * Last modified 11/29/22, 5:33 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -67,13 +67,7 @@ class GradientGame : AppCompatActivity() {
 
                     Handler(Looper.getMainLooper()).postDelayed({
 
-                        multipleGradientFrame = gradientAnimations.allDrawableAnimations.random()
-                        gradientGameLayoutBinding.selectedColor.setImageDrawable(multipleGradientFrame)
-                        gradientGameLayoutBinding.selectedColor.setShapeDrawable(allShapes.random())
-
                         this@GradientGame.recreate()
-
-                        gradientGameLayoutBinding.backgroundView.isEnabled = true
 
                     }, 3333)
 
