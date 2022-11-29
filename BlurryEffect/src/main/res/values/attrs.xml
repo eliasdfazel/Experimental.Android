@@ -3,7 +3,7 @@
   ~ Copyright © 2022 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 11/29/22, 6:59 AM
+  ~ Last modified 11/29/22, 7:32 AM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
@@ -17,15 +17,13 @@
 		<attr name="realtimeFirstColor" format="color"/>
 		<attr name="realtimeSecondColor" format="color"/>
 
-		<attr name="realtimeStrokeWidth" format="integer"/>
-		<attr name="realtimeStrokeColor" format="color"/>
-
 		<attr name="realtimeBlurTopLeft" format="dimension"/>
 		<attr name="realtimeBlurTopRight" format="dimension"/>
 		<attr name="realtimeBlurBottomLeft" format="dimension"/>
 		<attr name="realtimeBlurBottomRight" format="dimension"/>
 
 		<attr name="realtimeShapePath" format="string"/>
+		<attr name="realtimeScaleAmount" format="integer"/>
 
 		<attr name="realtimeBlurGradientType" format="enum">
 			<enum name="none" value="0"/>

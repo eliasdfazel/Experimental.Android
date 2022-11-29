@@ -3,7 +3,7 @@
   ~ Copyright © 2022 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 11/29/22, 7:19 AM
+  ~ Last modified 11/29/22, 7:32 AM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
@@ -18,8 +18,8 @@
     android:background="@drawable/splash_screen_initial">
 
     <co.geeksempire.blurry.effect.library.OverlayBlur
-        android:layout_width="373dp"
-        android:layout_height="373dp"
+        android:layout_width="333dp"
+        android:layout_height="333dp"
         android:background="@color/white_transparent"
 
         apps:realtimeBlurRadius="13dp"
@@ -31,6 +31,7 @@
         apps:realtimeBlurBottomLeft="31dp"
         apps:realtimeBlurBottomRight="31dp"
         apps:realtimeShapePath="@string/leafPath"
+        apps:realtimeScaleAmount="37"
 
         apps:layout_constraintTop_toTopOf="parent"
         apps:layout_constraintBottom_toBottomOf="parent"
