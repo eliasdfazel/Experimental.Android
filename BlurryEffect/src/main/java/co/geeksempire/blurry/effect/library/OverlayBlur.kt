@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/28/22, 6:39 AM
+ * Last modified 11/29/22, 7:19 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -22,6 +22,7 @@ import android.view.ViewTreeObserver
 import androidx.core.graphics.applyCanvas
 import co.geeksempire.blurry.effect.blurImplementation.AndroidXBlurImpl
 import co.geeksempire.blurry.effect.blurImplementation.SupportLibraryBlurImpl
+import co.geeksempire.blurry.effect.utils.VectorPathParser
 import net.geeksempire.blurry.effect.view.R
 import kotlin.math.min
 
@@ -52,6 +53,8 @@ open class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(cont
     var GradientTypeLinearLR = 3
     var GradientTypeLinearTilt = 4
 
+    var shapePath: String?
+
     var clipPath = Path()
     var rectF = RectF()
 
@@ -79,6 +82,8 @@ open class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(cont
     private var RENDERING_COUNT = 0
     private var BLUR_IMPL = 0
 
+    private val vectorPathParser = VectorPathParser()
+
     init {
 
         blurImpl = getBlurImpl() // provide your own by override getBlurImpl()
@@ -102,6 +107,8 @@ open class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(cont
         topRightCorner = typedArray.getDimension(R.styleable.RealtimeBlurView_realtimeBlurTopRight, 0f)
         bottomLeftCorner = typedArray.getDimension(R.styleable.RealtimeBlurView_realtimeBlurBottomLeft, 0f)
         bottomRightCorner = typedArray.getDimension(R.styleable.RealtimeBlurView_realtimeBlurBottomRight, 0f)
+
+        shapePath = typedArray.getString(R.styleable.RealtimeBlurView_realtimeShapePath)
 
         if (typedArray.getInteger(R.styleable.RealtimeBlurView_realtimeBlurGradientType, 0) == 0) {
             gradientType = GradientTypeNone
@@ -392,28 +399,30 @@ open class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(cont
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        rectF[0f, 0f, this.width.toFloat()] = this.height.toFloat()
+        /* Different Shape */
+        if (shapePath != null) {
 
-        val radii = floatArrayOf(0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f)
-        radii[0] = topLeftCorner
-        radii[1] = topLeftCorner
-        radii[2] = topRightCorner
-        radii[3] = topRightCorner
-        radii[4] = bottomRightCorner
-        radii[5] = bottomRightCorner
-        radii[6] = bottomLeftCorner
-        radii[7] = bottomLeftCorner
+            val path = vectorPathParser.parser(vectorPath = shapePath!!, scaleAmount = 41)
 
-        /* Triangle */
-//        clipPath.moveTo(0f, 0f)
-//        clipPath.rLineTo(width.toFloat() / 2, height.toFloat() / 2)
-//        clipPath.rLineTo(width.toFloat(), 0f)
+            clipPath.addPath(path)
 
-        /* Half Circle */
-//        clipPath.arcTo(rectF,0f, 180f)
+        } else {
 
-        /* Round Rectangle */
-        clipPath.addRoundRect(rectF, radii, Path.Direction.CCW)
+            rectF[0f, 0f, this.width.toFloat()] = this.height.toFloat()
+
+            val radii = floatArrayOf(0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f)
+            radii[0] = topLeftCorner
+            radii[1] = topLeftCorner
+            radii[2] = topRightCorner
+            radii[3] = topRightCorner
+            radii[4] = bottomRightCorner
+            radii[5] = bottomRightCorner
+            radii[6] = bottomLeftCorner
+            radii[7] = bottomLeftCorner
+
+            clipPath.addRoundRect(rectF, radii, Path.Direction.CCW)
+
+        }
 
         canvas.clipPath(clipPath)
 
@@ -436,9 +445,7 @@ open class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(cont
         rectDst.right = width
         rectDst.bottom = height
 
-        canvas.drawBitmap(blurredBitmap, rectSrc, rectDst, paintInstance.apply {
-
-        })
+        canvas.drawBitmap(blurredBitmap, rectSrc, rectDst, null)
         /* End - Draw Blurred Effect */
 
         /* Start - Gradient Effect */
@@ -491,10 +498,10 @@ open class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(cont
         /* End - Gradient Effect */
 
         blurredBitmap.applyCanvas {
-            drawText("XYZ", 0f, height.toFloat() + 3f, Paint().apply {
+            drawText("XYZ", 1000f, 0f, Paint().apply {
                 color = Color.BLACK
-                textSize = 107f
-                xfermode = PorterDuffXfermode(PorterDuff.Mode.XOR)
+                textSize = 297f
+                xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
             })
         }
 
