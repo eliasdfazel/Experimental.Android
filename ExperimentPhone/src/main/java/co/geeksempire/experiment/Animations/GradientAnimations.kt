@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/28/22, 7:15 AM
+ * Last modified 11/29/22, 2:45 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -12,9 +12,9 @@ package co.geeksempire.experiment.Animations
 
 import android.content.Context
 import android.graphics.drawable.AnimationDrawable
+import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
-import android.view.View
-import android.view.ViewGroup
+import android.widget.ImageView
 import co.geeksempire.experiment.R
 
 class GradientAnimations (private val context: Context) {
@@ -29,9 +29,142 @@ class GradientAnimations (private val context: Context) {
         context.getColor(R.color.default_color_bright),
     )
 
-    fun multipleGradientAnimation(instanceOfView: View) : AnimationDrawable {
+    val allDrawableAnimations = arrayListOf<Drawable>(
+        GradientDrawable(GradientDrawable.Orientation.TR_BL,
+            intArrayOf(
+                allColors[1],
+                allColors[1],
+                allColors[1]
+            )),
+        GradientDrawable(GradientDrawable.Orientation.TR_BL,
+            intArrayOf(
+                allColors[0],
+                allColors[1],
+                allColors[1]
+            )),
+        GradientDrawable(GradientDrawable.Orientation.TR_BL,
+            intArrayOf(
+                allColors[0],
+                allColors[0],
+                allColors[1]
+            )),
+        GradientDrawable(GradientDrawable.Orientation.TR_BL,
+            intArrayOf(
+                allColors[0],
+                allColors[0],
+                allColors[0]
+            )),
+        GradientDrawable(GradientDrawable.Orientation.TR_BL,
+            intArrayOf(
+                allColors[2],
+                allColors[0],
+                allColors[0]
+            )),
+        GradientDrawable(GradientDrawable.Orientation.TR_BL,
+            intArrayOf(
+                allColors[2],
+                allColors[2],
+                allColors[0]
+            )),
+        GradientDrawable(GradientDrawable.Orientation.TR_BL,
+            intArrayOf(
+                allColors[2],
+                allColors[2],
+                allColors[2]
+            )),
+        GradientDrawable(GradientDrawable.Orientation.TR_BL,
+            intArrayOf(
+                allColors[3],
+                allColors[2],
+                allColors[2]
+            )),
+        GradientDrawable(GradientDrawable.Orientation.TR_BL,
+            intArrayOf(
+                allColors[3],
+                allColors[3],
+                allColors[2]
+            )),
+        GradientDrawable(GradientDrawable.Orientation.TR_BL,
+            intArrayOf(
+                allColors[3],
+                allColors[3],
+                allColors[3]
+            )),
+        GradientDrawable(GradientDrawable.Orientation.TR_BL,
+            intArrayOf(
+                allColors[4],
+                allColors[3],
+                allColors[3]
+            )),
+        GradientDrawable(GradientDrawable.Orientation.TR_BL,
+            intArrayOf(
+                allColors[4],
+                allColors[4],
+                allColors[3]
+            )),
+        GradientDrawable(GradientDrawable.Orientation.TR_BL,
+            intArrayOf(
+                allColors[4],
+                allColors[4],
+                allColors[4]
+            )),
+        GradientDrawable(GradientDrawable.Orientation.TR_BL,
+            intArrayOf(
+                allColors[5],
+                allColors[4],
+                allColors[4]
+            )),
+        GradientDrawable(GradientDrawable.Orientation.TR_BL,
+            intArrayOf(
+                allColors[5],
+                allColors[5],
+                allColors[4]
+            )),
+        GradientDrawable(GradientDrawable.Orientation.TR_BL,
+            intArrayOf(
+                allColors[5],
+                allColors[5],
+                allColors[5]
+            )),
+        GradientDrawable(GradientDrawable.Orientation.TR_BL,
+            intArrayOf(
+                allColors[6],
+                allColors[5],
+                allColors[5]
+            )),
+        GradientDrawable(GradientDrawable.Orientation.TR_BL,
+            intArrayOf(
+                allColors[6],
+                allColors[6],
+                allColors[5]
+            )),
+        GradientDrawable(GradientDrawable.Orientation.TR_BL,
+            intArrayOf(
+                allColors[6],
+                allColors[6],
+                allColors[6]
+            )),
+        GradientDrawable(GradientDrawable.Orientation.TR_BL,
+            intArrayOf(
+                allColors[1],
+                allColors[6],
+                allColors[6]
+            )),
+        GradientDrawable(GradientDrawable.Orientation.TR_BL,
+            intArrayOf(
+                allColors[1],
+                allColors[1],
+                allColors[6]
+            )),
+        GradientDrawable(GradientDrawable.Orientation.TR_BL,
+            intArrayOf(
+                allColors[1],
+                allColors[1],
+                allColors[1]
+            )),
+    )
 
-        instanceOfView as ViewGroup
+    fun multipleGradientAnimation(instanceOfView: ImageView) : AnimationDrawable {
 
         val gradientDuration: Int = 888
         val gradientExitDuration: Int = 888
@@ -44,164 +177,31 @@ class GradientAnimations (private val context: Context) {
             setEnterFadeDuration(1)
             setExitFadeDuration(gradientExitDuration)
 
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL,
-                intArrayOf(
-                    allColors[1],
-                    allColors[1],
-                    allColors[1]
-                )),
-                gradientDuration)
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL,
-                intArrayOf(
-                    allColors[0],
-                    allColors[1],
-                    allColors[1]
-                )),
-                gradientDuration)
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL,
-                intArrayOf(
-                    allColors[0],
-                    allColors[0],
-                    allColors[1]
-                )),
-                gradientDuration)
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL,
-                intArrayOf(
-                    allColors[0],
-                    allColors[0],
-                    allColors[0]
-                )),
-                gradientDuration)
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL,
-                intArrayOf(
-                    allColors[2],
-                    allColors[0],
-                    allColors[0]
-                )),
-                gradientDuration)
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL,
-                intArrayOf(
-                    allColors[2],
-                    allColors[2],
-                    allColors[0]
-                )),
-                gradientDuration)
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL,
-                intArrayOf(
-                    allColors[2],
-                    allColors[2],
-                    allColors[2]
-                )),
-                gradientDuration)
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL,
-                intArrayOf(
-                    allColors[3],
-                    allColors[2],
-                    allColors[2]
-                )),
-                gradientDuration)
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL,
-                intArrayOf(
-                    allColors[3],
-                    allColors[3],
-                    allColors[2]
-                )),
-                gradientDuration)
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL,
-                intArrayOf(
-                    allColors[3],
-                    allColors[3],
-                    allColors[3]
-                )),
-                gradientDuration)
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL,
-                intArrayOf(
-                    allColors[4],
-                    allColors[3],
-                    allColors[3]
-                )),
-                gradientDuration)
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL,
-                intArrayOf(
-                    allColors[4],
-                    allColors[4],
-                    allColors[3]
-                )),
-                gradientDuration)
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL,
-                intArrayOf(
-                    allColors[4],
-                    allColors[4],
-                    allColors[4]
-                )),
-                gradientDuration)
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL,
-                intArrayOf(
-                    allColors[5],
-                    allColors[4],
-                    allColors[4]
-                )),
-                gradientDuration)
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL,
-                intArrayOf(
-                    allColors[5],
-                    allColors[5],
-                    allColors[4]
-                )),
-                gradientDuration)
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL,
-                intArrayOf(
-                    allColors[5],
-                    allColors[5],
-                    allColors[5]
-                )),
-                gradientDuration)
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL,
-                intArrayOf(
-                    allColors[6],
-                    allColors[5],
-                    allColors[5]
-                )),
-                gradientDuration)
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL,
-                intArrayOf(
-                    allColors[6],
-                    allColors[6],
-                    allColors[5]
-                )),
-                gradientDuration)
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL,
-                intArrayOf(
-                    allColors[6],
-                    allColors[6],
-                    allColors[6]
-                )),
-                gradientDuration)
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL,
-                intArrayOf(
-                    allColors[1],
-                    allColors[6],
-                    allColors[6]
-                )),
-                gradientDuration)
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL,
-                intArrayOf(
-                    allColors[1],
-                    allColors[1],
-                    allColors[6]
-                )),
-                gradientDuration)
-            addFrame(GradientDrawable(GradientDrawable.Orientation.TR_BL,
-                intArrayOf(
-                    allColors[1],
-                    allColors[1],
-                    allColors[1]
-                )),
-                gradientDuration)
-
+            addFrame(allDrawableAnimations[0], gradientDuration)
+            addFrame(allDrawableAnimations[1], gradientDuration)
+            addFrame(allDrawableAnimations[2], gradientDuration)
+            addFrame(allDrawableAnimations[3], gradientDuration)
+            addFrame(allDrawableAnimations[4], gradientDuration)
+            addFrame(allDrawableAnimations[5], gradientDuration)
+            addFrame(allDrawableAnimations[6], gradientDuration)
+            addFrame(allDrawableAnimations[7], gradientDuration)
+            addFrame(allDrawableAnimations[8], gradientDuration)
+            addFrame(allDrawableAnimations[9], gradientDuration)
+            addFrame(allDrawableAnimations[10], gradientDuration)
+            addFrame(allDrawableAnimations[11], gradientDuration)
+            addFrame(allDrawableAnimations[12], gradientDuration)
+            addFrame(allDrawableAnimations[13], gradientDuration)
+            addFrame(allDrawableAnimations[14], gradientDuration)
+            addFrame(allDrawableAnimations[15], gradientDuration)
+            addFrame(allDrawableAnimations[16], gradientDuration)
+            addFrame(allDrawableAnimations[17], gradientDuration)
+            addFrame(allDrawableAnimations[18], gradientDuration)
+            addFrame(allDrawableAnimations[19], gradientDuration)
+            addFrame(allDrawableAnimations[20], gradientDuration)
+            addFrame(allDrawableAnimations[21], gradientDuration)
         }
 
-        instanceOfView.background = animationDrawable
+        instanceOfView.setImageDrawable(animationDrawable)
 
         return animationDrawable
     }

@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/24/22, 4:24 AM
+ * Last modified 11/29/22, 2:45 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -13,7 +13,6 @@ package co.geeksempire.experiment.Animations
 import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.util.Log
-import android.view.View
 import android.view.animation.Animation
 import android.view.animation.OvershootInterpolator
 import android.view.animation.RotateAnimation
@@ -41,9 +40,7 @@ class RotateAnimations (private val context: Context) {
         intArrayOf(allColors[5], allColors[6]),
     )
 
-    fun multipleColorsRotation(instanceOfView: View) {
-
-        instanceOfView as ImageView
+    fun multipleColorsRotation(instanceOfView: ImageView) {
 
         instanceOfView.setImageDrawable(GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(context.getColor(
             R.color.default_color
