@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/29/22, 5:33 AM
+ * Last modified 11/30/22, 5:08 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -10,6 +10,7 @@
 
 package co.geeksempire.experiment.Games
 
+import android.graphics.Color
 import android.graphics.drawable.AnimationDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -46,6 +47,9 @@ class GradientGame : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         gradientGameLayoutBinding = GradientGameLayoutBinding.inflate(layoutInflater)
         setContentView(gradientGameLayoutBinding.root)
+
+        window.decorView.setBackgroundColor(Color.CYAN)
+        gradientGameLayoutBinding.root.background = getDrawable(co.geeksempire.experiment.R.drawable.splash_screen_initial)
 
         multipleGradientFrame = gradientAnimations.allDrawableAnimations.random()
 
