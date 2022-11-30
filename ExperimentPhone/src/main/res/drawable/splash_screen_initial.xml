@@ -3,16 +3,13 @@
   ~ Copyright © 2022 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 11/23/22, 1:35 AM
+  ~ Last modified 11/30/22, 5:01 AM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
   -->
 
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
-
-    <item
-        android:drawable="@color/black" />
 
     <item
         android:drawable="@drawable/binary_background"/>

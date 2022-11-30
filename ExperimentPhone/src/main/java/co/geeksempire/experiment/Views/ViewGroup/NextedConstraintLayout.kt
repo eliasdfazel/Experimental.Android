@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/22/22, 11:16 PM
+ * Last modified 11/30/22, 4:47 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -12,6 +12,7 @@ package co.geeksempire.experiment.Views.ViewGroup
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.Path
 import android.graphics.RectF
 import android.util.AttributeSet
@@ -25,6 +26,10 @@ class NextedConstraintLayout(context: Context, attributesSet: AttributeSet) : Co
     private val path = Path()
 
     private var cornerRadius = dpToFloat(context, 19f)
+
+    init {
+        this@NextedConstraintLayout.setBackgroundColor(Color.BLACK)
+    }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
@@ -43,6 +48,11 @@ class NextedConstraintLayout(context: Context, attributesSet: AttributeSet) : Co
         super.draw(canvas)
 
         canvas.restoreToCount(save)
+
+    }
+
+    override fun onDraw(canvas: Canvas?) {
+        super.onDraw(canvas)
 
     }
 
