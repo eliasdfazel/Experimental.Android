@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/29/22, 5:28 AM
+ * Last modified 11/30/22, 6:30 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -16,6 +16,9 @@ import android.graphics.drawable.GradientDrawable
 import android.widget.ImageView
 import co.geeksempire.experiment.R
 
+interface AnimationInterface {
+    fun loopCounter(maximumLoop: Int, loopAmount: Int)
+}
 class GradientAnimations (private val context: Context) {
 
     val allColors = intArrayOf(
@@ -163,16 +166,16 @@ class GradientAnimations (private val context: Context) {
             )),
     )
 
-    fun multipleGradientAnimation(instanceOfView: ImageView) : AnimationDrawable {
+    val gradientDuration: Int = 888
+    val gradientExitDuration: Int = 888
 
-        val gradientDuration: Int = 888
-        val gradientExitDuration: Int = 888
+    val maximumLoop: Int = 7
+
+    fun multipleGradientAnimation(instanceOfView: ImageView, animationInterface: AnimationInterface) : AnimationDrawable {
+
+
 
         val animationDrawable = AnimationDrawable().apply {
-            repeat(7) { loopCount ->
-
-
-            }
             setEnterFadeDuration(1)
             setExitFadeDuration(gradientExitDuration)
 

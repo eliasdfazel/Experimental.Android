@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/30/22, 5:08 AM
+ * Last modified 11/30/22, 6:27 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -19,6 +19,7 @@ import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import co.geeksempire.experiment.Animations.AnimationInterface
 import co.geeksempire.experiment.Animations.GradientAnimations
 import co.geeksempire.experiment.databinding.GradientGameLayoutBinding
 import net.geekstools.imageview.customshapes.R
@@ -56,7 +57,21 @@ class GradientGame : AppCompatActivity() {
         gradientGameLayoutBinding.selectedColor.setImageDrawable(multipleGradientFrame)
         gradientGameLayoutBinding.selectedColor.setShapeDrawable(allShapes.random())
 
-        multipleGradientAnimation = gradientAnimations.multipleGradientAnimation(gradientGameLayoutBinding.backgroundView)
+        multipleGradientAnimation = gradientAnimations.multipleGradientAnimation(gradientGameLayoutBinding.backgroundView, object : AnimationInterface {
+
+            override fun loopCounter(maximumLoop: Int, loopAmount: Int) {
+
+                if (maximumLoop == loopAmount) {
+
+                    Toast.makeText(applicationContext, "You Lost!", Toast.LENGTH_LONG).show()
+
+                    multipleGradientAnimation?.stop()
+
+                }
+
+            }
+
+        })
 
         gradientGameLayoutBinding.backgroundView.setOnClickListener { view ->
             gradientGameLayoutBinding.backgroundView.isEnabled = false
@@ -66,8 +81,9 @@ class GradientGame : AppCompatActivity() {
                 if (it.current == multipleGradientFrame) {
                     Log.d(this@GradientGame.javaClass.simpleName, "Equal")
 
-                    it.stop()
                     Toast.makeText(applicationContext, "You Win!", Toast.LENGTH_LONG).show()
+
+                    it.stop()
 
                     Handler(Looper.getMainLooper()).postDelayed({
 
