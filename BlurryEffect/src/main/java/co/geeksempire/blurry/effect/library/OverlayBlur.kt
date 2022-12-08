@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/29/22, 7:33 AM
+ * Last modified 12/8/22, 5:18 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -400,7 +400,7 @@ open class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(cont
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        /* Different Shape */
+        /* Start - Custom Shape */
         if (shapePath != null) {
 
             val path = vectorPathParser.parser(vectorPath = shapePath!!, scaleAmount = scaleAmount)
@@ -409,6 +409,7 @@ open class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(cont
 
         } else {
 
+            /* Start - Round Rectangle */
             rectF[0f, 0f, this.width.toFloat()] = this.height.toFloat()
 
             val radii = floatArrayOf(0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f)
@@ -422,8 +423,10 @@ open class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(cont
             radii[7] = bottomLeftCorner
 
             clipPath.addRoundRect(rectF, radii, Path.Direction.CCW)
+            /* End - Round Rectangle */
 
         }
+        /* End - Custom Shape */
 
         canvas.clipPath(clipPath)
 
@@ -495,6 +498,8 @@ open class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(cont
 
         canvas.drawRect(rectDst, paintInstance)
         /* End - Gradient Effect */
+
+
 
     }
 
