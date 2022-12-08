@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/8/22, 8:04 AM
+ * Last modified 12/8/22, 8:15 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -181,8 +181,6 @@ class GradientAnimations (private val context: Context) {
 
     var previousColor = 0
 
-    var colorAnimator = ValueAnimator.ofArgb(fromColor, toColor)
-
     fun multipleGradientAnimation(instanceOfView: ImageView, animationInterface: AnimationInterface) : AnimationDrawable {
 
         val animationDrawable = AnimationDrawable().apply {
@@ -220,6 +218,7 @@ class GradientAnimations (private val context: Context) {
 
     fun multipleGradientLevelOne(instanceOfView: ImageView) {
 
+        val colorAnimator = ValueAnimator.ofArgb(fromColor, toColor)
         colorAnimator.duration = 1357
         colorAnimator.repeatCount = 2
         colorAnimator.start()
@@ -275,8 +274,8 @@ class GradientAnimations (private val context: Context) {
 
                 gradientIndex = 0
 
-                fromColor = previousColor
-                toColor = allColors.random()
+                fromColor = context.getColor(R.color.cyberGreen)
+                toColor = context.getColor(R.color.default_color_game_bright)
 
                 colorAnimator.start()
 
