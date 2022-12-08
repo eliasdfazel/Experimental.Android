@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/30/22, 6:30 AM
+ * Last modified 12/8/22, 8:04 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -10,9 +10,12 @@
 
 package co.geeksempire.experiment.Animations
 
+import android.animation.Animator
+import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.drawable.AnimationDrawable
 import android.graphics.drawable.GradientDrawable
+import android.util.Log
 import android.widget.ImageView
 import co.geeksempire.experiment.R
 
@@ -171,9 +174,16 @@ class GradientAnimations (private val context: Context) {
 
     val maximumLoop: Int = 7
 
+    var gradientIndex = 0
+
+    var fromColor = context.getColor(R.color.default_color_bright)
+    var toColor = context.getColor(R.color.cyberGreen)
+
+    var previousColor = 0
+
+    var colorAnimator = ValueAnimator.ofArgb(fromColor, toColor)
+
     fun multipleGradientAnimation(instanceOfView: ImageView, animationInterface: AnimationInterface) : AnimationDrawable {
-
-
 
         val animationDrawable = AnimationDrawable().apply {
             setEnterFadeDuration(1)
@@ -206,6 +216,83 @@ class GradientAnimations (private val context: Context) {
         instanceOfView.setImageDrawable(animationDrawable)
 
         return animationDrawable
+    }
+
+    fun multipleGradientLevelOne(instanceOfView: ImageView) {
+
+        colorAnimator.duration = 1357
+        colorAnimator.repeatCount = 2
+        colorAnimator.start()
+
+        colorAnimator.addUpdateListener {
+            val currentColor = it.animatedValue as Int
+
+            val aGradientDrawable = if (gradientIndex == 0) {
+
+                previousColor = currentColor
+
+                GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(
+                    currentColor,
+                    fromColor,
+                    fromColor,
+                ))
+
+            } else if (gradientIndex == 1) {
+
+                GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(
+                    previousColor,
+                    currentColor,
+                    context.getColor(R.color.default_color_bright),
+                ))
+
+            } else if (gradientIndex == 2) {
+
+                GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(
+                    previousColor,
+                    previousColor,
+                    currentColor
+                ))
+
+            } else {
+
+                GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(
+                    context.getColor(R.color.black),
+                    context.getColor(R.color.black),
+                    context.getColor(R.color.black)
+                ))
+
+            }
+
+            instanceOfView.setImageDrawable(aGradientDrawable)
+
+        }
+
+        colorAnimator.addListener(object : Animator.AnimatorListener {
+            override fun onAnimationStart(animator: Animator) {}
+
+            override fun onAnimationEnd(animator: Animator) {
+                Log.d(this@GradientAnimations.javaClass.simpleName, "Repeat ${gradientIndex}")
+
+                gradientIndex = 0
+
+                fromColor = previousColor
+                toColor = allColors.random()
+
+                colorAnimator.start()
+
+            }
+
+            override fun onAnimationCancel(animator: Animator) {}
+
+            override fun onAnimationRepeat(animator: Animator) {
+                Log.d(this@GradientAnimations.javaClass.simpleName, "Repeat ${gradientIndex}")
+
+                gradientIndex++
+
+            }
+
+        })
+
     }
 
 }
