@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/8/22, 5:18 AM
+ * Last modified 12/8/22, 6:21 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -499,7 +499,21 @@ open class OverlayBlur(context: Context, attributeSet: AttributeSet) : View(cont
         canvas.drawRect(rectDst, paintInstance)
         /* End - Gradient Effect */
 
-
+        /* Start - Frosted Text */
+        canvas.drawText("XYZ", (width / 2).toFloat(), (height / 2).toFloat(), paintInstance.apply {
+            color = Color.argb(255, 0, 128, 255)
+            textSize = 393f
+            textAlign = Paint.Align.CENTER
+//            xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
+//            xfermode = PorterDuffXfermode(PorterDuff.Mode.ADD)
+//            xfermode = PorterDuffXfermode(PorterDuff.Mode.XOR)
+//            xfermode = PorterDuffXfermode(PorterDuff.Mode.DST_IN)
+//            xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_OVER)
+//            xfermode = PorterDuffXfermode(PorterDuff.Mode.SCREEN)
+//            xfermode = PorterDuffXfermode(PorterDuff.Mode.LIGHTEN)
+            xfermode = PorterDuffXfermode(PorterDuff.Mode.MULTIPLY)
+        })
+        /* End - Frosted Text */
 
     }
 
