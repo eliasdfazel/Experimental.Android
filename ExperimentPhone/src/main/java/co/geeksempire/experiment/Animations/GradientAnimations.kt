@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/8/22, 8:15 AM
+ * Last modified 12/10/22, 6:04 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -172,16 +172,8 @@ class GradientAnimations (private val context: Context) {
     val gradientDuration: Int = 888
     val gradientExitDuration: Int = 888
 
-    val maximumLoop: Int = 7
-
-    var gradientIndex = 0
-
-    var fromColor = context.getColor(R.color.default_color_bright)
-    var toColor = context.getColor(R.color.cyberGreen)
-
-    var previousColor = 0
-
-    fun multipleGradientAnimation(instanceOfView: ImageView, animationInterface: AnimationInterface) : AnimationDrawable {
+    fun multipleGradientAnimation(instanceOfView: ImageView,
+        animationInterface: AnimationInterface) : AnimationDrawable {
 
         val animationDrawable = AnimationDrawable().apply {
             setEnterFadeDuration(1)
@@ -216,7 +208,12 @@ class GradientAnimations (private val context: Context) {
         return animationDrawable
     }
 
-    fun multipleGradientLevelOne(instanceOfView: ImageView) {
+    fun multipleGradientLevelOne(instanceOfView: ImageView,
+                                 fromColor: Int = context.getColor(R.color.default_color_bright), toColor: Int = context.getColor(R.color.cyberGreen)) {
+
+        var gradientIndex = 0
+
+        var previousColor = 0
 
         val colorAnimator = ValueAnimator.ofArgb(fromColor, toColor)
         colorAnimator.duration = 1357
@@ -241,7 +238,7 @@ class GradientAnimations (private val context: Context) {
                 GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(
                     previousColor,
                     currentColor,
-                    context.getColor(R.color.default_color_bright),
+                    fromColor,
                 ))
 
             } else if (gradientIndex == 2) {
@@ -272,12 +269,9 @@ class GradientAnimations (private val context: Context) {
             override fun onAnimationEnd(animator: Animator) {
                 Log.d(this@GradientAnimations.javaClass.simpleName, "Repeat ${gradientIndex}")
 
-                gradientIndex = 0
 
-                fromColor = context.getColor(R.color.cyberGreen)
-                toColor = context.getColor(R.color.default_color_game_bright)
-
-                colorAnimator.start()
+                multipleGradientLevelOne(instanceOfView,
+                    previousColor, allColors.random())
 
             }
 
