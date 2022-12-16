@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/16/22, 9:11 AM
+ * Last modified 12/16/22, 9:22 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -24,8 +24,8 @@ import kotlin.math.min
 
 class ScaleLayoutManager(val context: Context,
                          val recyclerViewOrientation: Int,
-                         var shrinkAmount: Float = 0.15f,
-                         var shrinkDistance: Float = 0.9f) : LinearLayoutManager(context, recyclerViewOrientation, false) {
+                         var shrinkAmount: Float = 0.19f,
+                         var shrinkDistance: Float = 0.5f) : LinearLayoutManager(context, recyclerViewOrientation, false) {
 
     var velocityMillisecondPerInch = 23f
 
@@ -120,36 +120,36 @@ class ScaleLayoutManager(val context: Context,
         return scrolled
     }
 
-//    override fun scrollVerticallyBy(dy: Int, recycler: RecyclerView.Recycler?, recycleViewState: RecyclerView.State?) : Int {
-//
-//        val scrolled = super.scrollHorizontallyBy(dy, recycler, recycleViewState)
-//
-//        val midpoint = height / 2f
-//
-//        val d0 = 0f
-//        val d1: Float = shrinkDistance * midpoint
-//
-//        val s0 = 1f
-//        val s1: Float = 1f - shrinkAmount
-//
-//        for (i in 0 until childCount) {
-//
-//            val child: View? = getChildAt(i)
-//            child?.let {
-//
-//                val childMidpoint = (getDecoratedRight(child) + getDecoratedLeft(child)) / 2f
-//
-//                val d = min(d1, abs(midpoint - childMidpoint))
-//                val scale = s0 + (s1 - s0) * (d - d0) / (d1 - d0)
-//
-//                child.scaleX = scale
-//                child.scaleY = scale
-//
-//            }
-//
-//        }
-//
-//        return scrolled
-//    }
+    override fun scrollVerticallyBy(dy: Int, recycler: RecyclerView.Recycler?, recycleViewState: RecyclerView.State?) : Int {
+
+        val scrolled = super.scrollHorizontallyBy(dy, recycler, recycleViewState)
+
+        val midpoint = height / 2f
+
+        val d0 = 0f
+        val d1: Float = shrinkDistance * midpoint
+
+        val s0 = 1f
+        val s1: Float = 1f - shrinkAmount
+
+        for (i in 0 until childCount) {
+
+            val child: View? = getChildAt(i)
+            child?.let {
+
+                val childMidpoint = (getDecoratedRight(child) + getDecoratedLeft(child)) / 2f
+
+                val d = min(d1, abs(midpoint - childMidpoint))
+                val scale = s0 + (s1 - s0) * (d - d0) / (d1 - d0)
+
+                child.scaleX = scale
+                child.scaleY = scale
+
+            }
+
+        }
+
+        return scrolled
+    }
 
 }

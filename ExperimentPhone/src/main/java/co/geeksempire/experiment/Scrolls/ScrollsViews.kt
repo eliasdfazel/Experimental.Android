@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/16/22, 8:25 AM
+ * Last modified 12/16/22, 9:42 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -12,6 +12,7 @@ package co.geeksempire.experiment.Scrolls
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import co.geeksempire.experiment.R
 import co.geeksempire.experiment.databinding.ScrollsLayoutBinding
@@ -43,8 +44,10 @@ class ScrollsViews : AppCompatActivity() {
         }
 
         scrollsLayoutBinding.sizedRecyclerView.apply {
-            layoutManager = ScaleLayoutManager(applicationContext, RecyclerView.HORIZONTAL)
+            layoutManager = ScaleLayoutManager(applicationContext, RecyclerView.VERTICAL)
             adapter = ScrollsAdapter(this@ScrollsViews)
+
+            PagerSnapHelper().attachToRecyclerView(scrollsLayoutBinding.sizedRecyclerView)
         }
 
     }

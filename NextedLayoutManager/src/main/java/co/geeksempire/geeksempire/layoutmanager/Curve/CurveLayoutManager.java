@@ -2,13 +2,16 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/16/22, 8:21 AM
+ * Last modified 12/16/22, 9:42 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
  */
 
 package co.geeksempire.geeksempire.layoutmanager.Curve;
+
+import static java.lang.Double.min;
+import static java.lang.Math.abs;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
@@ -370,6 +373,43 @@ public class CurveLayoutManager extends RecyclerView.LayoutManager {
         int delta = scrollHorizontallyInternal(dx);
         offsetChildrenHorizontal(-delta);
         fill(recycler);
+
+        /*
+        *
+        *
+        *
+        *
+        * */
+        double midpoint = getWidth() / 2f;
+
+        double d0 = 0f;
+        double d1 = 0.5 * midpoint;
+
+        double s0 = 1f;
+        float s1 = 1f - 0.19f;
+        for (int i = 0; i < getChildCount(); i++) {
+
+            View child = getChildAt(i);
+            if (child != null) {
+
+                double childMidpoint = (getDecoratedRight(child) + getDecoratedLeft(child)) / 2f;
+
+                double d = min(d1, abs(midpoint - childMidpoint));
+                double scale = s0 + (s1 - s0) * (d - d0) / (d1 - d0);
+
+                child.setScaleX((float) scale);
+                child.setScaleY((float) scale);
+
+            }
+
+        }
+        /*
+         *
+         *
+         *
+         *
+         * */
+
         return delta;
     }
 
@@ -580,10 +620,10 @@ public class CurveLayoutManager extends RecyclerView.LayoutManager {
         while (leftViewOffset > leftBorder && leftViewPosition >= 0) {
             if (mIsCollapsed) {
                 // offset for collapsed views
-                leftViewOffset -= (fanLayoutManagerSettings.getViewWidthPx() + Math.abs(overlapDistance));
+                leftViewOffset -= (fanLayoutManagerSettings.getViewWidthPx() + abs(overlapDistance));
             } else {
                 // offset for NOT collapsed views
-                leftViewOffset -= (fanLayoutManagerSettings.getViewWidthPx() - Math.abs(overlapDistance));
+                leftViewOffset -= (fanLayoutManagerSettings.getViewWidthPx() - abs(overlapDistance));
             }
             leftViewPosition--;
         }
@@ -592,10 +632,10 @@ public class CurveLayoutManager extends RecyclerView.LayoutManager {
             // if theoretically position for left view is less than left view.
             if (mIsCollapsed) {
                 // offset for collapsed views
-                leftViewOffset += (fanLayoutManagerSettings.getViewWidthPx() + Math.abs(overlapDistance)) * Math.abs(leftViewPosition);
+                leftViewOffset += (fanLayoutManagerSettings.getViewWidthPx() + abs(overlapDistance)) * abs(leftViewPosition);
             } else {
                 // offset for NOT collapsed views
-                leftViewOffset += (fanLayoutManagerSettings.getViewWidthPx() - Math.abs(overlapDistance)) * Math.abs(leftViewPosition);
+                leftViewOffset += (fanLayoutManagerSettings.getViewWidthPx() - abs(overlapDistance)) * abs(leftViewPosition);
             }
             leftViewPosition = 0;
         }
@@ -1179,7 +1219,7 @@ public class CurveLayoutManager extends RecyclerView.LayoutManager {
         for (int count = getChildCount(), i = 0; i < count; i++) {
             item = getChildAt(i);
             centerXView = (int) (getDecoratedLeft(item) + viewHalfWidth);
-            if (nearestToCenterView == null || Math.abs(nearestDeltaX) > Math.abs(centerX - centerXView)) {
+            if (nearestToCenterView == null || abs(nearestDeltaX) > abs(centerX - centerXView)) {
                 nearestToCenterView = item;
                 nearestDeltaX = (int) (centerX - centerXView);
             }
