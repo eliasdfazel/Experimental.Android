@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/16/22, 10:44 AM
+ * Last modified 12/16/22, 10:54 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -23,6 +23,7 @@ import kotlin.math.abs
 import kotlin.math.min
 
 class NextedLayoutManager (val context: Context,
+                           val recyclerView: RecyclerView,
                            val layoutOrientation: Int,
                            var shrinkAmount: Float = 0.39f,
                            var shrinkDistance: Float = 1f) : LinearLayoutManager(context, layoutOrientation, false) {
@@ -94,6 +95,23 @@ class NextedLayoutManager (val context: Context,
 
 
         }, 13)
+
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+
+                when (newState) {
+                    RecyclerView.SCROLL_STATE_IDLE -> {
+
+
+
+                    }
+                }
+
+            }
+
+        })
 
     }
 

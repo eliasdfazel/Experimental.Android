@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/16/22, 10:44 AM
+ * Last modified 12/16/22, 10:54 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -55,10 +55,10 @@ class ScrollsViews : AppCompatActivity() {
         }
 
         scrollsLayoutBinding.nextedRecyclerView.apply {
-            layoutManager = NextedLayoutManager(applicationContext, RecyclerView.VERTICAL)
+            layoutManager = NextedLayoutManager(applicationContext, scrollsLayoutBinding.nextedRecyclerView, RecyclerView.VERTICAL)
             adapter = ScrollsAdapter(this@ScrollsViews)
 
-//            PagerSnapHelper().attachToRecyclerView(scrollsLayoutBinding.nextedRecyclerView)
+            PagerSnapHelper().attachToRecyclerView(scrollsLayoutBinding.nextedRecyclerView)
         }
 
     }
