@@ -3,26 +3,23 @@
   ~ Copyright © 2022 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 11/29/22, 7:15 AM
+  ~ Last modified 12/16/22, 6:29 AM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
   -->
 
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/applicationName"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/GeeksEmpire.Material"
-        android:largeHeap="true"
-        tools:targetApi="31">
+        android:largeHeap="true">
+
         <activity
             android:name=".ExperimentSelector"
             android:exported="true">
@@ -40,6 +37,11 @@
         <activity
             android:name=".Games.GradientGame"
             android:exported="true"/>
+
+        <activity
+            android:name=".Scrolls.ScrollsViews"
+            android:exported="true"/>
+
     </application>
 
 </manifest>

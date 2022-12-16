@@ -16,3 +16,4 @@ rootProject.name = "Experimental"
 include ':ExperimentPhone'
 include ':BlurryEffect'
 include ':CustomShapes'
+include ':NextedLayoutManager'

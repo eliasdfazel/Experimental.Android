@@ -2,13 +2,13 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 10/27/22, 9:15 AM
+ * Last modified 12/16/22, 6:19 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
  */
 
-package co.geeksempire.sachiel.signals.administrators.Utils.Views.Scrolls
+package co.geeksempire.experiment.Views.ScrollView.Utils
 
 import android.content.Context
 import android.graphics.Rect
