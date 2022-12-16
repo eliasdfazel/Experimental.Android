@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 5/19/22, 8:27 AM
+ * Last modified 12/16/22, 6:40 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -20,12 +20,12 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.abs
 import kotlin.math.min
 
-class ScaleLayoutManager(val context: Context, val recyclerViewOrientation: Int = RecyclerView.HORIZONTAL) : LinearLayoutManager(context, recyclerViewOrientation, false) {
+class ScaleLayoutManager(val context: Context,
+                         val recyclerViewOrientation: Int = RecyclerView.HORIZONTAL,
+                         var shrinkAmount: Float = 0.15f,
+                         var shrinkDistance: Float = 0.9f) : LinearLayoutManager(context, recyclerViewOrientation, false) {
 
     var velocityMillisecondPerInch = 23f
-
-    var shrinkAmount = 0.15f
-    var shrinkDistance = 0.9f
 
     override fun setOrientation(orientation: Int) {
         super.setOrientation(recyclerViewOrientation)
