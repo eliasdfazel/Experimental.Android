@@ -3,17 +3,15 @@
   ~ Copyright © 2022 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 12/16/22, 6:39 AM
+  ~ Last modified 12/16/22, 7:59 AM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
   -->
 
 <co.geeksempire.experiment.Views.ViewGroup.NextedConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:apps="http://schemas.android.com/apk/res-auto"
-    tools:context=".ExperimentSelector"
-    android:layout_width="match_parent"
+    android:layout_width="301dp"
     android:layout_height="111dp"
     android:background="@color/default_color_dark">
 

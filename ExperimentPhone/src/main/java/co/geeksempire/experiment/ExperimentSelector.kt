@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/16/22, 6:19 AM
+ * Last modified 12/16/22, 8:19 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -35,6 +35,11 @@ class ExperimentSelector : AppCompatActivity() {
 
         startActivity(Intent(this@ExperimentSelector, ScrollsViews::class.java))
 
+        experimentSelectorLayoutBinding.progressBar.setOnClickListener {
+
+            setUpdateProgress()
+
+        }
     }
 
     fun setUpdateProgress() = CoroutineScope(Dispatchers.Main).async {

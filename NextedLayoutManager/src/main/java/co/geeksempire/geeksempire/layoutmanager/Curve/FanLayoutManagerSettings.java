@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 5/19/22, 8:27 AM
+ * Last modified 12/16/22, 8:23 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -23,9 +23,12 @@ public class FanLayoutManagerSettings {
 
     private float mViewWidthDp;
     private float mViewHeightDp;
+
     private int mViewWidthPx;
     private int mViewHeightPx;
+
     private boolean mIsFanRadiusEnable;
+
     private float mAngleItemBounce;
 
     private boolean selectedAnimation;

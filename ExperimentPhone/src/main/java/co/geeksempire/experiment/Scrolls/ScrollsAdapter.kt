@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/16/22, 6:18 AM
+ * Last modified 12/16/22, 7:48 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -46,6 +46,8 @@ class ScrollsAdapter (private val context: AppCompatActivity) : RecyclerView.Ada
     }
 
     override fun onBindViewHolder(scrollsViewHolder: ScrollsViewHolder, position: Int) {
+
+        scrollsViewHolder.rootItem.setBackgroundColor(context.getColor(R.color.default_color_game_dark))
 
         scrollsViewHolder.colorItem.setImageDrawable(ColorDrawable(allColors.random()))
 

@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 5/19/22, 8:27 AM
+ * Last modified 12/16/22, 8:21 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -470,16 +470,24 @@ public class CurveLayoutManager extends RecyclerView.LayoutManager {
         // +++++ init params +++++
         float halfWidth = getWidth() / 2;
         // minimal radius is recyclerView width * 2
-        double radius = getWidth() * 2;
+
+        double radius = 1000;
+
         double powRadius = radius * radius;
+
         double rotation;
         float halfViewWidth;
+
         double deltaX;
         double deltaY;
+
         int viewPosition;
+
         // ----- init params -----
         for (int count = getChildCount(), i = 0; i < count; i++) {
+
             View view = getChildAt(i);
+
             rotation = 0;
             // need to show views in "fan" style
 
@@ -487,7 +495,7 @@ public class CurveLayoutManager extends RecyclerView.LayoutManager {
 
             // change pivot point to center bottom of the view
             view.setPivotX(halfViewWidth);
-            view.setPivotY(view.getHeight());
+            view.setPivotY(view.getHeight() + 301);
 
             if (fanLayoutManagerSettings.isFanRadiusEnable()) {
 
@@ -497,6 +505,7 @@ public class CurveLayoutManager extends RecyclerView.LayoutManager {
                 // distance in which need to move view in y-axis. Low accuracy
                 deltaY = radius - Math.sqrt(powRadius - deltaX * deltaX);
                 view.setTranslationY((float) deltaY);
+
                 // calculate view rotation
                 rotation = (Math.toDegrees(Math.asin((radius - deltaY) / radius)) - 90) * Math.signum(deltaX);
 
