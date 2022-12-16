@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/16/22, 9:42 AM
+ * Last modified 12/16/22, 9:53 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -17,6 +17,8 @@ import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Rect;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.SparseArray;
@@ -158,11 +160,6 @@ public class CurveLayoutManager extends RecyclerView.LayoutManager {
      */
     private View mCenterView = null;
 
-    public CurveLayoutManager(@NonNull Context context) {
-        this(context, null);
-        mAnimationHelper = new AnimationHelperImpl();
-    }
-
     public CurveLayoutManager(@NonNull Context context, @Nullable FanLayoutManagerSettings settings) {
         // create default settings
         fanLayoutManagerSettings = settings == null ? FanLayoutManagerSettings.newBuilder(context).build() : settings;
@@ -182,6 +179,45 @@ public class CurveLayoutManager extends RecyclerView.LayoutManager {
         });
         // create default smooth scroller to show item in the middle of the screen
         mShiftToCenterCardScroller = new ShiftToCenterCardScroller(context);
+
+        /*
+         *
+         *
+         *
+         *
+         * */
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+
+            double midpoint = getWidth() / 2f;
+
+            double d0 = 0f;
+            double d1 = 0.5 * midpoint;
+
+            double s0 = 1f;
+            float s1 = 1f - 0.19f;
+
+            View child = getChildAt(1);
+
+            if (child != null) {
+
+                double childMidpoint = (getDecoratedRight(child) + getDecoratedLeft(child)) / 2f;
+
+                double d = min(d1, abs(midpoint - childMidpoint));
+                double scale = s0 + (s1 - s0) * (d - d0) / (d1 - d0);
+
+                child.setScaleX((float) scale);
+                child.setScaleY((float) scale);
+
+            }
+
+        }, 13);
+        /*
+         *
+         *
+         *
+         *
+         * */
+
     }
 
     public void saveState() {

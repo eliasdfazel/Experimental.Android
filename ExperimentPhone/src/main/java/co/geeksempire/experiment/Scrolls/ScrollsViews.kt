@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/16/22, 9:42 AM
+ * Last modified 12/16/22, 9:45 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -41,6 +41,9 @@ class ScrollsViews : AppCompatActivity() {
                     withViewWidthDp(101f)
                 }.build())
             adapter = ScrollsAdapter(this@ScrollsViews)
+
+
+            PagerSnapHelper().attachToRecyclerView(scrollsLayoutBinding.curvedRecyclerView)
         }
 
         scrollsLayoutBinding.sizedRecyclerView.apply {
