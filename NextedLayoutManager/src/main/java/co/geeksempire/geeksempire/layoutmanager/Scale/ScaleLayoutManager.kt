@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/16/22, 6:40 AM
+ * Last modified 12/16/22, 9:11 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -12,6 +12,8 @@ package co.geeksempire.geeksempire.layoutmanager.Scale
 
 import android.content.Context
 import android.graphics.PointF
+import android.os.Handler
+import android.os.Looper
 import android.util.DisplayMetrics
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,11 +23,40 @@ import kotlin.math.abs
 import kotlin.math.min
 
 class ScaleLayoutManager(val context: Context,
-                         val recyclerViewOrientation: Int = RecyclerView.HORIZONTAL,
+                         val recyclerViewOrientation: Int,
                          var shrinkAmount: Float = 0.15f,
                          var shrinkDistance: Float = 0.9f) : LinearLayoutManager(context, recyclerViewOrientation, false) {
 
     var velocityMillisecondPerInch = 23f
+
+    init {
+
+        Handler(Looper.getMainLooper()).postDelayed({
+
+            val midpoint = width / 2f
+
+            val d0 = 0f
+            val d1: Float = shrinkDistance * midpoint
+
+            val s0 = 1f
+            val s1: Float = 1f - shrinkAmount
+
+            val child: View? = getChildAt(1)
+            child?.let {
+
+                val childMidpoint = (getDecoratedRight(child) + getDecoratedLeft(child)) / 2f
+
+                val d = min(d1, abs(midpoint - childMidpoint))
+                val scale = s0 + (s1 - s0) * (d - d0) / (d1 - d0)
+
+                child.scaleX = scale
+                child.scaleY = scale
+
+            }
+
+        }, 13)
+
+    }
 
     override fun setOrientation(orientation: Int) {
         super.setOrientation(recyclerViewOrientation)
@@ -46,6 +77,7 @@ class ScaleLayoutManager(val context: Context,
             }
 
             override fun calculateSpeedPerPixel(displayMetrics: DisplayMetrics): Float {
+
                 return velocityMillisecondPerInch / displayMetrics.densityDpi
             }
 
@@ -58,44 +90,66 @@ class ScaleLayoutManager(val context: Context,
 
     override fun scrollHorizontallyBy(dx: Int, recycler: RecyclerView.Recycler?, recycleViewState: RecyclerView.State?): Int {
 
-        val orientation = orientation
+        val scrolled = super.scrollHorizontallyBy(dx, recycler, recycleViewState)
 
-        return if (orientation == HORIZONTAL) {
+        val midpoint = width / 2f
 
-            val scrolled = super.scrollHorizontallyBy(dx, recycler, recycleViewState)
+        val d0 = 0f
+        val d1: Float = shrinkDistance * midpoint
 
-            val midpoint = width / 2f
+        val s0 = 1f
+        val s1: Float = 1f - shrinkAmount
 
-            val d0 = 0f
-            val d1: Float = shrinkDistance * midpoint
+        for (i in 0 until childCount) {
 
-            val s0 = 1f
-            val s1: Float = 1f - shrinkAmount
+            val child: View? = getChildAt(i)
+            child?.let {
 
-            for (i in 0 until childCount) {
+                val childMidpoint = (getDecoratedRight(child) + getDecoratedLeft(child)) / 2f
 
-                val child: View? = getChildAt(i)
-                child?.let {
+                val d = min(d1, abs(midpoint - childMidpoint))
+                val scale = s0 + (s1 - s0) * (d - d0) / (d1 - d0)
 
-                    val childMidpoint = (getDecoratedRight(child) + getDecoratedLeft(child)) / 2f
-
-                    val d = min(d1, abs(midpoint - childMidpoint))
-                    val scale = s0 + (s1 - s0) * (d - d0) / (d1 - d0)
-
-                    child.scaleX = scale
-                    child.scaleY = scale
-
-                }
+                child.scaleX = scale
+                child.scaleY = scale
 
             }
 
-            scrolled
-
-        } else {
-
-            0
-
         }
+
+        return scrolled
     }
+
+//    override fun scrollVerticallyBy(dy: Int, recycler: RecyclerView.Recycler?, recycleViewState: RecyclerView.State?) : Int {
+//
+//        val scrolled = super.scrollHorizontallyBy(dy, recycler, recycleViewState)
+//
+//        val midpoint = height / 2f
+//
+//        val d0 = 0f
+//        val d1: Float = shrinkDistance * midpoint
+//
+//        val s0 = 1f
+//        val s1: Float = 1f - shrinkAmount
+//
+//        for (i in 0 until childCount) {
+//
+//            val child: View? = getChildAt(i)
+//            child?.let {
+//
+//                val childMidpoint = (getDecoratedRight(child) + getDecoratedLeft(child)) / 2f
+//
+//                val d = min(d1, abs(midpoint - childMidpoint))
+//                val scale = s0 + (s1 - s0) * (d - d0) / (d1 - d0)
+//
+//                child.scaleX = scale
+//                child.scaleY = scale
+//
+//            }
+//
+//        }
+//
+//        return scrolled
+//    }
 
 }
