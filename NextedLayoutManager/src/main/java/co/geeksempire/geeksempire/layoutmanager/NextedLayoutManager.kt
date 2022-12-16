@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/16/22, 10:54 AM
+ * Last modified 12/16/22, 10:58 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -50,6 +50,9 @@ class NextedLayoutManager (val context: Context,
                         val child: View? = getChildAt(i)
                         child?.let {
 
+                            /*
+                            * a function to work by the first and last
+                            * */
                             val childMidpoint = (getDecoratedTop(child) + getDecoratedBottom(child)) / 2f
 
                             val d = min(d1, abs(midpoint - childMidpoint))
