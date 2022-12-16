@@ -2,13 +2,13 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/16/22, 10:19 AM
+ * Last modified 12/16/22, 10:44 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
  */
 
-package co.geeksempire.geeksempire.layoutmanager.Scale
+package co.geeksempire.geeksempire.layoutmanager
 
 import android.content.Context
 import android.graphics.PointF
@@ -22,10 +22,10 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.abs
 import kotlin.math.min
 
-class ScaleLayoutManager(val context: Context,
-                         val layoutOrientation: Int,
-                         var shrinkAmount: Float = 0.19f,
-                         var shrinkDistance: Float = 0.5f) : LinearLayoutManager(context, layoutOrientation, false) {
+class NextedLayoutManager (val context: Context,
+                           val layoutOrientation: Int,
+                           var shrinkAmount: Float = 0.39f,
+                           var shrinkDistance: Float = 1f) : LinearLayoutManager(context, layoutOrientation, false) {
 
     var velocityMillisecondPerInch = 23f
 
@@ -33,34 +33,68 @@ class ScaleLayoutManager(val context: Context,
 
         Handler(Looper.getMainLooper()).postDelayed({
 
-            val midpoint = width / 2f
+            when (layoutOrientation) {
+                VERTICAL -> {
 
-            val d0 = 0f
-            val d1: Float = shrinkDistance * midpoint
+                    val midpoint = height / 2f
 
-            val s0 = 1f
-            val s1: Float = 1f - shrinkAmount
+                    val d0 = 0f
+                    val d1: Float = shrinkDistance * midpoint
 
-            val child: View? = getChildAt(1)
-            child?.let {
+                    val s0 = 1f
+                    val s1: Float = 1f - shrinkAmount
 
-                val childMidpoint = (getDecoratedRight(child) + getDecoratedLeft(child)) / 2f
+                    for (i in 0..childCount) {
 
-                val d = min(d1, abs(midpoint - childMidpoint))
-                val scale = s0 + (s1 - s0) * (d - d0) / (d1 - d0)
+                        val child: View? = getChildAt(i)
+                        child?.let {
 
-                child.scaleX = scale
-                child.scaleY = scale
+                            val childMidpoint = (getDecoratedTop(child) + getDecoratedBottom(child)) / 2f
 
+                            val d = min(d1, abs(midpoint - childMidpoint))
+                            val scale = s0 + (s1 - s0) * (d - d0) / (d1 - d0)
+
+                            child.scaleX = scale
+                            child.scaleY = scale
+
+                            child.alpha = scale
+
+                        }
+
+                    }
+
+                }
+                HORIZONTAL -> {
+
+                    val midpoint = width / 2f
+
+                    val d0 = 0f
+                    val d1: Float = shrinkDistance * midpoint
+
+                    val s0 = 1f
+                    val s1: Float = 1f - shrinkAmount
+
+                    val child: View? = getChildAt(1)
+                    child?.let {
+
+                        val childMidpoint = (getDecoratedRight(child) + getDecoratedLeft(child)) / 2f
+
+                        val d = min(d1, abs(midpoint - childMidpoint))
+                        val scale = s0 + (s1 - s0) * (d - d0) / (d1 - d0)
+
+                        child.scaleX = scale
+                        child.scaleY = scale
+
+                        child.alpha = scale
+
+                    }
+
+                }
             }
+
 
         }, 13)
 
-    }
-
-    override fun supportsPredictiveItemAnimations(): Boolean {
-
-        return true
     }
 
     override fun smoothScrollToPosition(recyclerView: RecyclerView?, state: RecyclerView.State?, position: Int) {
@@ -69,7 +103,7 @@ class ScaleLayoutManager(val context: Context,
 
             override fun computeScrollVectorForPosition(targetPosition: Int): PointF? {
 
-                return this@ScaleLayoutManager.computeScrollVectorForPosition(targetPosition)
+                return this@NextedLayoutManager.computeScrollVectorForPosition(targetPosition)
             }
 
             override fun calculateSpeedPerPixel(displayMetrics: DisplayMetrics): Float {
@@ -109,6 +143,8 @@ class ScaleLayoutManager(val context: Context,
                 child.scaleX = scale
                 child.scaleY = scale
 
+                child.alpha = scale
+
             }
 
         }
@@ -128,18 +164,20 @@ class ScaleLayoutManager(val context: Context,
         val s0 = 1f
         val s1: Float = 1f - shrinkAmount
 
-        for (i in 0 until childCount) {
+        for (i in 0..childCount) {
 
             val child: View? = getChildAt(i)
             child?.let {
 
-                val childMidpoint = (getDecoratedRight(child) + getDecoratedLeft(child)) / 2f
+                val childMidpoint = (getDecoratedTop(child) + getDecoratedBottom(child)) / 2f
 
                 val d = min(d1, abs(midpoint - childMidpoint))
                 val scale = s0 + (s1 - s0) * (d - d0) / (d1 - d0)
 
                 child.scaleX = scale
                 child.scaleY = scale
+
+                child.alpha = scale
 
             }
 
