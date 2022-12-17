@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/17/22, 5:20 AM
+ * Last modified 12/17/22, 5:22 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -55,24 +55,39 @@ class ScrollsAdapter (private val context: AppCompatActivity,
     }
 
     override fun onRowMoved(fromPosition: Int, toPosition: Int) {
+
         if (fromPosition < toPosition) {
+
             for (i in fromPosition until toPosition) {
+
                 Collections.swap(dataList, i, i + 1)
+
             }
+
         } else {
+
             for (i in fromPosition downTo toPosition + 1) {
+
                 Collections.swap(dataList, i, i - 1)
+
             }
+
         }
+
         notifyItemMoved(fromPosition, toPosition)
+
     }
 
-    override fun onRowSelected(myViewHolder: ScrollsViewHolder) {
-        myViewHolder.rootItem.setBackgroundColor(Color.WHITE)
+    override fun onRowSelected(scrollsViewHolder: ScrollsViewHolder) {
+
+        scrollsViewHolder.rootItem.setBackgroundColor(Color.WHITE)
+
     }
 
     override fun onRowClear(myViewHolder: ScrollsViewHolder) {
-        myViewHolder.rootItem.setBackgroundColor(Color.RED)
+
+        myViewHolder.rootItem.setBackgroundColor(Color.TRANSPARENT)
+
     }
 
 }

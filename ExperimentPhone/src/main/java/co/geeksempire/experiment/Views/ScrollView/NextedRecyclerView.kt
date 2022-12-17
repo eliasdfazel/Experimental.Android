@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/17/22, 2:26 AM
+ * Last modified 12/17/22, 5:38 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -11,14 +11,20 @@
 package co.geeksempire.experiment.Utils.Views.Scrolls
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.graphics.Canvas
 import android.graphics.Path
 import android.graphics.RectF
 import android.util.AttributeSet
 import androidx.recyclerview.widget.RecyclerView
+import co.geeksempire.experiment.R
 import co.geeksempire.sachiel.signals.administrators.Utils.Display.dpToFloat
 
 class NextedRecyclerView(context: Context, attributesSet: AttributeSet) : RecyclerView(context, attributesSet) {
+
+    var typedArray: TypedArray = context.obtainStyledAttributes(attributesSet, R.styleable.NextedScrollView)
+
+    val flingVelocityFraction: Int = typedArray.getInt(R.styleable.NextedScrollView_flingVelocityFraction, 5)
 
     private lateinit var rectF: RectF
 
@@ -66,6 +72,12 @@ class NextedRecyclerView(context: Context, attributesSet: AttributeSet) : Recycl
 
         path.close()
 
+    }
+
+    override fun fling(velocityX: Int, velocityY: Int) : Boolean {
+        super.fling(velocityX, velocityY / flingVelocityFraction)
+
+        return true
     }
 
 }

@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/17/22, 5:20 AM
+ * Last modified 12/17/22, 5:38 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -11,13 +11,10 @@
 package co.geeksempire.experiment.Views.ScrollView.LayoutManager
 
 import android.content.Context
-import android.graphics.PointF
 import android.os.Handler
 import android.os.Looper
-import android.util.DisplayMetrics
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.abs
 import kotlin.math.min
@@ -112,7 +109,11 @@ class NextedLayoutManager (private val context: Context,
                 when (newState) {
                     RecyclerView.SCROLL_STATE_IDLE -> {
 
+                        if (nextedLayoutManagerFactory.snapIt) {
 
+                            recyclerView.smoothScrollToPosition(findFirstCompletelyVisibleItemPosition())
+
+                        }
 
                     }
                     RecyclerView.SCROLL_STATE_DRAGGING -> {
@@ -130,27 +131,6 @@ class NextedLayoutManager (private val context: Context,
             }
 
         })
-
-    }
-
-    override fun smoothScrollToPosition(recyclerView: RecyclerView?, state: RecyclerView.State?, position: Int) {
-
-        val smoothScroller: LinearSmoothScroller = object : LinearSmoothScroller(context) {
-
-            override fun computeScrollVectorForPosition(targetPosition: Int): PointF? {
-
-                return this@NextedLayoutManager.computeScrollVectorForPosition(targetPosition)
-            }
-
-            override fun calculateSpeedPerPixel(displayMetrics: DisplayMetrics): Float {
-
-                return nextedLayoutManagerFactory.velocityMillisecondPerInch / displayMetrics.densityDpi
-            }
-
-        }
-
-        smoothScroller.targetPosition = position
-        startSmoothScroll(smoothScroller)
 
     }
 

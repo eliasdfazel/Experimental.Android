@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/17/22, 5:20 AM
+ * Last modified 12/17/22, 5:21 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -39,7 +39,7 @@ class NextedTouchHelper (scrollsAdapter: NextedScrollsAdapter) : ItemTouchHelper
 
         val dragFlags = ItemTouchHelper.UP or ItemTouchHelper.DOWN
 
-        return ItemTouchHelper.Callback.makeMovementFlags(dragFlags, 0)
+        return makeMovementFlags(dragFlags, 0)
     }
 
     override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
