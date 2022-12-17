@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/17/22, 3:46 AM
+ * Last modified 12/17/22, 5:20 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -10,35 +10,23 @@
 
 package co.geeksempire.experiment.Scrolls
 
+import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import co.geeksempire.experiment.R
+import co.geeksempire.experiment.Views.ScrollView.NextedScrollsAdapter
 import co.geeksempire.experiment.databinding.ScrollsItemLayoutBinding
+import java.util.*
 
-class ScrollsAdapter (private val context: AppCompatActivity) : RecyclerView.Adapter<ScrollsViewHolder>() {
 
-    private val allColors = intArrayOf(
-        context.getColor(R.color.transparent),
-        context.getColor(R.color.transparent),
-        context.getColor(R.color.default_color_bright),
-        context.getColor(R.color.yellow),
-        context.getColor(R.color.default_color_game_bright),
-        context.getColor(R.color.cyberGreen),
-        context.getColor(R.color.black),
-        context.getColor(R.color.default_color_game_dark),
-        context.getColor(R.color.green),
-        context.getColor(R.color.white),
-        context.getColor(R.color.pink),
-        context.getColor(R.color.dark_gray),
-        context.getColor(R.color.transparent),
-        context.getColor(R.color.transparent),
-    )
+class ScrollsAdapter (private val context: AppCompatActivity,
+                      private val recyclerView: RecyclerView,
+                      private val dataList: List<Int>) : NextedScrollsAdapter() {
 
     override fun getItemCount(): Int {
 
-        return allColors.size
+        return dataList.size
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -52,16 +40,39 @@ class ScrollsAdapter (private val context: AppCompatActivity) : RecyclerView.Ada
         return ScrollsViewHolder(ScrollsItemLayoutBinding.inflate(context.layoutInflater, viewGroup, false))
     }
 
-    override fun onBindViewHolder(scrollsViewHolder: ScrollsViewHolder, position: Int) {
+    override fun onBindViewHolder(scrollsViewHolder: RecyclerView.ViewHolder, position: Int) {
 
-        scrollsViewHolder.colorItem.setImageDrawable(ColorDrawable(allColors[position]))
+        scrollsViewHolder as ScrollsViewHolder
+
+        scrollsViewHolder.colorItem.setImageDrawable(ColorDrawable(dataList[position]))
 
         scrollsViewHolder.rootItem.setOnClickListener {
 
-
+            recyclerView.smoothScrollToPosition(position)
 
         }
 
+    }
+
+    override fun onRowMoved(fromPosition: Int, toPosition: Int) {
+        if (fromPosition < toPosition) {
+            for (i in fromPosition until toPosition) {
+                Collections.swap(dataList, i, i + 1)
+            }
+        } else {
+            for (i in fromPosition downTo toPosition + 1) {
+                Collections.swap(dataList, i, i - 1)
+            }
+        }
+        notifyItemMoved(fromPosition, toPosition)
+    }
+
+    override fun onRowSelected(myViewHolder: ScrollsViewHolder) {
+        myViewHolder.rootItem.setBackgroundColor(Color.WHITE)
+    }
+
+    override fun onRowClear(myViewHolder: ScrollsViewHolder) {
+        myViewHolder.rootItem.setBackgroundColor(Color.RED)
     }
 
 }

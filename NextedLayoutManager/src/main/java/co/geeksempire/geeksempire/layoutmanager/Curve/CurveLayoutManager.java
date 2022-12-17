@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/16/22, 9:53 AM
+ * Last modified 12/17/22, 4:35 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -191,22 +191,25 @@ public class CurveLayoutManager extends RecyclerView.LayoutManager {
             double midpoint = getWidth() / 2f;
 
             double d0 = 0f;
-            double d1 = 0.5 * midpoint;
+            double d1 = 1f * midpoint;
 
             double s0 = 1f;
-            float s1 = 1f - 0.19f;
+            float s1 = 1f - 0.47f;
 
-            View child = getChildAt(1);
+            for (int i = 0; i < getChildCount(); i++) {
 
-            if (child != null) {
+                View child = getChildAt(i);
+                if (child != null) {
 
-                double childMidpoint = (getDecoratedRight(child) + getDecoratedLeft(child)) / 2f;
+                    double childMidpoint = (getDecoratedRight(child) + getDecoratedLeft(child)) / 2f;
 
-                double d = min(d1, abs(midpoint - childMidpoint));
-                double scale = s0 + (s1 - s0) * (d - d0) / (d1 - d0);
+                    double d = min(d1, abs(midpoint - childMidpoint));
+                    double scale = s0 + (s1 - s0) * (d - d0) / (d1 - d0);
 
-                child.setScaleX((float) scale);
-                child.setScaleY((float) scale);
+                    child.setScaleX((float) scale);
+                    child.setScaleY((float) scale);
+
+                }
 
             }
 
@@ -419,10 +422,11 @@ public class CurveLayoutManager extends RecyclerView.LayoutManager {
         double midpoint = getWidth() / 2f;
 
         double d0 = 0f;
-        double d1 = 0.5 * midpoint;
+        double d1 = 1f * midpoint;
 
         double s0 = 1f;
-        float s1 = 1f - 0.19f;
+        float s1 = 1f - 0.47f;
+
         for (int i = 0; i < getChildCount(); i++) {
 
             View child = getChildAt(i);

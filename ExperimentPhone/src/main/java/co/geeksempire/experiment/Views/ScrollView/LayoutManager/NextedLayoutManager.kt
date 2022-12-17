@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/17/22, 3:50 AM
+ * Last modified 12/17/22, 5:20 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -25,8 +25,6 @@ import kotlin.math.min
 class NextedLayoutManager (private val context: Context,
                            private val recyclerView: RecyclerView,
                            val nextedLayoutManagerFactory: NextedLayoutManagerFactory) : LinearLayoutManager(context, nextedLayoutManagerFactory.layoutOrientation, false) {
-
-    var velocityMillisecondPerInch = 23f
 
     init {
 
@@ -62,7 +60,11 @@ class NextedLayoutManager (private val context: Context,
 
                     }
 
-              //      scrollToPosition(2)
+                    Handler(Looper.getMainLooper()).postDelayed({
+
+                        recyclerView.smoothScrollToPosition(2)
+
+                    }, 13)
 
                 }
                 HORIZONTAL -> {
@@ -90,7 +92,11 @@ class NextedLayoutManager (private val context: Context,
 
                     }
 
-                    scrollToPosition(2)
+                    Handler(Looper.getMainLooper()).postDelayed({
+
+                        recyclerView.smoothScrollToPosition(2)
+
+                    }, 13)
 
                 }
             }
@@ -138,7 +144,7 @@ class NextedLayoutManager (private val context: Context,
 
             override fun calculateSpeedPerPixel(displayMetrics: DisplayMetrics): Float {
 
-                return velocityMillisecondPerInch / displayMetrics.densityDpi
+                return nextedLayoutManagerFactory.velocityMillisecondPerInch / displayMetrics.densityDpi
             }
 
         }
@@ -149,8 +155,6 @@ class NextedLayoutManager (private val context: Context,
     }
 
     override fun scrollHorizontallyBy(dx: Int, recycler: RecyclerView.Recycler?, recycleViewState: RecyclerView.State?): Int {
-
-        val scrolled = super.scrollHorizontallyBy(dx, recycler, recycleViewState)
 
         val midpoint = width / 2f
 
@@ -179,12 +183,10 @@ class NextedLayoutManager (private val context: Context,
 
         }
 
-        return scrolled
+        return super.scrollHorizontallyBy(dx, recycler, recycleViewState)
     }
 
     override fun scrollVerticallyBy(dy: Int, recycler: RecyclerView.Recycler?, recycleViewState: RecyclerView.State?) : Int {
-
-        val scrolled = super.scrollVerticallyBy(dy, recycler, recycleViewState)
 
         val midpoint = height / 2f
 
@@ -212,7 +214,7 @@ class NextedLayoutManager (private val context: Context,
 
         }
 
-        return scrolled
+        return super.scrollVerticallyBy(dy, recycler, recycleViewState)
     }
 
 }
