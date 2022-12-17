@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/16/22, 6:29 AM
+ * Last modified 12/17/22, 2:27 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -18,5 +18,5 @@ fun snappedItemPosition(recyclerView: RecyclerView, snapHelper: SnapHelper) : In
     val layoutManager = recyclerView.layoutManager
     val snapView = snapHelper.findSnapView(layoutManager)
 
-    return snapView?.let { layoutManager?.getPosition(it) } ?:0
+    return snapView?.let { layoutManager?.getPosition(it) } ?: 0
 }

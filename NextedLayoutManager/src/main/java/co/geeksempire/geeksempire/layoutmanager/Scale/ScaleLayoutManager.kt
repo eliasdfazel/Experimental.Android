@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/16/22, 10:19 AM
+ * Last modified 12/17/22, 2:22 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -133,7 +133,7 @@ class ScaleLayoutManager(val context: Context,
             val child: View? = getChildAt(i)
             child?.let {
 
-                val childMidpoint = (getDecoratedRight(child) + getDecoratedLeft(child)) / 2f
+                val childMidpoint = (getDecoratedTop(child) + getDecoratedBottom(child)) / 2f
 
                 val d = min(d1, abs(midpoint - childMidpoint))
                 val scale = s0 + (s1 - s0) * (d - d0) / (d1 - d0)

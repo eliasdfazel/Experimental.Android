@@ -3,7 +3,7 @@
   ~ Copyright © 2022 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 12/16/22, 10:12 AM
+  ~ Last modified 12/17/22, 2:28 AM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
@@ -16,7 +16,7 @@
     android:layout_height="match_parent"
     android:background="@color/blue_transparent">
 
-    <co.geeksempire.sachiel.signals.administrators.Utils.Views.Scrolls.NextedRecyclerView
+    <co.geeksempire.experiment.Utils.Views.Scrolls.NextedRecyclerView
         android:id="@+id/curvedRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="171dp"
@@ -26,20 +26,20 @@
 
         apps:layout_constraintTop_toTopOf="parent"/>
 
-    <co.geeksempire.sachiel.signals.administrators.Utils.Views.Scrolls.NextedRecyclerView
+    <co.geeksempire.experiment.Utils.Views.Scrolls.NextedRecyclerView
         android:id="@+id/sizedRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="131dp"
+        android:layout_height="111dp"
         android:layout_marginHorizontal="19dp"
         android:layout_marginVertical="37dp"
         android:background="@color/default_color_dark"
 
         apps:layout_constraintTop_toBottomOf="@id/curvedRecyclerView"/>
 
-    <co.geeksempire.sachiel.signals.administrators.Utils.Views.Scrolls.NextedRecyclerView
+    <co.geeksempire.experiment.Utils.Views.Scrolls.NextedRecyclerView
         android:id="@+id/nextedRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="311dp"
+        android:layout_height="379dp"
         android:layout_marginHorizontal="19dp"
         android:layout_marginVertical="37dp"
         android:nestedScrollingEnabled="true"

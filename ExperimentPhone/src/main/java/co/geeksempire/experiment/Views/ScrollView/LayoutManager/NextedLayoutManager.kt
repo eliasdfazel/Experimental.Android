@@ -2,13 +2,13 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/16/22, 10:58 AM
+ * Last modified 12/17/22, 2:48 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
  */
 
-package co.geeksempire.geeksempire.layoutmanager
+package co.geeksempire.experiment.Views.ScrollView.LayoutManager
 
 import android.content.Context
 import android.graphics.PointF
@@ -22,11 +22,9 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.abs
 import kotlin.math.min
 
-class NextedLayoutManager (val context: Context,
-                           val recyclerView: RecyclerView,
-                           val layoutOrientation: Int,
-                           var shrinkAmount: Float = 0.39f,
-                           var shrinkDistance: Float = 1f) : LinearLayoutManager(context, layoutOrientation, false) {
+class NextedLayoutManager (private val context: Context,
+                           private val recyclerView: RecyclerView,
+                           val nextedLayoutManagerFactory: NextedLayoutManagerFactory) : LinearLayoutManager(context, nextedLayoutManagerFactory.layoutOrientation, false) {
 
     var velocityMillisecondPerInch = 23f
 
@@ -34,16 +32,16 @@ class NextedLayoutManager (val context: Context,
 
         Handler(Looper.getMainLooper()).postDelayed({
 
-            when (layoutOrientation) {
+            when (nextedLayoutManagerFactory.layoutOrientation) {
                 VERTICAL -> {
 
                     val midpoint = height / 2f
 
                     val d0 = 0f
-                    val d1: Float = shrinkDistance * midpoint
+                    val d1: Float = nextedLayoutManagerFactory.shrinkDistance * midpoint
 
                     val s0 = 1f
-                    val s1: Float = 1f - shrinkAmount
+                    val s1: Float = 1f - nextedLayoutManagerFactory.shrinkAmount
 
                     for (i in 0..childCount) {
 
@@ -73,10 +71,10 @@ class NextedLayoutManager (val context: Context,
                     val midpoint = width / 2f
 
                     val d0 = 0f
-                    val d1: Float = shrinkDistance * midpoint
+                    val d1: Float = nextedLayoutManagerFactory.shrinkDistance * midpoint
 
                     val s0 = 1f
-                    val s1: Float = 1f - shrinkAmount
+                    val s1: Float = 1f - nextedLayoutManagerFactory.shrinkAmount
 
                     val child: View? = getChildAt(1)
                     child?.let {
@@ -106,6 +104,16 @@ class NextedLayoutManager (val context: Context,
 
                 when (newState) {
                     RecyclerView.SCROLL_STATE_IDLE -> {
+
+
+
+                    }
+                    RecyclerView.SCROLL_STATE_DRAGGING -> {
+
+
+
+                    }
+                    RecyclerView.SCROLL_STATE_SETTLING -> {
 
 
 
@@ -146,10 +154,10 @@ class NextedLayoutManager (val context: Context,
         val midpoint = width / 2f
 
         val d0 = 0f
-        val d1: Float = shrinkDistance * midpoint
+        val d1: Float = nextedLayoutManagerFactory.shrinkDistance * midpoint
 
         val s0 = 1f
-        val s1: Float = 1f - shrinkAmount
+        val s1: Float = 1f - nextedLayoutManagerFactory.shrinkAmount
 
         for (i in 0 until childCount) {
 
@@ -180,10 +188,10 @@ class NextedLayoutManager (val context: Context,
         val midpoint = height / 2f
 
         val d0 = 0f
-        val d1: Float = shrinkDistance * midpoint
+        val d1: Float =nextedLayoutManagerFactory. shrinkDistance * midpoint
 
         val s0 = 1f
-        val s1: Float = 1f - shrinkAmount
+        val s1: Float = 1f - nextedLayoutManagerFactory.shrinkAmount
 
         for (i in 0..childCount) {
 
