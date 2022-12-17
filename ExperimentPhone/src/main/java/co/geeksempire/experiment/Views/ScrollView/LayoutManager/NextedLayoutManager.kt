@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/17/22, 2:48 AM
+ * Last modified 12/17/22, 3:45 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -30,6 +30,7 @@ class NextedLayoutManager (private val context: Context,
 
     init {
 
+
         Handler(Looper.getMainLooper()).postDelayed({
 
             when (nextedLayoutManagerFactory.layoutOrientation) {
@@ -48,11 +49,7 @@ class NextedLayoutManager (private val context: Context,
                         val child: View? = getChildAt(i)
                         child?.let {
 
-                            /*
-                            * a function to work by the first and last
-                            * */
                             val childMidpoint = (getDecoratedTop(child) + getDecoratedBottom(child)) / 2f
-
                             val d = min(d1, abs(midpoint - childMidpoint))
                             val scale = s0 + (s1 - s0) * (d - d0) / (d1 - d0)
 
@@ -64,6 +61,8 @@ class NextedLayoutManager (private val context: Context,
                         }
 
                     }
+
+              //      scrollToPosition(2)
 
                 }
                 HORIZONTAL -> {
@@ -90,6 +89,8 @@ class NextedLayoutManager (private val context: Context,
                         child.alpha = scale
 
                     }
+
+                    scrollToPosition(2)
 
                 }
             }
@@ -199,9 +200,11 @@ class NextedLayoutManager (private val context: Context,
             child?.let {
 
                 val childMidpoint = (getDecoratedTop(child) + getDecoratedBottom(child)) / 2f
-
                 val d = min(d1, abs(midpoint - childMidpoint))
                 val scale = s0 + (s1 - s0) * (d - d0) / (d1 - d0)
+
+//                val divideFactor: Double = (i.toDouble().div(5.toDouble()))
+//                val scale = (1 - divideFactor).toFloat()
 
                 child.scaleX = scale
                 child.scaleY = scale

@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/17/22, 2:38 AM
+ * Last modified 12/17/22, 3:35 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -63,7 +63,9 @@ class ScrollsViews : AppCompatActivity() {
         scrollsLayoutBinding.nextedRecyclerView.apply {
             layoutManager = NextedLayoutManager(applicationContext, scrollsLayoutBinding.nextedRecyclerView,
                 NextedLayoutManagerFactory(
-                    layoutOrientation = RecyclerView.VERTICAL
+                    layoutOrientation = RecyclerView.VERTICAL,
+                    shrinkAmount = 0.47f,
+                    shrinkDistance = 1f
                 )
             )
             adapter = ScrollsAdapter(this@ScrollsViews)
