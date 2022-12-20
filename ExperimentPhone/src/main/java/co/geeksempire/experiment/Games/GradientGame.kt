@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/20/22, 5:42 AM
+ * Last modified 12/20/22, 5:45 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -85,8 +85,18 @@ class GradientGame : AppCompatActivity(), AnimationInterface {
 
                 operateShape()
 
+                gradientAnimations.pointCounter++
+                Log.d(this@GradientGame.javaClass.simpleName, "Winner Point; ${gradientAnimations.pointCounter}")
+
+                if (gradientAnimations.pointCounter == gradientAnimations.maximumPoints) {
+                    Log.d(this@GradientGame.javaClass.simpleName, "Won Completely!")
+
+                }
+
             } else {
                 Log.d(this@GradientGame.javaClass.simpleName, "Loser!")
+
+                gradientAnimations.pointCounter = 0
 
             }
 

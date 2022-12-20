@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/20/22, 5:33 AM
+ * Last modified 12/20/22, 5:45 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -32,6 +32,8 @@ class GradientAnimations (private val context: Context,
      * - If Wrong -> Zero It
      **/
     var pointCounter = 0
+
+    var maximumPoints = 10
 
     fun multipleGradientLevelOne(instanceOfView: ImageView,
                                  fromColor: Int = context.getColor(R.color.default_color_bright),
