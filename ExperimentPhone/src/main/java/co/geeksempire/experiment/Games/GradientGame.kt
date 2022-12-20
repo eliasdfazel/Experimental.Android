@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/20/22, 7:18 AM
+ * Last modified 12/20/22, 9:34 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -11,7 +11,6 @@
 package co.geeksempire.experiment.Games
 
 import android.graphics.Color
-import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.util.Log
@@ -22,18 +21,9 @@ import co.geeksempire.experiment.Animations.GradientAnimations
 import co.geeksempire.experiment.BuildConfig
 import co.geeksempire.experiment.R
 import co.geeksempire.experiment.databinding.GradientGameLayoutBinding
-import net.geekstools.imageview.customshapes.ShapesImage
+
 
 class GradientGame : AppCompatActivity(), AnimationInterface {
-
-    val allShapes: ArrayList<Drawable?> by lazy {
-        arrayListOf(
-            applicationContext.getDrawable(net.geekstools.imageview.customshapes.R.drawable.beaker),
-            applicationContext.getDrawable(net.geekstools.imageview.customshapes.R.drawable.bell),
-            applicationContext.getDrawable(net.geekstools.imageview.customshapes.R.drawable.tooltip),
-            applicationContext.getDrawable(net.geekstools.imageview.customshapes.R.drawable.ghost)
-        )
-    }
 
     val allColors by lazy {
         intArrayOf(
@@ -76,9 +66,9 @@ class GradientGame : AppCompatActivity(), AnimationInterface {
 
         gradientAnimations.multipleGradientLevelOne(instanceOfView = gradientGameLayoutBinding.backgroundView)
 
-        gradientGameLayoutBinding.backgroundView.setOnClickListener { view ->
+        gradientGameLayoutBinding.backgroundView.setOnClickListener {
 
-            if (gradientCheckpoint(gradientGameLayoutBinding.backgroundView, gradientGameLayoutBinding.selectedColor)) {
+            if (gradientCheckpoint(gradientGameLayoutBinding.backgroundView, gradientGameLayoutBinding.selectedGradient)) {
                 Log.d(this@GradientGame.javaClass.simpleName, "Winner!")
 
                 gradientGameLayoutBinding.backgroundView.isEnabled = false
@@ -111,13 +101,13 @@ class GradientGame : AppCompatActivity(), AnimationInterface {
 
     private fun operateShape() {
 
-        gradientGameLayoutBinding.selectedColor.setImageDrawable(GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(
+        gradientGameLayoutBinding.selectedGradient.setImageDrawable(GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(
             getColor(R.color.cyberGreen),
             getColor(R.color.default_color_bright),
             getColor(R.color.default_color_bright),
         )))
 
-        val gradientDrawable = gradientGameLayoutBinding.selectedColor.drawable as GradientDrawable
+        val gradientDrawable = gradientGameLayoutBinding.selectedGradient.drawable as GradientDrawable
 
         val firstColor = if (BuildConfig.DEBUG) {
             getColor(R.color.default_color_bright)
@@ -168,11 +158,11 @@ class GradientGame : AppCompatActivity(), AnimationInterface {
 
         }
 
-        gradientGameLayoutBinding.selectedColor.setImageDrawable(GradientDrawable(GradientDrawable.Orientation.TR_BL, listOfColor))
+        gradientGameLayoutBinding.selectedGradient.setImageDrawable(GradientDrawable(GradientDrawable.Orientation.TR_BL, listOfColor))
 
     }
 
-    fun gradientCheckpoint(backgroundView: AppCompatImageView, shapeView: ShapesImage) : Boolean {
+    fun gradientCheckpoint(backgroundView: AppCompatImageView, shapeView: AppCompatImageView) : Boolean {
 
         val firstGradientDrawable: GradientDrawable = backgroundView.drawable as GradientDrawable
         val secondGradientDrawable: GradientDrawable = shapeView.drawable as GradientDrawable

@@ -9,13 +9,15 @@
  */
 
 apply plugin: 'com.android.library'
+apply plugin: 'org.jetbrains.kotlin.android'
+
 
 android {
     compileSdkVersion 33
     buildToolsVersion "33.0.1"
 
     defaultConfig {
-        minSdkVersion 24
+        minSdkVersion 28
         targetSdkVersion 33
 
     }
