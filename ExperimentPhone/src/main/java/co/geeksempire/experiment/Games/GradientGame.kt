@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/20/22, 4:47 AM
+ * Last modified 12/20/22, 4:55 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -70,7 +70,7 @@ class GradientGame : AppCompatActivity(), AnimationInterface {
         gradientGameLayoutBinding.backgroundView.setOnClickListener { view ->
             gradientGameLayoutBinding.backgroundView.isEnabled = false
 
-
+            operateShape()
 
         }
 
@@ -78,13 +78,12 @@ class GradientGame : AppCompatActivity(), AnimationInterface {
 
     override fun animationEnded() {
 
-        operateShape()
 
     }
 
     private fun operateShape() {
 
-        gradientGameLayoutBinding.selectedColor.setShapeDrawable(allShapes.random())
+//        gradientGameLayoutBinding.selectedColor.setShapeDrawable(allShapes.random())
 
         val firstColor = allColors.random()
         val secondColor = allColors.random()
