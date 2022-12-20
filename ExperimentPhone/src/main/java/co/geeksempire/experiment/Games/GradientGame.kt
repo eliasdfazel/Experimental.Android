@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/20/22, 5:45 AM
+ * Last modified 12/20/22, 7:18 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -15,13 +15,14 @@ import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.util.Log
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatImageView
 import co.geeksempire.experiment.Animations.AnimationInterface
 import co.geeksempire.experiment.Animations.GradientAnimations
 import co.geeksempire.experiment.BuildConfig
 import co.geeksempire.experiment.R
 import co.geeksempire.experiment.databinding.GradientGameLayoutBinding
+import net.geekstools.imageview.customshapes.ShapesImage
 
 class GradientGame : AppCompatActivity(), AnimationInterface {
 
@@ -73,7 +74,6 @@ class GradientGame : AppCompatActivity(), AnimationInterface {
             ))
         )
 
-
         gradientAnimations.multipleGradientLevelOne(instanceOfView = gradientGameLayoutBinding.backgroundView)
 
         gradientGameLayoutBinding.backgroundView.setOnClickListener { view ->
@@ -111,11 +111,6 @@ class GradientGame : AppCompatActivity(), AnimationInterface {
 
     private fun operateShape() {
 
-        gradientGameLayoutBinding.selectedColor.setShapeDrawable(allShapes.random())
-
-        gradientGameLayoutBinding.selectedColor.refreshDrawableState()
-        gradientGameLayoutBinding.selectedColor.invalidate()
-
         gradientGameLayoutBinding.selectedColor.setImageDrawable(GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(
             getColor(R.color.cyberGreen),
             getColor(R.color.default_color_bright),
@@ -136,12 +131,15 @@ class GradientGame : AppCompatActivity(), AnimationInterface {
         }
 
         val listOfColor = if (BuildConfig.DEBUG) {
+
             intArrayOf(
                 secondColor,
                 firstColor,
                 firstColor
             )
+
         } else {
+
             if (IntRange(0, 100).random() in 0..33) {
 
                 intArrayOf(
@@ -167,13 +165,14 @@ class GradientGame : AppCompatActivity(), AnimationInterface {
                 )
 
             }
+
         }
 
         gradientGameLayoutBinding.selectedColor.setImageDrawable(GradientDrawable(GradientDrawable.Orientation.TR_BL, listOfColor))
 
     }
 
-    fun gradientCheckpoint(backgroundView: ImageView, shapeView: ImageView) : Boolean {
+    fun gradientCheckpoint(backgroundView: AppCompatImageView, shapeView: ShapesImage) : Boolean {
 
         val firstGradientDrawable: GradientDrawable = backgroundView.drawable as GradientDrawable
         val secondGradientDrawable: GradientDrawable = shapeView.drawable as GradientDrawable

@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/17/22, 4:35 AM
+ * Last modified 12/20/22, 7:04 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -39,9 +39,6 @@ import java.util.Random;
  * <p>
  * How to use:
  * <p>
- * 1) Create object of FanLayoutManager class. You can use
- * {@link #CurveLayoutManager(Context)} with default settings
- * or
  * {@link #CurveLayoutManager(Context, FanLayoutManagerSettings)} with custom settings.
  * See {@link FanLayoutManagerSettings} to create custom settings.
  * <p>
