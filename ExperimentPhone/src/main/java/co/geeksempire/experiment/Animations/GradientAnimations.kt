@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/20/22, 4:27 AM
+ * Last modified 12/20/22, 4:45 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -22,17 +22,16 @@ interface AnimationInterface {
     fun animationEnded()
 }
 class GradientAnimations (private val context: Context,
+                          private val allColors: IntArray,
                           private val animationInterface: AnimationInterface) {
 
-    val allColors = intArrayOf(
-        context.getColor(R.color.default_color_bright),
-        context.getColor(R.color.default_color_game_bright),
-        context.getColor(R.color.cyberGreen),
-        context.getColor(R.color.purple),
-        context.getColor(R.color.yellow),
-        context.getColor(R.color.pink),
-        context.getColor(R.color.default_color_bright),
-    )
+    /**
+     * Count Each Click {
+     * - If Correct -> Sum Up
+     * - If Wrong -> Zero It
+     * }
+     **/
+    var pointCounter = 0
 
     fun multipleGradientLevelOne(instanceOfView: ImageView,
                                  fromColor: Int = context.getColor(R.color.default_color_bright),
