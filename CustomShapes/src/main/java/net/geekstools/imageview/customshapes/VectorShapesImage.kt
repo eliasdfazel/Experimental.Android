@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/20/22, 9:33 AM
+ * Last modified 12/20/22, 9:34 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -17,7 +17,7 @@ import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatImageView
 import net.geekstools.imageview.customshapes.utils.VectorPathParser
 
-class ShapesImage(context: Context, attributeSet: AttributeSet) : AppCompatImageView(context, attributeSet) {
+class VectorShapesImage(context: Context, attributeSet: AttributeSet) : AppCompatImageView(context, attributeSet) {
 
     var shapePath: String
     var scaleAmount = 37

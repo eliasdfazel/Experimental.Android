@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <net.geekstools.imageview.customshapes.ShapesImage
+    <net.geekstools.imageview.customshapes.VectorShapesImage
         android:id="@+id/selectedGradient"
         android:layout_width="333dp"
         android:layout_height="333dp"
