@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/20/22, 4:45 AM
+ * Last modified 12/20/22, 5:23 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -26,10 +26,9 @@ class GradientAnimations (private val context: Context,
                           private val animationInterface: AnimationInterface) {
 
     /**
-     * Count Each Click {
+     * Count Each Click
      * - If Correct -> Sum Up
      * - If Wrong -> Zero It
-     * }
      **/
     var pointCounter = 0
 
@@ -96,8 +95,9 @@ class GradientAnimations (private val context: Context,
             override fun onAnimationEnd(animator: Animator) {
                 Log.d(this@GradientAnimations.javaClass.simpleName, "Animation Ended")
 
+                val newColor = randomNewColor(previousColor)
 
-                multipleGradientLevelOne(instanceOfView, previousColor, allColors.random())
+                multipleGradientLevelOne(instanceOfView, previousColor, newColor)
 
                 animationInterface.animationEnded()
 
@@ -114,6 +114,19 @@ class GradientAnimations (private val context: Context,
 
         })
 
+    }
+
+    fun randomNewColor(previousColor: Int) : Int {
+
+        val newColor = allColors.random()
+
+        if (newColor == previousColor) {
+
+            randomNewColor(previousColor)
+
+        }
+
+        return newColor
     }
 
 }

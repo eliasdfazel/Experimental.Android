@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/20/22, 4:55 AM
+ * Last modified 12/20/22, 5:23 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -14,6 +14,8 @@ import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.util.Log
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import co.geeksempire.experiment.Animations.AnimationInterface
 import co.geeksempire.experiment.Animations.GradientAnimations
@@ -39,7 +41,10 @@ class GradientGame : AppCompatActivity(), AnimationInterface {
             applicationContext.getColor(R.color.purple),
             applicationContext.getColor(R.color.yellow),
             applicationContext.getColor(R.color.pink),
-            applicationContext.getColor(R.color.default_color_bright),
+            applicationContext.getColor(R.color.default_color_dark),
+            applicationContext.getColor(R.color.black),
+            applicationContext.getColor(R.color.green),
+            applicationContext.getColor(R.color.default_color_game_dark),
         )
     }
 
@@ -68,9 +73,19 @@ class GradientGame : AppCompatActivity(), AnimationInterface {
         gradientAnimations.multipleGradientLevelOne(instanceOfView = gradientGameLayoutBinding.backgroundView)
 
         gradientGameLayoutBinding.backgroundView.setOnClickListener { view ->
-            gradientGameLayoutBinding.backgroundView.isEnabled = false
 
-            operateShape()
+            if (gradientCheckpoint(gradientGameLayoutBinding.backgroundView, gradientGameLayoutBinding.selectedColor)) {
+                Log.d(this@GradientGame.javaClass.simpleName, "Winner!")
+
+                gradientGameLayoutBinding.backgroundView.isEnabled = false
+
+//                operateShape()
+
+
+            } else {
+                Log.d(this@GradientGame.javaClass.simpleName, "Loser!")
+
+            }
 
         }
 
@@ -85,15 +100,21 @@ class GradientGame : AppCompatActivity(), AnimationInterface {
 
 //        gradientGameLayoutBinding.selectedColor.setShapeDrawable(allShapes.random())
 
-        val firstColor = allColors.random()
-        val secondColor = allColors.random()
+        val firstColor = getColor(R.color.default_color_bright)//allColors.random()
+        val secondColor = getColor(R.color.cyberGreen)//allColors.random()
 
         val listOfColor = if (IntRange(0, 100).random() in 0..50) {
 
+//            intArrayOf(
+//                firstColor,
+//                firstColor,
+//                secondColor
+//            )
+
             intArrayOf(
+                secondColor,
                 firstColor,
-                firstColor,
-                secondColor
+                firstColor
             )
 
         } else {
@@ -108,6 +129,14 @@ class GradientGame : AppCompatActivity(), AnimationInterface {
 
         gradientGameLayoutBinding.selectedColor.setImageDrawable(GradientDrawable(GradientDrawable.Orientation.TR_BL, listOfColor))
 
+    }
+
+    fun gradientCheckpoint(backgroundView: ImageView, shapeView: ImageView) : Boolean {
+
+        val firstGradientDrawable: GradientDrawable = backgroundView.drawable as GradientDrawable
+        val secondGradientDrawable: GradientDrawable = shapeView.drawable as GradientDrawable
+
+        return (firstGradientDrawable.colors.contentEquals(secondGradientDrawable.colors))
     }
 
 }
