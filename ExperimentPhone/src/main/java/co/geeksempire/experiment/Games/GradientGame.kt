@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/21/22, 2:26 AM
+ * Last modified 12/21/22, 2:27 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -111,13 +111,13 @@ class GradientGame : AppCompatActivity(), AnimationInterface {
 
     private fun operateShape() {
 
+        gradientGameLayoutBinding.selectedGradient.changeShape(allShapes.random())
+
         gradientGameLayoutBinding.selectedGradient.setImageDrawable(GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(
             getColor(R.color.default_color_game_bright),
             getColor(R.color.default_color_bright),
             getColor(R.color.default_color_bright),
         )))
-
-        gradientGameLayoutBinding.selectedGradient.changeShape(allShapes.random())
 
         val gradientDrawable = gradientGameLayoutBinding.selectedGradient.drawable as GradientDrawable
 

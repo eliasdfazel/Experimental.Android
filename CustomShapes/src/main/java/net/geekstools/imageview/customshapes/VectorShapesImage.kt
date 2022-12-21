@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/21/22, 2:24 AM
+ * Last modified 12/21/22, 2:27 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -56,7 +56,7 @@ class VectorShapesImage(context: Context, attributeSet: AttributeSet) : AppCompa
 
     }
 
-    fun changeShape(newShapePath: String, newScaleAmount: Int = 10) {
+    fun changeShape(newShapePath: String, newScaleAmount: Int = 37) {
 
         clipPath.reset()
 
