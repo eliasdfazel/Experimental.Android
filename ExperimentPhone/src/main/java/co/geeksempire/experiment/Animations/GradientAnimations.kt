@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/21/22, 3:17 AM
+ * Last modified 12/21/22, 3:19 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -34,8 +34,10 @@ class GradientAnimations (private val context: Context,
 
     var maximumPoints = 7
 
+    /// from Cloud
     var gradientDuration: Long = 1357
 
+    /// from Cloud
     var gradientLayersColors = 3
 
     fun multipleGradient(instanceOfView: ImageView,

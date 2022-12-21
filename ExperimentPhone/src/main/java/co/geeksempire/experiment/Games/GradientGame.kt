@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/21/22, 2:58 AM
+ * Last modified 12/21/22, 3:19 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -24,6 +24,7 @@ import co.geeksempire.experiment.databinding.GradientGameLayoutBinding
 
 class GradientGame : AppCompatActivity(), AnimationInterface {
 
+    /// from Cloud
     val allShapes by lazy {
         arrayListOf<String>(
             applicationContext.getString(R.string.leafPath),
@@ -31,6 +32,7 @@ class GradientGame : AppCompatActivity(), AnimationInterface {
         )
     }
 
+    /// from Cloud
     val allColors by lazy {
         intArrayOf(
             applicationContext.getColor(R.color.default_color_bright),
@@ -177,10 +179,10 @@ class GradientGame : AppCompatActivity(), AnimationInterface {
 
     fun gradientCheckpoint(backgroundView: AppCompatImageView, shapeView: AppCompatImageView) : Boolean {
 
-        val firstGradientDrawable: GradientDrawable = backgroundView.drawable as GradientDrawable
-        val secondGradientDrawable: GradientDrawable = shapeView.drawable as GradientDrawable
+        val backgroundGradientDrawable: GradientDrawable = backgroundView.drawable as GradientDrawable
+        val shapedGradientDrawable: GradientDrawable = shapeView.drawable as GradientDrawable
 
-        return (firstGradientDrawable.colors.contentEquals(secondGradientDrawable.colors))
+        return (backgroundGradientDrawable.colors.contentEquals(shapedGradientDrawable.colors))
     }
 
 }
