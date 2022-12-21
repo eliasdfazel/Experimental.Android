@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/20/22, 9:34 AM
+ * Last modified 12/21/22, 2:26 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -25,6 +25,13 @@ import co.geeksempire.experiment.databinding.GradientGameLayoutBinding
 
 class GradientGame : AppCompatActivity(), AnimationInterface {
 
+    val allShapes by lazy {
+        arrayListOf<String>(
+            applicationContext.getString(R.string.leafPath),
+            applicationContext.getString(R.string.birdPath),
+        )
+    }
+
     val allColors by lazy {
         intArrayOf(
             applicationContext.getColor(R.color.default_color_bright),
@@ -33,6 +40,9 @@ class GradientGame : AppCompatActivity(), AnimationInterface {
             applicationContext.getColor(R.color.purple),
             applicationContext.getColor(R.color.yellow),
             applicationContext.getColor(R.color.pink),
+            applicationContext.getColor(R.color.white),
+            applicationContext.getColor(R.color.brown),
+            applicationContext.getColor(R.color.brownLight),
             applicationContext.getColor(R.color.default_color_dark),
             applicationContext.getColor(R.color.black),
             applicationContext.getColor(R.color.green),
@@ -58,7 +68,7 @@ class GradientGame : AppCompatActivity(), AnimationInterface {
 
         gradientGameLayoutBinding.backgroundView.setImageDrawable(
             GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(
-                getColor(R.color.cyberGreen),
+                getColor(R.color.default_color_game_bright),
                 getColor(R.color.default_color_bright),
                 getColor(R.color.default_color_bright),
             ))
@@ -102,10 +112,12 @@ class GradientGame : AppCompatActivity(), AnimationInterface {
     private fun operateShape() {
 
         gradientGameLayoutBinding.selectedGradient.setImageDrawable(GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(
-            getColor(R.color.cyberGreen),
+            getColor(R.color.default_color_game_bright),
             getColor(R.color.default_color_bright),
             getColor(R.color.default_color_bright),
         )))
+
+        gradientGameLayoutBinding.selectedGradient.changeShape(allShapes.random())
 
         val gradientDrawable = gradientGameLayoutBinding.selectedGradient.drawable as GradientDrawable
 
@@ -115,7 +127,7 @@ class GradientGame : AppCompatActivity(), AnimationInterface {
             gradientAnimations.randomNewColor(gradientDrawable.colors!!.first())
         }
         val secondColor = if (BuildConfig.DEBUG) {
-            getColor(R.color.cyberGreen)
+            getColor(R.color.default_color_game_bright)
         } else {
             gradientAnimations.randomNewColor(gradientDrawable.colors!!.last())
         }

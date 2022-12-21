@@ -3,7 +3,7 @@
   ~ Copyright © 2022 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 12/16/22, 8:49 AM
+  ~ Last modified 12/21/22, 1:58 AM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
@@ -50,7 +50,8 @@
     <color name="yellowLight">#D9FF43</color>
     <color name="yellow_transparent">#80ffb506</color>
     <color name="light_blue">#9CB9F7</color>
-    <color name="brown">#800909</color>
+    <color name="brown">#6A2504</color>
+    <color name="brownLight">#B63A00</color>
     <color name="pink">#FE5475</color>
     <color name="light_pink">#f79caf</color>
     <color name="pink_transparent">#80f79caf</color>
