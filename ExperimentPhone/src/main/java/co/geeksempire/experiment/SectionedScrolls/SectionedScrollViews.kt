@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/21/22, 4:57 AM
+ * Last modified 12/21/22, 4:59 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -66,30 +66,6 @@ class SectionedScrollViews : AppCompatActivity() {
 
         sectionedScrollsLayoutBinding.nextedRecyclerView.layoutManager = sectionedLayoutManager
         sectionedScrollsLayoutBinding.nextedRecyclerView.adapter = sectionedScrollsAdapter
-
-    }
-
-    fun getSpansSize(position: Int) : Int {
-
-        val modulo = position % 5
-
-        if(modulo == 0){
-
-            return 3
-
-        } else if(modulo == 1 || modulo == 2){
-
-            return 2
-
-        } else if(modulo == 3 || modulo == 4){
-
-            return 1
-
-        } else {
-
-            return 1
-
-        }
 
     }
 
