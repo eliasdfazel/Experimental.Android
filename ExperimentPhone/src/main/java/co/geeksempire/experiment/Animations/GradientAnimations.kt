@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/21/22, 2:58 AM
+ * Last modified 12/21/22, 3:17 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -16,7 +16,6 @@ import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.util.Log
 import android.widget.ImageView
-import co.geeksempire.experiment.BuildConfig
 import co.geeksempire.experiment.R
 
 interface AnimationInterface {
@@ -51,50 +50,77 @@ class GradientAnimations (private val context: Context,
             duration = gradientDuration
             repeatCount = (gradientLayersColors - 1)
         }
-        if (!BuildConfig.DEBUG)
+//        if (!BuildConfig.DEBUG)
             colorAnimator.start()
 
 
         colorAnimator.addUpdateListener {
             val currentColor = it.animatedValue as Int
 
-            val aGradientDrawable = if (gradientIndex == 0) {
+            val gradientDrawableColors = IntArray(gradientLayersColors)
 
-                previousColor = currentColor
+            repeat(gradientLayersColors) { index ->
 
-                GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(
-                    currentColor,
-                    fromColor,
-                    fromColor,
-                ))
+                if (gradientIndex == 0) {
 
-            } else if (gradientIndex == 1) {
+                    previousColor = currentColor
 
-                GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(
-                    previousColor,
-                    currentColor,
-                    fromColor,
-                ))
+                }
 
-            } else if (gradientIndex == 2) {
+                gradientDrawableColors[gradientIndex] = currentColor
 
-                GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(
-                    previousColor,
-                    previousColor,
-                    currentColor
-                ))
+                if (index < gradientIndex) {
 
-            } else {
+                    gradientDrawableColors[index] = previousColor
 
-                GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(
-                    context.getColor(R.color.black),
-                    context.getColor(R.color.black),
-                    context.getColor(R.color.black)
-                ))
+                } else if (index > gradientIndex) {
+
+                    gradientDrawableColors[index] = fromColor
+
+                }
 
             }
 
+            val aGradientDrawable = GradientDrawable(GradientDrawable.Orientation.TR_BL, gradientDrawableColors)
             instanceOfView.setImageDrawable(aGradientDrawable)
+
+//            val aGradientDrawable = if (gradientIndex == 0) {
+//
+//                previousColor = currentColor
+//
+//                GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(
+//                    currentColor,
+//                    fromColor,
+//                    fromColor,
+//                ))
+//
+//            } else if (gradientIndex == 1) {
+//
+//                GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(
+//                    previousColor,
+//                    currentColor,
+//                    fromColor,
+//                ))
+//
+//            } else if (gradientIndex == 2) {
+//
+//                GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(
+//                    previousColor,
+//                    previousColor,
+//                    currentColor
+//                ))
+//
+//            } else {
+//
+//                GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(
+//                    context.getColor(R.color.black),
+//                    context.getColor(R.color.black),
+//                    context.getColor(R.color.black)
+//                ))
+//
+//            }
+//
+//            instanceOfView.setImageDrawable(aGradientDrawable)
 
         }
 
