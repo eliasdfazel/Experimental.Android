@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/21/22, 2:54 AM
+ * Last modified 12/21/22, 2:58 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -16,6 +16,7 @@ import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.util.Log
 import android.widget.ImageView
+import co.geeksempire.experiment.BuildConfig
 import co.geeksempire.experiment.R
 
 interface AnimationInterface {
@@ -50,7 +51,7 @@ class GradientAnimations (private val context: Context,
             duration = gradientDuration
             repeatCount = (gradientLayersColors - 1)
         }
-//        if (!BuildConfig.DEBUG)
+        if (!BuildConfig.DEBUG)
             colorAnimator.start()
 
 
