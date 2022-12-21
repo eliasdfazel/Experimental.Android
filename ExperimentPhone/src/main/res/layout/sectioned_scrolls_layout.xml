@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright © 2022 By Geeks Empire.
+  ~
+  ~ Created by Elias Fazel
+  ~ Last modified 12/21/22, 4:43 AM
+  ~
+  ~ Licensed Under MIT License.
+  ~ https://opensource.org/licenses/MIT
+  -->
+
+<co.geeksempire.experiment.Views.ViewGroup.NextedConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue_transparent">
+
+    <co.geeksempire.experiment.Utils.Views.Scrolls.NextedRecyclerView
+        android:id="@+id/nextedRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="19dp"
+        android:layout_marginVertical="37dp"
+        android:nestedScrollingEnabled="true"
+        android:background="@color/default_color_dark"
+
+        apps:flingVelocityFraction="7" />
+
+</co.geeksempire.experiment.Views.ViewGroup.NextedConstraintLayout>
