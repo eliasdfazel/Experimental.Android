@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/20/22, 5:45 AM
+ * Last modified 12/21/22, 2:54 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -16,7 +16,6 @@ import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.util.Log
 import android.widget.ImageView
-import co.geeksempire.experiment.BuildConfig
 import co.geeksempire.experiment.R
 
 interface AnimationInterface {
@@ -33,22 +32,27 @@ class GradientAnimations (private val context: Context,
      **/
     var pointCounter = 0
 
-    var maximumPoints = 10
+    var maximumPoints = 7
 
-    fun multipleGradientLevelOne(instanceOfView: ImageView,
-                                 fromColor: Int = context.getColor(R.color.default_color_bright),
-                                 toColor: Int = context.getColor(R.color.cyberGreen)) {
+    var gradientDuration: Long = 1357
+
+    var gradientLayersColors = 3
+
+    fun multipleGradient(instanceOfView: ImageView,
+                         fromColor: Int = context.getColor(R.color.default_color_bright),
+                         toColor: Int = context.getColor(R.color.cyberGreen)) {
 
         var gradientIndex = 0
 
         var previousColor = 0
 
-        val colorAnimator = ValueAnimator.ofArgb(fromColor, toColor)
-        colorAnimator.duration = 1357
-        colorAnimator.repeatCount = 2
-        if (!BuildConfig.DEBUG) {
-            colorAnimator.start()
+        val colorAnimator = ValueAnimator.ofArgb(fromColor, toColor).apply {
+            duration = gradientDuration
+            repeatCount = (gradientLayersColors - 1)
         }
+//        if (!BuildConfig.DEBUG)
+            colorAnimator.start()
+
 
         colorAnimator.addUpdateListener {
             val currentColor = it.animatedValue as Int
@@ -102,7 +106,7 @@ class GradientAnimations (private val context: Context,
 
                 val newColor = randomNewColor(previousColor)
 
-                multipleGradientLevelOne(instanceOfView, previousColor, newColor)
+                multipleGradient(instanceOfView, previousColor, newColor)
 
                 animationInterface.animationEnded()
 

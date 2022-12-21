@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/21/22, 2:27 AM
+ * Last modified 12/21/22, 2:56 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -74,7 +74,10 @@ class GradientGame : AppCompatActivity(), AnimationInterface {
             ))
         )
 
-        gradientAnimations.multipleGradientLevelOne(instanceOfView = gradientGameLayoutBinding.backgroundView)
+        allShapes.shuffle()
+        allColors.shuffle()
+
+        gradientAnimations.multipleGradient(instanceOfView = gradientGameLayoutBinding.backgroundView)
 
         gradientGameLayoutBinding.backgroundView.setOnClickListener {
 
