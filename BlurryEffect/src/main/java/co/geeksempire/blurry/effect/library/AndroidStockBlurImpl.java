@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/28/22, 2:43 AM
+ * Last modified 12/23/22, 5:45 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -10,17 +10,14 @@
 
 package co.geeksempire.blurry.effect.library;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.graphics.Bitmap;
-import android.os.Build;
 import android.renderscript.Allocation;
 import android.renderscript.Element;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
 
-@TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
 public class AndroidStockBlurImpl implements BlurImpl {
 	private RenderScript mRenderScript;
 	private ScriptIntrinsicBlur mBlurScript;
