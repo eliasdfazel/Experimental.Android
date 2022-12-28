@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/28/22, 4:05 AM
+ * Last modified 12/28/22, 5:22 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -46,15 +46,13 @@ class GradientAnimations (private val context: Context,
 
         var gradientIndex = 0
 
-        var previousColor = 0
+        var previousColor = toColor
 
         val colorAnimator = ValueAnimator.ofArgb(fromColor, toColor).apply {
             duration = gradientDuration
             repeatCount = (gradientLayersColors - 1)
         }
-//        if (!BuildConfig.DEBUG)
-            colorAnimator.start()
-
+        colorAnimator.start()
 
         colorAnimator.addUpdateListener {
             val currentColor = it.animatedValue as Int
@@ -64,8 +62,6 @@ class GradientAnimations (private val context: Context,
             repeat(gradientLayersColors) { index ->
 
                 if (gradientIndex == 0) {
-
-                    previousColor = currentColor
 
                 }
 

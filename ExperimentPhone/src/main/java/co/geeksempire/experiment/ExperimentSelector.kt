@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/21/22, 4:58 AM
+ * Last modified 12/28/22, 5:22 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -14,7 +14,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import co.geeksempire.experiment.SectionedScrolls.SectionedScrollViews
+import co.geeksempire.experiment.Games.GradientGame
 import co.geeksempire.experiment.databinding.ExperimentSelectorLayoutBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -33,7 +33,8 @@ class ExperimentSelector : AppCompatActivity() {
         window.decorView.setBackgroundColor(Color.CYAN)
         experimentSelectorLayoutBinding.root.background = getDrawable(R.drawable.splash_screen_initial)
 
-        startActivity(Intent(this@ExperimentSelector, SectionedScrollViews::class.java))
+//        startActivity(Intent(this@ExperimentSelector, SectionedScrollViews::class.java))
+        startActivity(Intent(this@ExperimentSelector, GradientGame::class.java))
 
         experimentSelectorLayoutBinding.progressBar.setOnClickListener {
 
