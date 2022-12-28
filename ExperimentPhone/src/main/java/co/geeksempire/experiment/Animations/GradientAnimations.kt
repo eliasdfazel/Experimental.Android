@@ -2,7 +2,7 @@
  * Copyright © 2022 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/21/22, 3:19 AM
+ * Last modified 12/28/22, 4:05 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -85,44 +85,6 @@ class GradientAnimations (private val context: Context,
 
             val aGradientDrawable = GradientDrawable(GradientDrawable.Orientation.TR_BL, gradientDrawableColors)
             instanceOfView.setImageDrawable(aGradientDrawable)
-
-//            val aGradientDrawable = if (gradientIndex == 0) {
-//
-//                previousColor = currentColor
-//
-//                GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(
-//                    currentColor,
-//                    fromColor,
-//                    fromColor,
-//                ))
-//
-//            } else if (gradientIndex == 1) {
-//
-//                GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(
-//                    previousColor,
-//                    currentColor,
-//                    fromColor,
-//                ))
-//
-//            } else if (gradientIndex == 2) {
-//
-//                GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(
-//                    previousColor,
-//                    previousColor,
-//                    currentColor
-//                ))
-//
-//            } else {
-//
-//                GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(
-//                    context.getColor(R.color.black),
-//                    context.getColor(R.color.black),
-//                    context.getColor(R.color.black)
-//                ))
-//
-//            }
-//
-//            instanceOfView.setImageDrawable(aGradientDrawable)
 
         }
 
