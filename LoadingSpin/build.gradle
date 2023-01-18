@@ -1,0 +1,27 @@
+/*
+ * Copyright © 2022 By Geeks Empire.
+ *
+ * Created by Elias Fazel
+ * Last modified 3/15/22, 4:44 AM
+ *
+ * Licensed Under MIT License.
+ * https://opensource.org/licenses/MIT
+ */
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 33
+    buildToolsVersion "33.0.1"
+
+    defaultConfig {
+        minSdkVersion 26
+        targetSdkVersion 33
+    }
+    lint {
+        abortOnError false
+    }
+
+    namespace 'net.geeksempire.loadingspin'
+
+}
