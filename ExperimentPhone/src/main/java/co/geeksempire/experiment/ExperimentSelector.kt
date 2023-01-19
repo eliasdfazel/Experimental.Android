@@ -1,8 +1,8 @@
 /*
- * Copyright © 2022 By Geeks Empire.
+ * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/28/22, 5:22 AM
+ * Last modified 1/19/23, 9:39 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -10,11 +10,9 @@
 
 package co.geeksempire.experiment
 
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import co.geeksempire.experiment.Games.GradientGame
 import co.geeksempire.experiment.databinding.ExperimentSelectorLayoutBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -34,13 +32,16 @@ class ExperimentSelector : AppCompatActivity() {
         experimentSelectorLayoutBinding.root.background = getDrawable(R.drawable.splash_screen_initial)
 
 //        startActivity(Intent(this@ExperimentSelector, SectionedScrollViews::class.java))
-        startActivity(Intent(this@ExperimentSelector, GradientGame::class.java))
+//        startActivity(Intent(this@ExperimentSelector, GradientGame::class.java))
 
-        experimentSelectorLayoutBinding.progressBar.setOnClickListener {
+//        experimentSelectorLayoutBinding.progressBar.setOnClickListener {
+//
+//            setUpdateProgress()
+//
+//        }
 
-            setUpdateProgress()
 
-        }
+        setUpdateProgress()
     }
 
     fun setUpdateProgress() = CoroutineScope(Dispatchers.Main).async {
@@ -50,7 +51,7 @@ class ExperimentSelector : AppCompatActivity() {
 
             delay(111)
 
-            experimentSelectorLayoutBinding.progressBar.setProgress(it, true)
+            experimentSelectorLayoutBinding.waitingSpin.setProgress(it, true)
 
         }
 

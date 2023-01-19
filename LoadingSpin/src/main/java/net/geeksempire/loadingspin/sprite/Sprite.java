@@ -2,7 +2,7 @@
  * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 5/19/22, 8:27 AM
+ * Last modified 1/19/23, 9:39 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -290,10 +290,13 @@ public abstract class Sprite extends Drawable implements
 
     @Override
     public void draw(Canvas canvas) {
+
         int tx = getTranslateX();
         tx = tx == 0 ? (int) (getBounds().width() * getTranslateXPercentage()) : tx;
+
         int ty = getTranslateY();
         ty = ty == 0 ? (int) (getBounds().height() * getTranslateYPercentage()) : ty;
+
         canvas.translate(tx, ty);
         canvas.scale(getScaleX(), getScaleY(), getPivotX(), getPivotY());
         canvas.rotate(getRotate(), getPivotX(), getPivotY());
@@ -312,12 +315,17 @@ public abstract class Sprite extends Drawable implements
     }
 
     public Rect clipSquare(Rect rect) {
+
         int w = rect.width();
         int h = rect.height();
+
         int min = Math.min(w, h);
+
         int cx = rect.centerX();
         int cy = rect.centerY();
+
         int r = min / 2;
+
         return new Rect(
                 cx - r,
                 cy - r,

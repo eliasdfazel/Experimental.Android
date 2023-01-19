@@ -48,6 +48,7 @@ dependencies {
 
     implementation project(path: ':BlurryEffect')
     implementation project(path: ':CustomShapes')
+    implementation project(path: ':LoadingSpin')
     implementation project(path: ':NextedLayoutManager')
 
     implementation 'androidx.core:core-ktx:1.9.0'

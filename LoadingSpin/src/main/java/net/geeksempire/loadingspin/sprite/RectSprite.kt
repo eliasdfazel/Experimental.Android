@@ -2,31 +2,31 @@
  * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 5/19/22, 8:27 AM
+ * Last modified 1/19/23, 9:39 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
  */
+package net.geeksempire.loadingspin.sprite
 
-package net.geeksempire.loadingspin.sprite;
-
-import android.animation.ValueAnimator;
-import android.graphics.Canvas;
-import android.graphics.Paint;
+import android.animation.ValueAnimator
+import android.graphics.Canvas
+import android.graphics.Paint
 
 /**
  * Created by ybq.
  */
-public class RectSprite extends ShapeSprite {
-    @Override
-    public ValueAnimator onCreateAnimation() {
-        return null;
+open class RectSprite : ShapeSprite() {
+
+    override fun onCreateAnimation(): ValueAnimator? {
+        return null
     }
 
-    @Override
-    public void drawShape(Canvas canvas, Paint paint) {
+    override fun drawShape(canvas: Canvas, paint: Paint) {
         if (getDrawBounds() != null) {
-            canvas.drawRect(getDrawBounds(), paint);
+
+            canvas.drawRect(getDrawBounds(), paint)
+
         }
     }
 }

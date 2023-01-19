@@ -2,7 +2,7 @@
  * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 5/19/22, 8:27 AM
+ * Last modified 1/19/23, 9:00 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -42,14 +42,22 @@ public class Wave extends SpriteContainer {
     @Override
     protected void onBoundsChange(Rect bounds) {
         super.onBoundsChange(bounds);
+
         bounds = clipSquare(bounds);
+
         int rw = bounds.width() / getChildCount();
+
         int width = bounds.width() / 5 * 3 / 5;
+
         for (int i = 0; i < getChildCount(); i++) {
+
             Sprite sprite = getChildAt(i);
+
             int l = bounds.left + i * rw + rw / 5;
             int r = l + width;
+
             sprite.setDrawBounds(l, bounds.top, r, bounds.bottom);
+
         }
     }
 

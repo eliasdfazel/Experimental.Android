@@ -2,7 +2,7 @@
  * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 5/19/22, 8:27 AM
+ * Last modified 1/19/23, 9:39 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -10,21 +10,16 @@
 
 package net.geeksempire.loadingspin;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ProgressBar;
 
 import net.geeksempire.loadingspin.sprite.Sprite;
 
-/**
- * Created by ybq.
- */
 public class SpinKitView extends ProgressBar {
 
     private Style mStyle;
@@ -43,13 +38,13 @@ public class SpinKitView extends ProgressBar {
         this(context, attrs, defStyleAttr, R.style.SpinKitView);
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public SpinKitView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SpinKitView, defStyleAttr,
                 defStyleRes);
         mStyle = Style.values()[a.getInt(R.styleable.SpinKitView_SpinKit_Style, 0)];
         mColor = a.getColor(R.styleable.SpinKitView_SpinKit_Color, Color.WHITE);
+
         a.recycle();
         init();
         setIndeterminate(true);
