@@ -31,15 +31,6 @@ class RotateAnimations (private val context: Context) {
         context.getColor(R.color.default_color_bright),
     )
 
-    private val colorsSet = arrayListOf(
-        intArrayOf(allColors[0], allColors[1]),
-        intArrayOf(allColors[1], allColors[2]),
-        intArrayOf(allColors[2], allColors[3]),
-        intArrayOf(allColors[3], allColors[4]),
-        intArrayOf(allColors[4], allColors[5]),
-        intArrayOf(allColors[5], allColors[6]),
-    )
-
     fun multipleColorsRotation(instanceOfView: ImageView) {
 
         instanceOfView.setImageDrawable(GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(
@@ -73,35 +64,6 @@ class RotateAnimations (private val context: Context) {
             instanceOfView.setImageDrawable(aGradientDrawable)
 
         }
-
-//        var animationCounter = 0
-//
-//        rotateAnimation.setAnimationListener(object : Animation.AnimationListener {
-//
-//            override fun onAnimationStart(animation: Animation?) {
-//                Log.d(this@RotateAnimations.javaClass.toString(), "Start")
-//            }
-//
-//            override fun onAnimationRepeat(animation: Animation?) {
-//                Log.d(this@RotateAnimations.javaClass.toString(), "Repeat")
-//
-//                instanceOfView.setImageDrawable(GradientDrawable(GradientDrawable.Orientation.TR_BL, colorsSet[animationCounter]))
-//
-//                animationCounter++
-//
-//                if (animationCounter == colorsSet.size) {
-//
-//                    animationCounter = 0
-//
-//                }
-//
-//            }
-//
-//            override fun onAnimationEnd(animation: Animation?) {
-//                Log.d(this@RotateAnimations.javaClass.toString(), "End")
-//            }
-//
-//        })
 
     }
 
