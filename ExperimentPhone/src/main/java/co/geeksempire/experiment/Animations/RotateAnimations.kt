@@ -2,7 +2,7 @@
  * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 1/19/23, 10:29 AM
+ * Last modified 1/19/23, 10:41 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -10,9 +10,9 @@
 
 package co.geeksempire.experiment.Animations
 
+import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.drawable.GradientDrawable
-import android.util.Log
 import android.view.animation.Animation
 import android.view.animation.OvershootInterpolator
 import android.view.animation.RotateAnimation
@@ -42,9 +42,9 @@ class RotateAnimations (private val context: Context) {
 
     fun multipleColorsRotation(instanceOfView: ImageView) {
 
-        instanceOfView.setImageDrawable(GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(context.getColor(
-            R.color.default_color
-        ), context.getColor(R.color.default_color_game))))
+        instanceOfView.setImageDrawable(GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(
+            allColors[0], allColors[2]
+        )))
 
         val rotateAnimation = RotateAnimation(0f, 360f,
             Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f).apply {
@@ -56,34 +56,52 @@ class RotateAnimations (private val context: Context) {
 
         instanceOfView.startAnimation(rotateAnimation)
 
-        var animationCounter = 0
+        val colorAnimator = ValueAnimator.ofArgb(allColors[0], allColors[2]).apply {
+            duration = 1111
+            repeatCount = Animation.INFINITE
+        }
+        colorAnimator.start()
+        colorAnimator.addUpdateListener {
+            val currentColor = it.animatedValue as Int
 
-        rotateAnimation.setAnimationListener(object : Animation.AnimationListener {
+            val gradientDrawableColors = IntArray(2)
 
-            override fun onAnimationStart(animation: Animation?) {
-                Log.d(this@RotateAnimations.javaClass.toString(), "Start")
-            }
+            gradientDrawableColors[0] = allColors[0]
+            gradientDrawableColors[1] = currentColor
 
-            override fun onAnimationRepeat(animation: Animation?) {
-                Log.d(this@RotateAnimations.javaClass.toString(), "Repeat")
+            val aGradientDrawable = GradientDrawable(GradientDrawable.Orientation.TR_BL, gradientDrawableColors)
+            instanceOfView.setImageDrawable(aGradientDrawable)
 
-                instanceOfView.setImageDrawable(GradientDrawable(GradientDrawable.Orientation.TR_BL, colorsSet[animationCounter]))
+        }
 
-                animationCounter++
-
-                if (animationCounter == colorsSet.size) {
-
-                    animationCounter = 0
-
-                }
-
-            }
-
-            override fun onAnimationEnd(animation: Animation?) {
-                Log.d(this@RotateAnimations.javaClass.toString(), "End")
-            }
-
-        })
+//        var animationCounter = 0
+//
+//        rotateAnimation.setAnimationListener(object : Animation.AnimationListener {
+//
+//            override fun onAnimationStart(animation: Animation?) {
+//                Log.d(this@RotateAnimations.javaClass.toString(), "Start")
+//            }
+//
+//            override fun onAnimationRepeat(animation: Animation?) {
+//                Log.d(this@RotateAnimations.javaClass.toString(), "Repeat")
+//
+//                instanceOfView.setImageDrawable(GradientDrawable(GradientDrawable.Orientation.TR_BL, colorsSet[animationCounter]))
+//
+//                animationCounter++
+//
+//                if (animationCounter == colorsSet.size) {
+//
+//                    animationCounter = 0
+//
+//                }
+//
+//            }
+//
+//            override fun onAnimationEnd(animation: Animation?) {
+//                Log.d(this@RotateAnimations.javaClass.toString(), "End")
+//            }
+//
+//        })
 
     }
 
