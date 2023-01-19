@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright © 2022 By Geeks Empire.
+  ~ Copyright © 2023 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 12/21/22, 3:25 AM
+  ~ Last modified 1/19/23, 10:15 AM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
@@ -45,6 +45,16 @@
         <activity
             android:name=".SectionedScrolls.SectionedScrollViews"
             android:exported="true"/>
+
+        <!-- Tests -->
+        <activity
+            android:name=".Tests.BlurryTests"
+            android:exported="true"/>
+
+        <activity
+            android:name=".Tests.ProgressTests"
+            android:exported="true"/>
+        <!-- Tests -->
 
     </application>
 

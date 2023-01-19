@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright © 2023 By Geeks Empire.
+  ~
+  ~ Created by Elias Fazel
+  ~ Last modified 1/19/23, 10:13 AM
+  ~
+  ~ Licensed Under MIT License.
+  ~ https://opensource.org/licenses/MIT
+  -->
+
+<co.geeksempire.experiment.Views.ViewGroup.NextedConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_screen_initial">
+
+    <co.geeksempire.blurry.effect.library.OverlayBlur
+        android:layout_width="333dp"
+        android:layout_height="333dp"
+
+        apps:realtimeBlurRadius="13dp"
+        apps:realtimeBlurGradientType="linearTilt"
+        apps:realtimeFirstColor="@color/default_color_transparent"
+        apps:realtimeSecondColor="@color/default_color_game_transparent"
+        apps:realtimeBlurTopLeft="31dp"
+        apps:realtimeBlurTopRight="31dp"
+        apps:realtimeBlurBottomLeft="31dp"
+        apps:realtimeBlurBottomRight="31dp"
+        apps:realtimeShapePath="@string/leafPath"
+        apps:realtimeScaleAmount="37"
+
+        apps:layout_constraintTop_toTopOf="parent"
+        apps:layout_constraintBottom_toBottomOf="parent"
+        apps:layout_constraintStart_toStartOf="parent"
+        apps:layout_constraintEnd_toEndOf="parent"/>
+
+</co.geeksempire.experiment.Views.ViewGroup.NextedConstraintLayout>
