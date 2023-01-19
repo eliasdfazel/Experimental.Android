@@ -1,8 +1,8 @@
 /*
- * Copyright © 2022 By Geeks Empire.
+ * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/29/22, 2:45 AM
+ * Last modified 1/19/23, 10:29 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -21,7 +21,7 @@ import co.geeksempire.experiment.R
 
 class RotateAnimations (private val context: Context) {
 
-    val allColors = intArrayOf(
+    private val allColors = intArrayOf(
         context.getColor(R.color.default_color_bright),
         context.getColor(R.color.default_color_game_bright),
         context.getColor(R.color.cyberGreen),
@@ -31,7 +31,7 @@ class RotateAnimations (private val context: Context) {
         context.getColor(R.color.default_color_bright),
     )
 
-    val colorsSet = arrayListOf(
+    private val colorsSet = arrayListOf(
         intArrayOf(allColors[0], allColors[1]),
         intArrayOf(allColors[1], allColors[2]),
         intArrayOf(allColors[2], allColors[3]),
@@ -74,8 +74,6 @@ class RotateAnimations (private val context: Context) {
                 if (animationCounter == colorsSet.size) {
 
                     animationCounter = 0
-
-                    colorsSet.shuffle()
 
                 }
 
