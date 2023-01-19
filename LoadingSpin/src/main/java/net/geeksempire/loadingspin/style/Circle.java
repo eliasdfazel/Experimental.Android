@@ -2,7 +2,7 @@
  * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 5/19/22, 8:27 AM
+ * Last modified 1/19/23, 9:56 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -11,7 +11,6 @@
 package net.geeksempire.loadingspin.style;
 
 import android.animation.ValueAnimator;
-import android.os.Build;
 
 import net.geeksempire.loadingspin.animation.SpriteAnimatorBuilder;
 import net.geeksempire.loadingspin.sprite.CircleLayoutContainer;
@@ -25,15 +24,16 @@ public class Circle extends CircleLayoutContainer {
 
     @Override
     public Sprite[] onCreateChild() {
-        Dot[] dots = new Dot[12];
+        Dot[] dots = new Dot[23];
+
         for (int i = 0; i < dots.length; i++) {
+
             dots[i] = new Dot();
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                dots[i].setAnimationDelay(1200 / 12 * i);
-            } else {
-                dots[i].setAnimationDelay(1200 / 12 * i + -1200);
-            }
+
+            dots[i].setAnimationDelay(1200 / 7 * i);
+
         }
+
         return dots;
     }
 
