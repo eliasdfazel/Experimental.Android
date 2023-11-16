@@ -2,7 +2,7 @@
  * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 1/19/23, 10:23 AM
+ * Last modified 11/16/23, 4:18 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -14,7 +14,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import co.geeksempire.experiment.Tests.WaitingTests
+import co.geeksempire.experiment.Widgets.WidgetsConfigurations
 import co.geeksempire.experiment.databinding.ExperimentSelectorLayoutBinding
 
 class ExperimentSelector : AppCompatActivity() {
@@ -29,7 +29,7 @@ class ExperimentSelector : AppCompatActivity() {
         window.decorView.setBackgroundColor(Color.CYAN)
         experimentSelectorLayoutBinding.root.background = getDrawable(R.drawable.splash_screen_initial)
 
-        startActivity(Intent(this@ExperimentSelector, WaitingTests::class.java))
+        startActivity(Intent(this@ExperimentSelector, WidgetsConfigurations::class.java))
 
     }
 
