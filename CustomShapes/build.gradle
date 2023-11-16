@@ -13,13 +13,12 @@ apply plugin: 'org.jetbrains.kotlin.android'
 
 
 android {
-    compileSdkVersion 33
-    buildToolsVersion "33.0.1"
+
+    compileSdk 34
 
     defaultConfig {
-        minSdkVersion 28
-        targetSdkVersion 33
-
+        minSdk 28
+        targetSdk 34
     }
 
     buildTypes {
@@ -27,6 +26,11 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     namespace 'net.geekstools.imageview.customshapes'

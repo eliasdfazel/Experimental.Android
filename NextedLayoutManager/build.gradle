@@ -15,12 +15,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion 33
-    buildToolsVersion "33.0.1"
+
+    compileSdk 34
 
     defaultConfig {
-        minSdkVersion 28
-        targetSdkVersion 33
+
+        minSdk 28
+        targetSdk 34
 
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -32,12 +33,10 @@ android {
             minifyEnabled false
         }
     }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     namespace 'co.geeksempire.geeksempire.layoutmanager'

@@ -1,8 +1,8 @@
 /*
- * Copyright © 2022 By Geeks Empire.
+ * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/17/22, 3:46 AM
+ * Last modified 11/16/23, 3:52 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -50,7 +50,7 @@ class NextedConstraintLayout(context: Context, attributesSet: AttributeSet) : Co
 
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
     }
