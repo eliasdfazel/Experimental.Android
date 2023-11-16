@@ -3,7 +3,7 @@
   ~ Copyright © 2023 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 11/16/23, 4:02 AM
+  ~ Last modified 11/16/23, 4:28 AM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
@@ -15,5 +15,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/widgetWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="313dp"/>
 
 </co.geeksempire.experiment.Views.ViewGroup.NextedConstraintLayout>
