@@ -2,7 +2,7 @@
  * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/16/23, 4:49 AM
+ * Last modified 11/18/23, 7:45 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -56,6 +56,12 @@ class WidgetsConfigurations : AppCompatActivity() {
 
            createWidget(applicationContext, widgetsConfigurationsLayoutBinding.widgetWrapper,
                widgetManager, widgetHost, widgetProviders[1], 1)
+
+           widgetsConfigurationsLayoutBinding.widgetAction.setOnClickListener {
+
+
+
+           }
 
        }
 
