@@ -2,7 +2,7 @@
  * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/18/23, 7:45 AM
+ * Last modified 11/18/23, 9:29 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -14,6 +14,7 @@ import android.appwidget.AppWidgetHost
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProviderInfo
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.ViewGroup
@@ -58,8 +59,14 @@ class WidgetsConfigurations : AppCompatActivity() {
                widgetManager, widgetHost, widgetProviders[1], 1)
 
            widgetsConfigurationsLayoutBinding.widgetAction.setOnClickListener {
+               println("Widget Clicked")
 
-
+               val intent = Intent(AppWidgetManager.ACTION_APPWIDGET_BIND).apply {
+                   putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, 1)
+                   putExtra(AppWidgetManager.EXTRA_APPWIDGET_PROVIDER, widgetProviders.first())
+//                   putExtra(AppWidgetManager.EXTRA_APPWIDGET_OPTIONS, options)
+               }
+               startActivityForResult(intent, 666)
 
            }
 

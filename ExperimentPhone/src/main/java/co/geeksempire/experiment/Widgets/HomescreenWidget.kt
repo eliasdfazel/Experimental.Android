@@ -2,7 +2,7 @@
  * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/18/23, 9:00 AM
+ * Last modified 11/18/23, 9:24 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -33,8 +33,8 @@ class HomescreenWidget : AppWidgetProvider() {
 
         if (context != null) {
 
-            appWidgetIds?.let {
-                println(">>> >> > Widget Id")
+            appWidgetIds?.let { widgetId ->
+                println(">>> >> > Widget Id: ${widgetId.first()}")
 
                 for (index in appWidgetIds.indices) {
 
@@ -59,6 +59,9 @@ class HomescreenWidget : AppWidgetProvider() {
                             remoteViews.addView(R.id.widgetList, RemoteViews(context.packageName, R.layout.remote_widget_item))
 
                         }
+
+                        appWidgetManager?.notifyAppWidgetViewDataChanged(widgetId, R.id.widgetList)
+
 
                     }, 333)
 
