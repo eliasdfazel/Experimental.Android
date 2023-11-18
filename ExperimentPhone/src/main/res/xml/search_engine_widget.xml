@@ -3,7 +3,7 @@
   ~ Copyright © 2023 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 11/18/23, 8:19 AM
+  ~ Last modified 11/18/23, 9:30 AM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
@@ -15,5 +15,6 @@
     android:minHeight="77dp"
     android:previewImage="@drawable/experiment_icon"
     android:updatePeriodMillis="0"
-    android:initialLayout="@layout/remote_widget_view">
+    android:initialLayout="@layout/remote_widget_view"
+    android:configure="co.geeksempire.experiment.Widgets.WidgetsConfigurations">
 </appwidget-provider>

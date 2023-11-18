@@ -2,7 +2,7 @@
  * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/18/23, 9:24 AM
+ * Last modified 11/18/23, 9:35 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -61,6 +61,8 @@ class HomescreenWidget : AppWidgetProvider() {
                         }
 
                         appWidgetManager?.notifyAppWidgetViewDataChanged(widgetId, R.id.widgetList)
+
+                        appWidgetManager?.updateAppWidget(widgetId.first(), remoteViews)
 
 
                     }, 333)

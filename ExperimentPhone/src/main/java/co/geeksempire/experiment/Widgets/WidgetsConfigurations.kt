@@ -2,7 +2,7 @@
  * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/18/23, 9:29 AM
+ * Last modified 11/18/23, 9:40 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -10,9 +10,11 @@
 
 package co.geeksempire.experiment.Widgets
 
+import android.app.PendingIntent
 import android.appwidget.AppWidgetHost
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProviderInfo
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -61,12 +63,20 @@ class WidgetsConfigurations : AppCompatActivity() {
            widgetsConfigurationsLayoutBinding.widgetAction.setOnClickListener {
                println("Widget Clicked")
 
-               val intent = Intent(AppWidgetManager.ACTION_APPWIDGET_BIND).apply {
-                   putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, 1)
-                   putExtra(AppWidgetManager.EXTRA_APPWIDGET_PROVIDER, widgetProviders.first())
-//                   putExtra(AppWidgetManager.EXTRA_APPWIDGET_OPTIONS, options)
+               val appWidgetManager = AppWidgetManager.getInstance(applicationContext)
+               val myProvider = ComponentName(applicationContext, HomescreenWidget::class.java)
+
+               if (appWidgetManager.isRequestPinAppWidgetSupported) {
+
+                   val successCallback = PendingIntent.getBroadcast(
+                       applicationContext,
+                       666,
+                       Intent(),
+                       PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+
+                   appWidgetManager.requestPinAppWidget(myProvider, null, successCallback)
                }
-               startActivityForResult(intent, 666)
+
 
            }
 
