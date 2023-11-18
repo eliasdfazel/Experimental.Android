@@ -2,7 +2,7 @@
  * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/18/23, 8:56 AM
+ * Last modified 11/18/23, 9:00 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -47,7 +47,7 @@ class HomescreenWidget : AppWidgetProvider() {
 
                     val remoteViews = RemoteViews(context.packageName, R.layout.remote_widget_view)
 
-                    remoteViews.setOnClickPendingIntent(R.id.searchInvocationView, searchEnginePendingIntent)
+                    remoteViews.setOnClickPendingIntent(R.id.widgetList, searchEnginePendingIntent)
 
                     appWidgetManager?.updateAppWidget(currentWidgetId, remoteViews)
 
