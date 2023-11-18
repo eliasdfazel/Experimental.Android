@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright © 2023 By Geeks Empire.
+  ~
+  ~ Created by Elias Fazel
+  ~ Last modified 11/18/23, 8:19 AM
+  ~
+  ~ Licensed Under MIT License.
+  ~ https://opensource.org/licenses/MIT
+  -->
+
+<appwidget-provider
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="77dp"
+    android:minHeight="77dp"
+    android:previewImage="@drawable/experiment_icon"
+    android:updatePeriodMillis="0"
+    android:initialLayout="@layout/remote_widget_view">
+</appwidget-provider>

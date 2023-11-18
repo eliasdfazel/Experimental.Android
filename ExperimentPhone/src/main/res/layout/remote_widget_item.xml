@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright © 2023 By Geeks Empire.
+  ~
+  ~ Created by Elias Fazel
+  ~ Last modified 11/18/23, 8:59 AM
+  ~
+  ~ Licensed Under MIT License.
+  ~ https://opensource.org/licenses/MIT
+  -->
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="77dp"
+    android:layout_height="77dp"
+    android:layout_margin="7dp"
+    android:background="@color/default_color">
+
+    <ImageView
+        android:layout_width="77dp"
+        android:layout_height="77dp"
+        android:id="@+id/searchInvocationView"
+        android:padding="3dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/experiment_icon"
+        android:background="@color/red"/>
+
+</RelativeLayout>
