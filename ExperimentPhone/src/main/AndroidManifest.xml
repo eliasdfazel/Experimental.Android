@@ -3,7 +3,7 @@
   ~ Copyright © 2023 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 11/18/23, 9:32 AM
+  ~ Last modified 11/19/23, 5:32 AM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
@@ -86,7 +86,7 @@
             android:label="Widget"
             android:icon="@drawable/experiment_icon"
             android:exported="false"
-            android:name=".Widgets.HomescreenWidget" >
+            android:name=".Widgets.HomescreenWidgetProvider" >
             <intent-filter >
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>

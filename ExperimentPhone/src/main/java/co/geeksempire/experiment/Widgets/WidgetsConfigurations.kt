@@ -2,7 +2,7 @@
  * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 11/18/23, 9:40 AM
+ * Last modified 11/19/23, 5:32 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -64,7 +64,7 @@ class WidgetsConfigurations : AppCompatActivity() {
                println("Widget Clicked")
 
                val appWidgetManager = AppWidgetManager.getInstance(applicationContext)
-               val myProvider = ComponentName(applicationContext, HomescreenWidget::class.java)
+               val myProvider = ComponentName(applicationContext, HomescreenWidgetProvider::class.java)
 
                if (appWidgetManager.isRequestPinAppWidgetSupported) {
 

@@ -3,27 +3,22 @@
   ~ Copyright © 2023 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 11/18/23, 9:44 AM
+  ~ Last modified 11/19/23, 5:40 AM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
   -->
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="173dp"
+    android:layout_width="313dp"
     android:layout_height="313dp">
 
     <RelativeLayout
-        android:layout_width="173dp"
+        android:id="@+id/widgetWrapper"
+        android:layout_width="313dp"
         android:layout_height="313dp"
-        android:layout_margin="7dp"
+        android:padding="19dp"
         android:background="@color/default_color">
-
-        <ListView
-            android:id="@+id/widgetList"
-            android:layout_width="173dp"
-            android:layout_height="313dp">
-        </ListView>
 
     </RelativeLayout>
 
