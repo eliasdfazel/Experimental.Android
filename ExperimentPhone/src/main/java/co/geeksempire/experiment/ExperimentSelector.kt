@@ -2,7 +2,7 @@
  * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/5/23, 5:02 AM
+ * Last modified 12/5/23, 5:37 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -23,7 +23,6 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.filter
-import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.withIndex
 
 class ExperimentSelector : AppCompatActivity() {
@@ -47,20 +46,15 @@ class ExperimentSelector : AppCompatActivity() {
         val applicationInfoList = packageManager.queryIntentActivities(Intent().apply {
             action = Intent.ACTION_MAIN
             addCategory(Intent.CATEGORY_LAUNCHER)
-        }, PackageManager.MATCH_APEX)
+        }, PackageManager.MATCH_DISABLED_UNTIL_USED_COMPONENTS)
 
         applicationInfoList.asFlow()
             .filter {
 
                 (packageManager.getLaunchIntentForPackage(it.activityInfo.packageName) != null)
             }
-            .onCompletion {
-
-
-
-            }
             .withIndex().collect {
-                Log.d(this@ExperimentSelector.javaClass.simpleName, "Installed Application: ${it.value.activityInfo.packageName}")
+                Log.d(this@ExperimentSelector.javaClass.simpleName, "${it.index}. Installed Application: ${it.value.activityInfo.applicationInfo.loadLabel(packageManager)}")
             }
 
     }
