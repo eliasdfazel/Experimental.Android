@@ -2,7 +2,7 @@
  * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/20/23, 5:33 AM
+ * Last modified 12/20/23, 5:42 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -38,7 +38,7 @@ class ExperimentSelector : AppCompatActivity() {
         window.decorView.setBackgroundColor(Color.CYAN)
         experimentSelectorLayoutBinding.root.background = getDrawable(R.drawable.splash_screen_initial)
 
-        installedApplicationsQuery()
+
 
     }
 
