@@ -2,7 +2,7 @@
  * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/20/23, 6:17 AM
+ * Last modified 12/20/23, 6:19 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -32,7 +32,6 @@ class Sensors : AppCompatActivity(), SensorEventListener {
         super.onCreate(savedInstanceState)
 
         sensorManager.registerListener(this@Sensors, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
-
 
     }
 
