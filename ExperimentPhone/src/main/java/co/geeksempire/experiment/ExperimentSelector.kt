@@ -2,7 +2,7 @@
  * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/5/23, 5:37 AM
+ * Last modified 12/20/23, 5:33 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -12,6 +12,7 @@ package co.geeksempire.experiment
 
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.pm.ResolveInfo
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -46,7 +47,7 @@ class ExperimentSelector : AppCompatActivity() {
         val applicationInfoList = packageManager.queryIntentActivities(Intent().apply {
             action = Intent.ACTION_MAIN
             addCategory(Intent.CATEGORY_LAUNCHER)
-        }, PackageManager.MATCH_DISABLED_UNTIL_USED_COMPONENTS)
+        }, PackageManager.MATCH_UNINSTALLED_PACKAGES).sortedWith(ResolveInfo.DisplayNameComparator(packageManager))
 
         applicationInfoList.asFlow()
             .filter {
