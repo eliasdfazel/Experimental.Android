@@ -2,7 +2,7 @@
  * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/23/23, 4:27 AM
+ * Last modified 12/23/23, 4:29 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -46,8 +46,6 @@ class Sensors : AppCompatActivity(), SensorEventListener {
 
         val accelerometer: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
         val linearAcceleration: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION)
-
-        sensorManager.registerListener(this@Sensors, linearAcceleration, SensorManager.SENSOR_DELAY_UI)
 
         sensorsLayoutBinding.getSensorData.setOnClickListener {
 
