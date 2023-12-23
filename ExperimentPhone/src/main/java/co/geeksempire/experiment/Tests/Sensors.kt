@@ -2,7 +2,7 @@
  * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/23/23, 4:43 AM
+ * Last modified 12/23/23, 6:02 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -21,6 +21,7 @@ import android.os.Looper
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import co.geeksempire.experiment.R
+import co.geeksempire.experiment.Utils.Numbers.roundTo
 import co.geeksempire.experiment.databinding.SensorsLayoutBinding
 
 
@@ -76,18 +77,18 @@ class Sensors : AppCompatActivity(), SensorEventListener {
             Sensor.TYPE_GYROSCOPE -> {
                 Log.d(this@Sensors.javaClass.simpleName, sensorEvent.values.size.toString())
 
-                val xValue = sensorEvent.values[0]
-                val yValue = sensorEvent.values[1]
-                val zValue = sensorEvent.values[2]
+                val xValue = sensorEvent.values[0].roundTo(3)
+                val yValue = sensorEvent.values[1].roundTo(3)
+                val zValue = sensorEvent.values[2].roundTo(3)
 
                 Log.d(this@Sensors.javaClass.simpleName, "TYPE_GYROSCOPE -> X: $xValue | Y: $yValue | Z: $zValue")
             }
             Sensor.TYPE_ACCELEROMETER -> {
                 Log.d(this@Sensors.javaClass.simpleName, sensorEvent.values.size.toString())
 
-                val xValue = sensorEvent.values[0]
-                val yValue = sensorEvent.values[1]
-                val zValue = sensorEvent.values[2]
+                val xValue = sensorEvent.values[0].roundTo(3)
+                val yValue = sensorEvent.values[1].roundTo(3)
+                val zValue = sensorEvent.values[2].roundTo(3)
 
                 Log.d(this@Sensors.javaClass.simpleName, "TYPE_ACCELEROMETER -> X: $xValue | Y: $yValue | Z: $zValue")
             }
