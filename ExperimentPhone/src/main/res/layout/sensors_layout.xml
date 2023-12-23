@@ -3,7 +3,7 @@
   ~ Copyright © 2023 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 12/23/23, 7:29 AM
+  ~ Last modified 12/23/23, 7:31 AM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
@@ -35,10 +35,11 @@
 
     <co.geeksempire.sachiel.signals.administrators.Utils.Views.Scrolls.NextedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="13dp"
 
         apps:layout_constraintTop_toBottomOf="@id/getSensorData"
+        apps:layout_constraintBottom_toBottomOf="parent"
         apps:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
