@@ -2,7 +2,7 @@
  * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/20/23, 5:42 AM
+ * Last modified 12/23/23, 3:41 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -17,6 +17,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import co.geeksempire.experiment.Tests.Sensors
 import co.geeksempire.experiment.databinding.ExperimentSelectorLayoutBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -38,7 +39,8 @@ class ExperimentSelector : AppCompatActivity() {
         window.decorView.setBackgroundColor(Color.CYAN)
         experimentSelectorLayoutBinding.root.background = getDrawable(R.drawable.splash_screen_initial)
 
-
+        startActivity(Intent(this@ExperimentSelector, Sensors::class.java)
+            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
 
     }
 

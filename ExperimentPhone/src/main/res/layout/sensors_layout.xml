@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright © 2023 By Geeks Empire.
+  ~
+  ~ Created by Elias Fazel
+  ~ Last modified 12/23/23, 3:58 AM
+  ~
+  ~ Licensed Under MIT License.
+  ~ https://opensource.org/licenses/MIT
+  -->
+
+<co.geeksempire.experiment.Views.ViewGroup.NextedConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    tools:context=".ExperimentSelector"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/premiumDark">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/getSensorData"
+        android:layout_width="137dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="37dp"
+
+        apps:cornerRadius="13dp"
+
+        apps:layout_constraintTop_toTopOf="parent"
+        apps:layout_constraintStart_toStartOf="parent"
+        apps:layout_constraintEnd_toEndOf="parent"/>
+
+</co.geeksempire.experiment.Views.ViewGroup.NextedConstraintLayout>
