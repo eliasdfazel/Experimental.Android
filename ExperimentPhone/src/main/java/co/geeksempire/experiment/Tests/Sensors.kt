@@ -2,7 +2,7 @@
  * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/23/23, 4:11 AM
+ * Last modified 12/23/23, 4:27 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -30,9 +30,7 @@ class Sensors : AppCompatActivity(), SensorEventListener {
         getSystemService(SENSOR_SERVICE) as SensorManager
     }
 
-    val accelerometer: Sensor? by lazy {
-        sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
-    }
+
 
     lateinit var sensorsLayoutBinding: SensorsLayoutBinding
 
@@ -46,9 +44,14 @@ class Sensors : AppCompatActivity(), SensorEventListener {
         window.navigationBarColor = getColor(R.color.premiumLight)
         window.setBackgroundDrawable(ColorDrawable(getColor(R.color.premiumLight)))
 
+        val accelerometer: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+        val linearAcceleration: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION)
+
+        sensorManager.registerListener(this@Sensors, linearAcceleration, SensorManager.SENSOR_DELAY_UI)
+
         sensorsLayoutBinding.getSensorData.setOnClickListener {
 
-            sensorManager.registerListener(this@Sensors, accelerometer, SensorManager.SENSOR_DELAY_UI)
+            sensorManager.registerListener(this@Sensors, linearAcceleration, SensorManager.SENSOR_DELAY_UI)
 
             Handler(Looper.getMainLooper()).postDelayed({
 
@@ -66,13 +69,25 @@ class Sensors : AppCompatActivity(), SensorEventListener {
 
     override fun onSensorChanged(sensorEvent: SensorEvent?) {
 
-        if (sensorEvent?.sensor?.type ==Sensor.TYPE_ACCELEROMETER) {
+        when (sensorEvent?.sensor?.type) {
+            Sensor.TYPE_ACCELEROMETER -> {
+                Log.d(this@Sensors.javaClass.simpleName, sensorEvent.values.size.toString())
 
-            val xValue = sensorEvent.values[0]
-            val yValue = sensorEvent.values[1]
-            val zValue = sensorEvent.values[2]
+                val xValue = sensorEvent.values[0]
+                val yValue = sensorEvent.values[1]
+                val zValue = sensorEvent.values[2]
 
-            Log.d(this@Sensors.javaClass.simpleName, "X: $xValue | Y: $yValue | Z: $zValue")
+                Log.d(this@Sensors.javaClass.simpleName, "X: $xValue | Y: $yValue | Z: $zValue")
+            }
+            Sensor.TYPE_LINEAR_ACCELERATION -> {
+                Log.d(this@Sensors.javaClass.simpleName, sensorEvent.values.size.toString())
+
+                val xValue = sensorEvent.values[0]
+                val yValue = sensorEvent.values[1]
+                val zValue = sensorEvent.values[2]
+
+                Log.d(this@Sensors.javaClass.simpleName, "X Acceleration: $xValue | Y Acceleration: $yValue | Z Acceleration: $zValue")
+            }
         }
 
     }
