@@ -3,7 +3,7 @@
   ~ Copyright © 2023 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 12/23/23, 7:21 AM
+  ~ Last modified 12/23/23, 7:29 AM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
@@ -33,18 +33,34 @@
         apps:layout_constraintStart_toStartOf="parent"
         apps:layout_constraintEnd_toEndOf="parent"/>
 
-    <TextView
-        android:id="@+id/SensorData"
+    <co.geeksempire.sachiel.signals.administrators.Utils.Views.Scrolls.NextedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        android:paddingHorizontal="19dp"
-        android:textColor="@color/premiumLight"
-        android:textSize="13sp"
-        android:fontFamily="monospace"
-        android:textIsSelectable="true"
+        android:layout_marginTop="13dp"
 
         apps:layout_constraintTop_toBottomOf="@id/getSensorData"
-        apps:layout_constraintStart_toStartOf="parent"/>
+        apps:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="13dp">
+
+            <TextView
+                android:id="@+id/SensorData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="19dp"
+                android:textColor="@color/premiumLight"
+                android:textSize="13sp"
+                android:fontFamily="monospace"
+                android:textIsSelectable="true"
+
+                apps:layout_constraintTop_toTopOf="parent"
+                apps:layout_constraintStart_toStartOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </co.geeksempire.sachiel.signals.administrators.Utils.Views.Scrolls.NextedScrollView>
 
 </co.geeksempire.experiment.Views.ViewGroup.NextedConstraintLayout>
