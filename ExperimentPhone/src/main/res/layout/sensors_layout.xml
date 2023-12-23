@@ -3,7 +3,7 @@
   ~ Copyright © 2023 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 12/23/23, 3:58 AM
+  ~ Last modified 12/23/23, 4:09 AM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
@@ -24,6 +24,9 @@
         android:layout_marginTop="37dp"
 
         apps:cornerRadius="13dp"
+        apps:elevation="13dp"
+        apps:backgroundTint="@color/premiumLight"
+        apps:rippleColor="@color/premiumDark"
 
         apps:layout_constraintTop_toTopOf="parent"
         apps:layout_constraintStart_toStartOf="parent"

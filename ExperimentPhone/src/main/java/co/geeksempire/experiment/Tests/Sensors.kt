@@ -2,7 +2,7 @@
  * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/23/23, 4:03 AM
+ * Last modified 12/23/23, 4:11 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -41,6 +41,9 @@ class Sensors : AppCompatActivity(), SensorEventListener {
         sensorsLayoutBinding = SensorsLayoutBinding.inflate(layoutInflater)
         setContentView(sensorsLayoutBinding.root)
 
+        sensorsLayoutBinding.root.setBackgroundColor(getColor(R.color.premiumDark))
+
+        window.navigationBarColor = getColor(R.color.premiumLight)
         window.setBackgroundDrawable(ColorDrawable(getColor(R.color.premiumLight)))
 
         sensorsLayoutBinding.getSensorData.setOnClickListener {
