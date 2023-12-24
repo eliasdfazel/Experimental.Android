@@ -2,7 +2,7 @@
  * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/23/23, 7:28 AM
+ * Last modified 12/24/23, 4:01 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -43,15 +43,16 @@ class Sensors : AppCompatActivity(), SensorEventListener {
         window.navigationBarColor = getColor(R.color.premiumLight)
         window.setBackgroundDrawable(ColorDrawable(getColor(R.color.premiumLight)))
 
+        val rotation: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR)
         val gravity: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
         val gyroscope: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
         val accelerometer: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
 
         sensorsLayoutBinding.getSensorData.text = "TYPE_ACCELEROMETER"
 
-            sensorsLayoutBinding.getSensorData.setOnClickListener {
+        sensorsLayoutBinding.getSensorData.setOnClickListener {
 
-            val sensorRegistration = sensorManager.registerListener(this@Sensors, accelerometer, SensorManager.SENSOR_DELAY_UI)
+            val sensorRegistration = sensorManager.registerListener(this@Sensors, rotation, SensorManager.SENSOR_DELAY_UI)
 
             if (sensorRegistration) {
 
@@ -80,15 +81,17 @@ class Sensors : AppCompatActivity(), SensorEventListener {
 
     override fun onSensorChanged(sensorEvent: SensorEvent?) {
 
+
+
         when (sensorEvent?.sensor?.type) {
-            Sensor.TYPE_GRAVITY -> {
+            Sensor.TYPE_ROTATION_VECTOR -> {
                 Log.d(this@Sensors.javaClass.simpleName, sensorEvent.values.size.toString())
 
                 val xValue = sensorEvent.values[0].roundTo(5)
                 val yValue = sensorEvent.values[1].roundTo(5)
                 val zValue = sensorEvent.values[2].roundTo(5)
 
-                Log.d(this@Sensors.javaClass.simpleName, "TYPE_GRAVITY -> X: $xValue | Y: $yValue | Z: $zValue")
+                Log.d(this@Sensors.javaClass.simpleName, "TYPE_ROTATION_VECTOR -> X: $xValue | Y: $yValue | Z: $zValue")
             }
             Sensor.TYPE_GYROSCOPE -> {
                 Log.d(this@Sensors.javaClass.simpleName, sensorEvent.values.size.toString())
@@ -106,11 +109,16 @@ class Sensors : AppCompatActivity(), SensorEventListener {
                 val yValue = sensorEvent.values[1].roundTo(5)
                 val zValue = sensorEvent.values[2].roundTo(5)
 
+
                 sensorsLayoutBinding.SensorData.append("X: $xValue | Y: $yValue | Z: $zValue\n")
 
                 Log.d(this@Sensors.javaClass.simpleName, "TYPE_ACCELEROMETER -> X: $xValue | Y: $yValue | Z: $zValue")
             }
         }
+
+//        SensorManager.getRotationMatrix(mRotationMatrix, null, mValuesAccel, ValuesMagnet)
+//        SensorManager.getOrientation(mRotationMatrix, mValuesOrientation)
+
 
     }
 
