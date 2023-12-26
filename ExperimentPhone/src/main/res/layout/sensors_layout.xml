@@ -3,7 +3,7 @@
   ~ Copyright © 2023 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 12/24/23, 4:14 AM
+  ~ Last modified 12/26/23, 4:32 AM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
@@ -20,13 +20,14 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:alpha="0.37"
         android:src="@drawable/xyz" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/getSensorData"
         android:layout_width="wrap_content"
         android:layout_height="51dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginBottom="37dp"
         android:textColor="@color/premiumDark"
 
         apps:cornerRadius="13dp"
@@ -34,17 +35,17 @@
         apps:backgroundTint="@color/premiumLight"
         apps:rippleColor="@color/premiumDark"
 
-        apps:layout_constraintTop_toTopOf="parent"
+        apps:layout_constraintBottom_toBottomOf="parent"
         apps:layout_constraintStart_toStartOf="parent"
         apps:layout_constraintEnd_toEndOf="parent"/>
 
     <co.geeksempire.sachiel.signals.administrators.Utils.Views.Scrolls.NextedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="19dp"
 
-        apps:layout_constraintTop_toBottomOf="@id/getSensorData"
-        apps:layout_constraintBottom_toBottomOf="parent"
+        apps:layout_constraintTop_toTopOf="parent"
+        apps:layout_constraintBottom_toTopOf="@id/getSensorData"
         apps:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -57,8 +58,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="19dp"
-                android:textColor="@color/premiumLight"
+                android:textColor="@color/blue_transparent"
                 android:textSize="13sp"
+                android:textStyle="bold"
                 android:fontFamily="monospace"
                 android:textIsSelectable="true"
 
