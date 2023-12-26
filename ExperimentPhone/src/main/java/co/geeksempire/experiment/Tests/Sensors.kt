@@ -2,7 +2,7 @@
  * Copyright © 2023 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/26/23, 4:26 AM
+ * Last modified 12/26/23, 4:41 AM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -43,16 +43,17 @@ class Sensors : AppCompatActivity(), SensorEventListener {
         window.navigationBarColor = getColor(R.color.premiumLight)
         window.setBackgroundDrawable(ColorDrawable(getColor(R.color.premiumLight)))
 
-        val rotation: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR)
-        val gravity: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
-        val gyroscope: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
-        val accelerometer: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+        val sensor: Sensor? = sensorManager.let {
+//            it.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR)
+//            it.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
+            it.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+        }
 
-        sensorsLayoutBinding.getSensorData.text = "ROTATION_VECTOR"
+        sensorsLayoutBinding.getSensorData.text = sensor?.name
 
         sensorsLayoutBinding.getSensorData.setOnClickListener {
 
-            val sensorRegistration = sensorManager.registerListener(this@Sensors, rotation, SensorManager.SENSOR_DELAY_UI)
+            val sensorRegistration = sensorManager.registerListener(this@Sensors, sensor, SensorManager.SENSOR_DELAY_UI)
 
             if (sensorRegistration) {
 
