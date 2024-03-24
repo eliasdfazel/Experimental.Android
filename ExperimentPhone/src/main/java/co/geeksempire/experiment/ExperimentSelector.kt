@@ -1,8 +1,8 @@
 /*
- * Copyright © 2023 By Geeks Empire.
+ * Copyright © 2024 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 12/23/23, 3:41 AM
+ * Last modified 3/24/24, 12:50 PM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -10,14 +10,15 @@
 
 package co.geeksempire.experiment
 
+import android.content.Context
 import android.content.Intent
+import android.content.pm.LauncherApps
 import android.content.pm.PackageManager
-import android.content.pm.ResolveInfo
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Process
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import co.geeksempire.experiment.Tests.Sensors
 import co.geeksempire.experiment.databinding.ExperimentSelectorLayoutBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -39,8 +40,15 @@ class ExperimentSelector : AppCompatActivity() {
         window.decorView.setBackgroundColor(Color.CYAN)
         experimentSelectorLayoutBinding.root.background = getDrawable(R.drawable.splash_screen_initial)
 
-        startActivity(Intent(this@ExperimentSelector, Sensors::class.java)
-            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+        experimentSelectorLayoutBinding.experimenting.setOnClickListener {
+
+            val launcherApps = getSystemService(Context.LAUNCHER_APPS_SERVICE) as LauncherApps
+
+            launcherApps.startShortcut("com.google.android.keep", "manifest_new_note_shortcut",
+                null, null, Process.myUserHandle())
+            //manifest_new_note_shortcut
+            //com.google.android.keep
+        }
 
     }
 
@@ -49,7 +57,7 @@ class ExperimentSelector : AppCompatActivity() {
         val applicationInfoList = packageManager.queryIntentActivities(Intent().apply {
             action = Intent.ACTION_MAIN
             addCategory(Intent.CATEGORY_LAUNCHER)
-        }, PackageManager.MATCH_UNINSTALLED_PACKAGES).sortedWith(ResolveInfo.DisplayNameComparator(packageManager))
+        }, PackageManager.MATCH_ALL)
 
         applicationInfoList.asFlow()
             .filter {
@@ -57,8 +65,37 @@ class ExperimentSelector : AppCompatActivity() {
                 (packageManager.getLaunchIntentForPackage(it.activityInfo.packageName) != null)
             }
             .withIndex().collect {
-                Log.d(this@ExperimentSelector.javaClass.simpleName, "${it.index}. Installed Application: ${it.value.activityInfo.applicationInfo.loadLabel(packageManager)}")
+                Log.d(this@ExperimentSelector.javaClass.simpleName, "${it.index}. Installed Application: ${it.value.activityInfo.applicationInfo.loadLabel(packageManager)} - ${it.value.activityInfo.packageName}")
+
+                getShortcuts(it.value.activityInfo.packageName)
+
             }
+
+    }
+
+    fun getShortcuts(aPackageName: String) = CoroutineScope(Dispatchers.IO).async {
+
+        val shortcutQuery = LauncherApps.ShortcutQuery()
+        shortcutQuery.setQueryFlags(LauncherApps.ShortcutQuery.FLAG_MATCH_DYNAMIC or LauncherApps.ShortcutQuery.FLAG_MATCH_MANIFEST or LauncherApps.ShortcutQuery.FLAG_MATCH_PINNED)
+        shortcutQuery.setPackage(aPackageName)
+
+        val launcherApps = getSystemService(Context.LAUNCHER_APPS_SERVICE) as LauncherApps
+
+        try {
+
+            launcherApps.getShortcuts(shortcutQuery, Process.myUserHandle())?.forEach {
+
+                println(it.id)
+                //manifest_new_note_shortcut
+                //com.google.android.keep
+
+            }
+
+//            launcherApps.startShortcut()
+
+        } catch (e: SecurityException) {
+
+        }
 
     }
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright © 2022 By Geeks Empire.
+  ~ Copyright © 2024 By Geeks Empire.
   ~
   ~ Created by Elias Fazel
-  ~ Last modified 11/30/22, 5:01 AM
+  ~ Last modified 3/24/24, 12:06 PM
   ~
   ~ Licensed Under MIT License.
   ~ https://opensource.org/licenses/MIT
@@ -16,11 +16,5 @@
 
     <item
         android:drawable="@color/black_transparent"/>
-
-    <item
-        android:width="237dp"
-        android:height="237dp"
-        android:gravity="center"
-        android:drawable="@drawable/experiment_icon"/>
 
 </layer-list>
