@@ -2,7 +2,7 @@
  * Copyright © 2024 By Geeks Empire.
  *
  * Created by Elias Fazel
- * Last modified 3/24/24, 12:50 PM
+ * Last modified 3/24/24, 12:58 PM
  *
  * Licensed Under MIT License.
  * https://opensource.org/licenses/MIT
@@ -42,12 +42,8 @@ class ExperimentSelector : AppCompatActivity() {
 
         experimentSelectorLayoutBinding.experimenting.setOnClickListener {
 
-            val launcherApps = getSystemService(Context.LAUNCHER_APPS_SERVICE) as LauncherApps
+            installedApplicationsQuery()
 
-            launcherApps.startShortcut("com.google.android.keep", "manifest_new_note_shortcut",
-                null, null, Process.myUserHandle())
-            //manifest_new_note_shortcut
-            //com.google.android.keep
         }
 
     }
@@ -86,12 +82,10 @@ class ExperimentSelector : AppCompatActivity() {
             launcherApps.getShortcuts(shortcutQuery, Process.myUserHandle())?.forEach {
 
                 println(it.id)
-                //manifest_new_note_shortcut
-                //com.google.android.keep
 
             }
 
-//            launcherApps.startShortcut()
+//            launcherApps.startShortcut(applicationPackageName, shortcutId, null, null, Process.myUserHandle())
 
         } catch (e: SecurityException) {
 
